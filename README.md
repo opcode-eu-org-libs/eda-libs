@@ -22,8 +22,7 @@ For more details see `make help` and [Makefile](Makefile) file.
 
 ## Licensing
 
-Primary license for this repo is MIT License (see [LICENSE](LICENSE)),
-but some third-party elements are under GNU GPL (see [third-party/LICENSE](third-party/LICENSE)).
+Primary license for this repo is MIT License (see [LICENSE](LICENSE)), but some third-party elements are under GNU GPL (see [third-party/LICENSE](third-party/LICENSE)).
 
 * Main symbols library ([symbols](symbols), [symbols.tragesym](symbols.tragesym) and [sources](sources)) and main footprints library ([footprints](footprints)) are distributed under dual licence MIT or GNU GPL with "unlimited use license".
 * Third-party elements (in [third-party](third-party) directory) are under GNU GPL, including:
@@ -60,13 +59,10 @@ pcb-rnd supports mainline pcb file formats for footprints and board, but native 
 ## other libre EDA software
 
 ### lepton-eda
-[lepton-eda](https://github.com/lepton-eda/lepton-eda) is fork of gEDA gschem and friends (gaf).
-Use the same format for symbols and schematic as original gschem.
+[lepton-eda](https://github.com/lepton-eda/lepton-eda) is fork of gEDA gschem and friends (gaf). Use the same format for symbols and schematic as original gschem.
 
 ### coralEDA
-[pcb-rnd](http://repo.hu/projects/coraleda/) is EDA suite build around pcb-rnd and [xschem](http://repo.hu/projects/xschem/).
-Uses own file formats for symbols, footprints, schematics and boards, but support gEDA/pcb file formats for footprints and board.
+[pcb-rnd](http://repo.hu/projects/coraleda/) is EDA suite build around pcb-rnd and [xschem](http://repo.hu/projects/xschem/). Uses own file formats for symbols, footprints, schematics and boards, but support gEDA/pcb file formats for footprints and board.
 
 ### kicad
-[kicad](http://kicad-pcb.org/) is other, independent EDA suite.
-Uses own file formats for symbols, footprints, schematics and boards.
+[kicad](http://kicad-pcb.org/) is other, independent EDA suite. Uses own file formats for symbols, footprints, schematics and boards.
