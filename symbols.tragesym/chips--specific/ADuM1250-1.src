@@ -1,0 +1,26 @@
+[options]
+wordswap=yes
+rotate_labels=no
+sort_labels=no
+generate_pinseq=yes
+sym_width=1400
+pinwidthvertical=400
+pinwidthhorizontal=800
+
+[geda_attr]
+version=20060113 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+dist-license=dual X11 or GPL
+use-license=free/unlimited
+name=ADuM1250
+refdes=U?
+
+[pins]
+1		pwr	line	l		VDD1
+2		io	line	l		SDA1
+3		io	line	l		SCL1
+4		pwr	line	l		GND1
+8		pwr	line	r		VDD2
+7		io	line	r		SDA2
+6		io	line	r		SCL2
+5		pwr	line	r		GND2

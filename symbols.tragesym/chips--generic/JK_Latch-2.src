@@ -1,0 +1,27 @@
+
+[options]
+wordswap=yes
+rotate_labels=no
+sort_labels=no
+generate_pinseq=yes
+sym_width=800
+pinwidthvertical=400
+pinwidthhorizontal=400
+
+[geda_attr]
+version=20060113 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+dist-license=dual X11 or GPL
+use-license=free/unlimited
+refdes=U?
+footprint=DIL 8 300 100 60 28
+numslots=0
+
+[pins]
+1		in	line	l		J
+2		clk	line 	l		E
+3		in	line	l		K
+4		out	line	r		Q
+5		out	dot 	r		\_Q\_
+6		in	dot 	b		\_R\_
+7		in	dot 	t		\_S\_

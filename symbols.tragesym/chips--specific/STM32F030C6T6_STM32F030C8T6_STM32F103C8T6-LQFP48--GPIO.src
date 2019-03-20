@@ -1,0 +1,31 @@
+[options]
+wordswap=yes
+rotate_labels=no
+sort_labels=no
+generate_pinseq=yes
+sym_width=1800
+pinwidthvertical=400
+pinwidthhorizontal=1200
+
+[geda_attr]
+version=20060113 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+dist-license=dual X11 or GPL
+use-license=free/unlimited
+name=STM32F103C8T6
+refdes=U?
+footprint=qfp(48, 7x7, 0.5)
+
+[pins]
+38		io	line	l		PA15 (SPI1_NSS)
+39		io	line	l		PB3  (SPI1_SCK)
+40		io	line	l		PB4  (SPI1_MISO)
+41		io	line	l		PB5  (SPI1_MOSI)
+45		io	line	l		PB8  (CAN_RD)
+46		io	line	l		PB9  (CAN_TD)
+21		io	line	l		PB10 (I2C2_SCL)
+22		io	line	l		PB11 (I2C2_SDA)
+25		io	line	l		PB12 (I2C2_SMBAI)
+26		io	line	l		PB13
+27		io	line	l		PB14
+28		io	line	l		PB15

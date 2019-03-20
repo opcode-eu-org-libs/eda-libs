@@ -1,0 +1,29 @@
+
+[options]
+wordswap=yes
+rotate_labels=no
+sort_labels=no
+generate_pinseq=yes
+sym_width=1400
+pinwidthvertical=400
+pinwidthhorizontal=400
+
+[geda_attr]
+version=20060113 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+dist-license=dual X11 or GPL
+use-license=free/unlimited
+name=DS2482
+refdes=U?
+footprint=SO8
+numslots=0
+
+[pins]
+5		io	line	l		SDA
+4		io	line 	l		SCL
+2		io	line	r		1WIRE
+6		out	line	r		PCTLZ
+7		io	line	l		AD1
+8		io	line	l		AD0
+3		pwr	line	b		GND
+1		pwr	line	t		Vcc

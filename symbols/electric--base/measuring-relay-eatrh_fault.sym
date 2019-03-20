@@ -1,0 +1,15 @@
+v 20130925 2
+T 400 2400 5 10 0 0 0 0 1
+graphical=1
+T 400 2600 5 10 0 0 0 0 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+T 400 2800 5 10 0 0 0 0 1
+dist-license=dual X11 or GPL
+T 400 3000 5 10 0 0 0 0 1
+use-license=free/unlimited
+L 200 75 310 75 3 0 0 0 -1 -1
+L 220 55 290 55 3 0 0 0 -1 -1
+L 240 35 270 35 3 0 0 0 -1 -1
+L 255 75 255 155 3 0 0 0 -1 -1
+T 100 100 9 10 1 0 0 0 1
+I

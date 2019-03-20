@@ -1,0 +1,39 @@
+
+[options]
+wordswap=yes
+rotate_labels=no
+sort_labels=no
+generate_pinseq=yes
+sym_width=1400
+pinwidthvertical=400
+pinwidthhorizontal=400
+
+[geda_attr]
+version=20060113 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+dist-license=dual X11 or GPL
+use-license=free/unlimited
+name=MCP23008
+refdes=U?
+footprint=DIL 18 300 100 60 28
+numslots=0
+
+[pins]
+1		io	line	l		SCL
+2		io	line	l		SDA
+3		in	line	l		A2
+4		in	line	l		A1
+5		in	line	l		A0
+6		in	dot 	l		\_RESET\_
+7		pas	line	l		NC
+8		out	line	l		INT
+9		pwr	line	l		GND
+18		pwr	line	r		VCC
+17		io	line	r		GP7
+16		io	line	r		GP6
+15		io	line	r		GP5
+14		io	line	r		GP4
+13		io	line	r		GP3
+12		io	line	r		GP2
+11		io	line	r		GP1
+10		io	line	r		GP0

@@ -1,0 +1,40 @@
+[options]
+wordswap=yes
+rotate_labels=no
+sort_labels=no
+generate_pinseq=yes
+sym_width=2800
+pinwidthvertical=400
+pinwidthhorizontal=400
+
+[geda_attr]
+version=20060113 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+dist-license=dual X11 or GPL
+use-license=free/unlimited
+name=STM32F103xC
+refdes=U?
+numslots=20
+slotdef=12:26,27,28,55,56,57,58,59,61,62,29,30,33,34,35,36
+slotdef=22:35,36,37,89,90,91,92,93,95,96,47,48,51,52,53,54
+comment=USE slot=12 for footprint=LQFP64_10, slot=22 for footprint=LQFP100_14
+footprint=LQFP100_14
+slot=22
+
+[pins]
+1		io	line	l		PB0   (ADC8)
+2		io	line	l		PB1   (ADC9)
+3		io	line	l		PB2   (BOOT1)
+4		io	line	l		PB3   (SPI1_SCK)
+5		io	line	l		PB4   (SPI1_MISO)
+6		io	line	l		PB5   (I2C1_SMBA / SPI1_MOSI)
+7		io	line	l		PB6   (I2C1_SCL / USART2_TX)
+8		io	line	l		PB7   (I2C1_SDA / USART2_RX)
+9		io	line	l		PB8   (CAN_RX / I2C1_SCL)
+10		io	line	l		PB9   (CAN_TX / I2C1_SDA)
+11		io	line	l		PB10  (I2C2_SCL / USART3_TX)
+12		io	line	l		PB11  (I2C2_SDA / USART3_RX)
+13		io	line	l		PB12  (SPI2_NSS / USART3_CK)
+14		io	line	l		PB13  (SPI2_SCK / USART3_CTS)
+15		io	line	l		PB14  (SPI2_MISO / USART3_RTS)
+16		io	line	l		PB15  (SPI2_MOSI)

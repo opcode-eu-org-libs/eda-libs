@@ -1,0 +1,29 @@
+[options]
+wordswap=yes
+rotate_labels=no
+sort_labels=no
+generate_pinseq=yes
+sym_width=1400
+pinwidthvertical=400
+pinwidthhorizontal=800
+
+[geda_attr]
+version=20060113 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+dist-license=dual X11 or GPL
+use-license=free/unlimited
+name=MCP4728
+footprint=so(10)
+refdes=U?
+
+[pins]
+1		pwr	line	l		Vcc
+2		in	line	l		SCL
+3		io	line	l		SDA
+4		io	line	l		\_LDAC\_
+5		io	line	l		RDY
+10		pwr	line	r		GND
+9		out	line	r		Vout_D
+8		out	line	r		Vout_C
+7		out	line	r		Vout_B
+6		out	line	r		Vout_A

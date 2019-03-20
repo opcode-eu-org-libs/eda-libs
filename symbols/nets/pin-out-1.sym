@@ -1,0 +1,19 @@
+v 20130925 2
+T 100 600 5 10 0 0 0 0 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+T 100 800 5 10 0 0 0 0 1
+dist-license=dual X11 or GPL
+T 100 1000 5 10 0 0 0 0 1
+use-license=free/unlimited
+T 425 150 8 10 1 1 0 6 1
+refdes=pinlabel
+P 300 100 100 100 1 0 1
+{
+T 800 300 5 5 0 0 0 0 1
+pinseq=1
+T 800 200 5 5 0 0 0 0 1
+pinnumber=1
+}
+L 300 100 800 100 6 0 0 0 -1 -1
+L 700 200 800 100 6 0 0 0 -1 -1
+L 800 100 700 0 6 0 0 0 -1 -1

@@ -1,0 +1,27 @@
+[options]
+wordswap=yes
+rotate_labels=no
+sort_labels=no
+generate_pinseq=yes
+sym_width=2400
+pinwidthvertical=400
+pinwidthhorizontal=800
+
+[geda_attr]
+version=20060113 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+dist-license=dual X11 or GPL
+use-license=free/unlimited
+name=STM32F030F4P6
+refdes=U?
+footprint=TSSOP20
+
+[pins]
+4		in	line	l		NRST
+1		in	line	l		BOOT0
+2		clk	line	b		OSC_IN
+3		clk	line	b		OSC_OUT
+			spacer	l		
+5		pwr	line	l		VDDA
+16		pwr	line	l		VDD
+15		pwr	line	l		VSS

@@ -1,0 +1,21 @@
+v 20110115 2
+T 2300 100 5 10 0 0 90 0 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+T 2100 100 5 10 0 0 90 0 1
+dist-license=dual X11 or GPL
+T 1900 100 5 10 0 0 90 0 1
+use-license=free/unlimited
+P 100 150 100 300 1 0 1
+{
+T 50 -5 5 8 0 1 90 0 1
+pinnumber=1
+T 50 100 5 8 0 0 270 2 1
+pinseq=1
+T 100 -155 5 8 0 1 90 6 1
+pinlabel=1
+T 50 100 5 8 0 1 270 2 1
+pintype=pas
+}
+T 542 480 8 10 0 1 90 6 1
+value=100A
+A 100 51 100 0 180 3 0 0 0 -1 -1

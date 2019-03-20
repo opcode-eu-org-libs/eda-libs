@@ -1,0 +1,41 @@
+#!/bin/sh
+
+#@@example tb(5)
+
+#@@purpose Generate screw terminal blocks.
+
+#@@desc Generate screw terminal blocks with variable number of pins and
+#@@desc pin spacing plain frame and some optional pin marks on the silk layer.
+
+#@@params n, step, sideOffset, frontOffset, backOffset, silkmark
+
+#@@param:n number of pins
+
+#@@param:step spacing between the two rows of pins
+#@@dim:step
+#@@optional:step
+#@@default:step 3.5 mm
+
+#@@param:sideOffset spacing between outermost pin and side part of frame
+#@@dim:sideOffset
+#@@optional:sideOffset
+#@@default:sideOffset step/2
+
+#@@param:frontOffset spacing between pins and front part of frame
+#@@dim:frontOffset
+#@@optional:frontOffset
+#@@default:frontOffset step/2
+
+#@@param:backOffset spacing between pins and back part of frame
+#@@dim:backOffset
+#@@optional:backOffset
+#@@default:backOffset step/2
+
+#@@param:mark draw "pin 1" mark
+#@@dim:mark
+#@@optional:mark
+#@@default:mark 1
+
+#@@include common.awk
+
+awk -f `dirname $0`/common.awk -f `dirname $0`/tb.awk -v "args=$*" -v gen=`basename $0` -v "genfull=$0"

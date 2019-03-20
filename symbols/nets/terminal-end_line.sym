@@ -1,0 +1,23 @@
+v 20130925 2
+T 100 1000 5 10 0 0 0 0 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+T 100 1200 5 10 0 0 0 0 1
+dist-license=dual X11 or GPL
+T 100 1400 5 10 0 0 0 0 1
+use-license=free/unlimited
+T 225 50 8 10 1 1 0 6 1
+refdes=T?
+P 500 100 700 100 1 0 1
+{
+T 560 400 5 5 0 0 0 0 1
+pinseq=1
+T 560 500 5 5 0 0 0 0 1
+pinnumber=1
+T 560 300 5 5 0 0 0 0 1
+pintype=io
+T 560 200 5 5 0 0 0 0 1
+pinlabel=io
+}
+V 434 100 66 3 0 0 0 -1 -1 0 -1 -1 -1 -1 -1
+T 110 800 8 10 0 0 0 0 1
+footprint=CONNECTOR 1 1

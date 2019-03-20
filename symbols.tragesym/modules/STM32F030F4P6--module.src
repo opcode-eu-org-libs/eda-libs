@@ -1,0 +1,45 @@
+[options]
+wordswap=yes
+rotate_labels=no
+sort_labels=no
+generate_pinseq=yes
+sym_width=2200
+pinwidthvertical=400
+pinwidthhorizontal=1200
+
+[geda_attr]
+version=20060113 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+dist-license=dual X11 or GPL
+use-license=free/unlimited
+name=STM32F030F4P6
+refdes=U?
+footprint=dip(24, spacing=1050.00mil)
+
+[pins]
+1		pwr	line	l		3.3V
+2		pwr	line	l		3.3V
+3		io	line	l		PA5
+4		io	line	l		PA6
+5		io	line	l		PA7
+6		io	line	l		PB1
+7		io	line	l		PA9
+8		io	line	l		PA10
+9		io	line	l		PA13
+10		io	line	l		PA14
+11		pwr	line	l		5V
+12		pwr	line	l		5V
+
+
+24		pwr	line	r		GND
+23		pwr	line	r		GND
+22		io	line	r		PA4
+21		io	line	r		PA3
+20		io	line	r		PA2
+19		io	line	r		PA1
+18		io	line	r		PA0
+17		io	line	r		VDDA
+16		in	line	r		NRST
+15		io	line	r		PF1
+14		io	line	r		PF0
+13		io	line	r		BOOT0

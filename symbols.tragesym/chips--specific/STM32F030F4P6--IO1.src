@@ -1,0 +1,24 @@
+[options]
+wordswap=yes
+rotate_labels=no
+sort_labels=no
+generate_pinseq=yes
+sym_width=3000
+pinwidthvertical=400
+pinwidthhorizontal=800
+
+[geda_attr]
+version=20060113 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+dist-license=dual X11 or GPL
+use-license=free/unlimited
+name=STM32F030F4P6
+refdes=U?
+footprint=TSSOP20
+
+[pins]
+17		io	line	l		PA9  (USART1_TX / I2C1_SCL)
+18		io	line	l		PA10 (USART1_RX / I2C1_SDA)
+19		io	line	l		PA13 (DBG_SWDIO)
+20		io	line	l		PA14 (DBG_SWCLK / USART1_TX)
+14		io	line	l		PB1

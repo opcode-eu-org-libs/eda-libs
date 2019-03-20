@@ -1,0 +1,33 @@
+[options]
+wordswap=yes
+rotate_labels=no
+sort_labels=no
+generate_pinseq=yes
+sym_width=1400
+pinwidthvertical=400
+pinwidthhorizontal=400
+
+[geda_attr]
+version=20060113 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+dist-license=dual X11 or GPL
+use-license=free/unlimited
+name=74HC123
+refdes=U?
+
+slot=1
+numslots=2
+
+slotdef=1:1,2,3,13,4,14,15
+slotdef=2:9,10,11,5,12,6,7
+net=Vcc:16
+net=GND:8
+
+[pins]
+1		in	dot 	l		A
+2		in	line	l		B
+3		in	dot 	l		\_CLR\_
+4		out	line	r		Q
+5		out	dot 	r		\_Q\_
+6		pas	line	b		Ce
+7		pas	line	b		Re/Ce

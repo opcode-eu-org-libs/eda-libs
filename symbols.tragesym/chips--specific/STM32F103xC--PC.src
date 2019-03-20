@@ -1,0 +1,41 @@
+[options]
+wordswap=yes
+rotate_labels=no
+sort_labels=no
+generate_pinseq=yes
+sym_width=2000
+pinwidthvertical=400
+pinwidthhorizontal=400
+
+[geda_attr]
+version=20060113 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+dist-license=dual X11 or GPL
+use-license=free/unlimited
+name=STM32F103xC
+refdes=U?
+numslots=20
+slotdef=13:8,9,10,11,24,25,37,38,39,40,51,52,53,2,3,4
+slotdef=23:15,16,17,18,33,34,63,64,65,66,78,79,80,7,8,9
+comment=USE slot=13 for footprint=LQFP64_10, slot=23 for footprint=LQFP100_14
+footprint=LQFP100_14
+slot=23
+
+[pins]
+1		io	line	l		PC0   (ADC10)
+2		io	line	l		PC1   (ADC11)
+3		io	line	l		PC2   (ADC12)
+4		io	line	l		PC3   (ADC13)
+5		io	line	l		PC4   (ADC14)
+6		io	line	l		PC5   (ADC15)
+7		io	line	l		PC6
+8		io	line	l		PC7
+9		io	line	l		PC8
+10		io	line	l		PC9
+11		io	line	l		PC10  (USART4_TX)
+12		io	line	l		PC11  (USART4_RX)
+13		io	line	l		PC12  (USART4_CK)
+14		io	line	l		PC13
+15		io	line	l		PC14  (OSC32_IN)
+16		io	line	l		PC15  (OSC32_OUT)
+

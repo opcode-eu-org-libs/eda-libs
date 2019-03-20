@@ -1,0 +1,47 @@
+
+[options]
+wordswap=yes
+rotate_labels=no
+sort_labels=no
+generate_pinseq=yes
+sym_width=3800
+pinwidthvertical=400
+pinwidthhorizontal=400
+
+[geda_attr]
+version=20060113 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+dist-license=dual X11 or GPL
+use-license=free/unlimited
+name=OrangePi Zero GPIO
+refdes=CONN?
+footprint=CONNECTOR 20 2
+numslots=0
+
+[pins]
+1		pwr	line	l		3.3V
+2		pwr	line	r		5V
+3		io	line	l		PA12 (TWI0_SDA)
+4		pwr	line	r		5V
+5		io	line	l		PA11 (TWI0_SCL)
+6		pwr	line	r		GND
+7		io	line	l		PA06
+8		io	line	r		PG06 (UART1_TXD)
+9		pwr	line	l		GND
+10		io	line	r		PG07 (UART1_RXD)
+11		io	line	l		PA01 (UART2_RXD*)
+12		io	line	r		PA07
+13		io	line	l		PA00 (UART2_TXD*)
+14		pwr	line	r		GND
+15		io	line	l		PA03 (UART2_CTS*)
+16		io	line	r		PA19 (TWI1_SDA*)
+17		pwr	line	l		3.3V
+18		io	line	r		PA18 (TWI1_SCL*)
+19		io	line	l		PA15 (SPI1_MOSI)
+20		pwr	line	r		GND
+21		io	line	l		PA16 (SPI1_MISO)
+22		io	line	r		PA02 (UART2_RTS*)
+23		io	line	l		PA14 (SPI1_SCK)
+24		io	line	r		PA13 (SPI1_CE)
+25		pwr	line	l		GND
+26		io	line	r		PA10

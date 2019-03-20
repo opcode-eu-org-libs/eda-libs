@@ -1,0 +1,21 @@
+[options]
+wordswap=yes
+rotate_labels=no
+sort_labels=no
+generate_pinseq=yes
+sym_width=1000
+pinwidthvertical=200
+pinwidthhorizontal=400
+
+[geda_attr]
+version=20060113 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+dist-license=dual X11 or GPL
+use-license=free/unlimited
+refdes=U?
+
+[pins]
+1		pwr	line	l		IN
+2		pwr	line 	b		ADJ
+3		pwr	line	r		OUT
+			spacer	r		

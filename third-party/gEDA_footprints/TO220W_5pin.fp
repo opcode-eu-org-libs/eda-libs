@@ -1,0 +1,21 @@
+	Element(0x00 "Transistor" "" "TO220W" 0 10 0 100 0x00)
+(
+	Pin(66  200 55 30 "1" 0x101)
+	Pin(133 200 55 30 "2" 0x01)
+	Pin(200 200 55 30 "3" 0x01)
+	Pin(266 200 55 30 "4" 0x01)
+	Pin(333 200 55 30 "5" 0x01)
+	# Gehaeuse
+	ElementLine(  0  80 400  80 10)
+	ElementLine(400  80 400 260 10)
+	ElementLine(400 260   0 260 10) 
+	ElementLine(  0 260   0  80 10) 
+	# Kuehlfahne icl. Bohrung
+	ElementLine(  0  80 400  80 10)
+	ElementLine(400  80 400 140 10)
+	ElementLine(400 140   0 140 10)
+	ElementLine(  0 140   0  80 10)
+	ElementLine(130 80 130 140 10)
+	ElementLine(270 80 270 140 10)
+	Mark(100 200)
+)

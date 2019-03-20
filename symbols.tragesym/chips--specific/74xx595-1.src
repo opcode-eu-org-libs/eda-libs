@@ -1,0 +1,40 @@
+[options]
+wordswap=yes
+rotate_labels=no
+sort_labels=no
+generate_pinseq=yes
+sym_width=1400
+pinwidthvertical=400
+pinwidthhorizontal=800
+
+[geda_attr]
+version=20060113 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+dist-license=dual X11 or GPL
+use-license=free/unlimited
+name=74HC595
+footprint=dip(16)
+refdes=U?
+
+[pins]
+9		out	line	r		SOUT
+			spacer	r		
+15		out	line	r		Q0
+1		out	line	r		Q1
+2		out	line	r		Q2
+3		out	line	r		Q3
+4		out	line	r		Q4
+5		out	line	r		Q5
+6		out	line	r		Q6
+7		out	line	r		Q7
+
+14		in	line	l		SIN
+11		clk	clk 	l		SCLK
+10		in	dot 	l		\_MR\_
+			spacer	l		
+12		clk	clk 	l		STCP
+			spacer	l		
+13		in	dot 	l		\_OE\_
+			spacer	l		
+16		pwr	line	l		VCC
+8		pwr	line	l		GND

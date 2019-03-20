@@ -1,0 +1,27 @@
+[options]
+wordswap=yes
+rotate_labels=no
+sort_labels=no
+generate_pinseq=yes
+sym_width=1800
+pinwidthvertical=400
+pinwidthhorizontal=1200
+
+[geda_attr]
+version=20060113 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+dist-license=dual X11 or GPL
+use-license=free/unlimited
+name=STM32F103C8T6
+refdes=U?
+footprint=qfp(48, 7x7, 0.5)
+
+[pins]
+7		in	line	l		NRST
+44		in	line	l		BOOT0
+20		in	line	l		BOOT1 (PB2)
+			spacer	l		
+34		io	line	l		PA13 (DBG_SWDIO)
+37		io	line	l		PA14 (DBG_SWCLK)
+			spacer	l		
+2		io	line	l		PC13

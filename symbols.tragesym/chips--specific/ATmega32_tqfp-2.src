@@ -1,0 +1,65 @@
+
+[options]
+wordswap=yes
+rotate_labels=yes
+sort_labels=yes
+generate_pinseq=yes
+sym_width=4800
+pinwidthvertical=400
+pinwidthhorizontal=400
+
+[geda_attr]
+version=20060113 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+dist-license=dual X11 or GPL
+use-license=free/unlimited
+name=ATmega32A
+refdes=U?
+footprint=TQFP44_10
+numslots=0
+
+[pins]
+4		io	dot 	b		\_RESET\_
+29		pwr	line	t		AREF
+27		pwr	line	t		AVcc
+6		pwr	line	b		GND
+18		pwr	line	b		GND
+28		pwr	line	b		GND
+39		pwr	line	b		GND
+37		io	line	r		PA0 (ADC0)
+36		io	line	r		PA1 (ADC1)
+35		io	line	r		PA2 (ADC2)
+34		io	line	r		PA3 (ADC3)
+33		io	line	r		PA4 (ADC4)
+32		io	line	r		PA5 (ADC5)
+31		io	line	r		PA6 (ADC6)
+30		io	line	r		PA7 (ADC7)
+40		io	line	l		PB0 (XCK/T0)
+41		io	line	l		PB1 (T1)
+42		io	line	l		PB2 (INT2/AIN0)
+43		io	line	l		PB3 (OC0/AIN1)
+44		io	line	l		PB4 (\_SS\_)
+1		io	line	l		PB5 (MOSI)
+2		io	line	l		PB6 (MISO)
+3		io	line	l		PB7 (SCK)
+19		io	line	r		PC0 (SCL)
+20		io	line	r		PC1 (SDA)
+21		io	line	r		PC2 (TCK)
+22		io	line	r		PC3 (TMS)
+23		io	line	r		PC4 (TDO)
+24		io	line	r		PC5 (TDI)
+25		io	line	r		PC6 (TOSC1)
+26		io	line	r		PC7 (TOSC2)
+9		io	line	l		PD0 (RXD)
+10		io	line	l		PD1 (TXD)
+11		io	line	l		PD2 (INT0)
+12		io	line	l		PD3 (INT1)
+13		io	line	l		PD4 (O1B)
+14		io	line	l		PD5 (OC1A)
+15		io	line	l		PD6 (ICP1)
+16		io	line	l		PD7 (OC2)
+5		pwr	line	t		Vcc
+17		pwr	line	t		Vcc
+38		pwr	line	t		Vcc
+7		in	line	b		XTAL1
+8		in	line	b		XTAL2

@@ -1,0 +1,45 @@
+
+[options]
+wordswap=yes
+rotate_labels=no
+sort_labels=no
+generate_pinseq=yes
+sym_width=1400
+pinwidthvertical=400
+pinwidthhorizontal=400
+
+[geda_attr]
+version=20060113 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+dist-license=dual X11 or GPL
+use-license=free/unlimited
+name=ST3232
+refdes=U?
+footprint=so(16)
+numslots=0
+
+[pins]
+1		pas	line	l		C1+
+2		pas	line	r		V+
+3		pas	line	l		C1-
+			spacer	r		
+4		pas	line	l		C1+
+6		pas	line	r		V+
+5		pas	line	l		C1-
+			spacer	r		
+
+			spacer	l		TTL
+			spacer	r		RS232
+
+11		in	line	l		T1_IN
+14		out	line	r		T1_OUT
+10		in	line	l		T2_IN
+7		out	line	r		T2_OUT
+
+13		in	line	r		R1_IN
+12		out	line	l		R1_OUT
+8		in	line	r		R2_IN
+9		out	line	l		R2_OUT
+
+16		pwr	line	b		Vcc
+15		pwr	line	b		GND

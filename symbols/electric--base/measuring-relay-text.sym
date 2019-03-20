@@ -1,0 +1,23 @@
+v 20130925 2
+T 400 2400 5 10 0 0 0 0 1
+graphical=1
+T 400 2600 5 10 0 0 0 0 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+T 400 2800 5 10 0 0 0 0 1
+dist-license=dual X11 or GPL
+T 400 3000 5 10 0 0 0 0 1
+use-license=free/unlimited
+T 200 150 9 9 1 1 0 4 1
+value=U >
+T 400 2200 5 10 0 0 0 0 1
+comment=V > : overvoltage
+T 400 2000 5 10 0 0 0 0 1
+comment=V < : undervoltage
+T 400 1800 5 10 0 0 0 0 1
+comment=I > : overcurrent
+T 400 1600 5 10 0 0 0 0 1
+comment=I >> : short circut
+T 400 1400 5 10 0 0 0 0 1
+comment=Id : differential current
+T 400 1200 5 10 0 0 0 0 1
+comment=Id/I : percentage differential current

@@ -1,0 +1,40 @@
+[options]
+wordswap=yes
+rotate_labels=no
+sort_labels=no
+generate_pinseq=yes
+sym_width=3400
+pinwidthvertical=400
+pinwidthhorizontal=400
+
+[geda_attr]
+version=20060113 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+dist-license=dual X11 or GPL
+use-license=free/unlimited
+name=STM32F103xC
+refdes=U?
+numslots=20
+slotdef=11:14,15,16,17,20,21,22,23,41,42,43,44,45,46,49,50
+slotdef=21:23,24,25,26,29,30,31,32,67,68,69,70,71,72,76,77
+comment=USE slot=11 for footprint=LQFP64_10, slot=21 for footprint=LQFP100_14
+footprint=LQFP100_14
+slot=21
+
+[pins]
+1		io	line	l		PA0  (ADC0 / USART2_CTS)
+2		io	line	l		PA1  (ADC1 / USART2_RTS)
+3		io	line	l		PA2  (ADC2 / USART2_TX)
+4		io	line	l		PA3  (ADC3 / USART2_RX)
+5		io	line	l		PA4  (ADC4 / DAC1 / USART2_CK / SPI1_NSS)
+6		io	line	l		PA5  (ADC5 / DAC2 / SPI1_SCK)
+7		io	line	l		PA6  (ADC6 / SPI1_MISO)
+8		io	line	l		PA7  (ADC7 / SPI1_MOSI)
+9		io	line	l		PA8  (USART1_CK)
+10		io	line	l		PA9  (USART1_TX)
+11		io	line	l		PA10 (USART1_RX)
+12		io	line	l		PA11 (USART1_CTS / USB_DM / CAN_RX)
+13		io	line	l		PA12 (USART1_RTS / USB_DP / CAN_TX)
+14		io	line	l		PA13 (DBG_SWDIO)
+15		io	line	l		PA14 (DBG_SWCLK)
+16		io	line	l		PA15 (SPI1_NSS)

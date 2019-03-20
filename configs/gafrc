@@ -1,0 +1,1 @@
+(load-scheme-dir (build-path (getenv "HOME") ".gEDA/gafrc.d"))

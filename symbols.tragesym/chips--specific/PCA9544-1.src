@@ -1,0 +1,41 @@
+
+[options]
+wordswap=yes
+rotate_labels=no
+sort_labels=no
+generate_pinseq=yes
+sym_width=1400
+pinwidthvertical=400
+pinwidthhorizontal=400
+
+[geda_attr]
+version=20060113 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+dist-license=dual X11 or GPL
+use-license=free/unlimited
+name=PCA9544
+refdes=U?
+footprint=DW 20
+numslots=0
+
+[pins]
+1		in	line	l		A0
+2		in	line	l		A1
+3		in	line	l		A2
+4		in	dot 	l		\_INT0\_
+5		io	line	l		SDA0
+6		io	line	l		SCL0
+7		in	dot 	l		\_INT1\_
+8		io	line	l		SDA1
+9		io	line	l		SCL1
+10		pwr	line	l		GND
+20		pwr	line	r		VDD
+19		io	line	r		SDA
+18		io	line	r		SCL
+17		out	dot 	r		\_INT\_
+16		io	line	r		SDA3
+15		io	line	r		SCL3
+14		in	dot 	r		\_INT3\_
+13		io	line	r		SDA2
+12		io	line	r		SCL2
+11		in	dot 	r		\_INT2\_

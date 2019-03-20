@@ -1,0 +1,25 @@
+[options]
+wordswap=yes
+rotate_labels=no
+sort_labels=no
+generate_pinseq=yes
+sym_width=1600
+pinwidthvertical=400
+pinwidthhorizontal=600
+
+[geda_attr]
+version=20060113 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+dist-license=dual X11 or GPL
+use-license=free/unlimited
+name=LM2576HV
+refdes=U?
+footprint=TO220W_5pin
+numslots=0
+
+[pins]
+1		pwr	line 	l		Vin
+3		pwr	line	b		GND
+5		pwr	line	b		OFF
+4		pwr	line 	r		Feedback
+2		pwr	line 	r		Vout

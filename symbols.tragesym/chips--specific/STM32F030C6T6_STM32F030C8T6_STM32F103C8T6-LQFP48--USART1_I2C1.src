@@ -1,0 +1,27 @@
+[options]
+wordswap=yes
+rotate_labels=no
+sort_labels=no
+generate_pinseq=yes
+sym_width=1800
+pinwidthvertical=400
+pinwidthhorizontal=1200
+
+[geda_attr]
+version=20060113 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+dist-license=dual X11 or GPL
+use-license=free/unlimited
+name=STM32F103C8T6
+refdes=U?
+footprint=qfp(48, 7x7, 0.5)
+
+[pins]
+29		io	line	l		PA8  (USART1_CK)
+30		io	line	l		PA9  (USART1_TX)
+31		io	line	l		PA10 (USART1_RX)
+32		io	line	l		PA11 (USART1_CTS)
+33		io	line	l		PA12 (USART1_RTS)
+			spacer	l		
+42		io	line	l		PB6 (I2C1_SCL)
+43		io	line	l		PB7 (I2C1_SDA)

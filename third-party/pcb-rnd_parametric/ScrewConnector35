@@ -1,0 +1,14 @@
+#!/bin/sh
+
+#@@example ScrewConnector35(4)
+
+#@@purpose Generate screw connector with 3.5mm grid
+
+#@@desc Generate thru-hole screw connector with 3.5mm grid and variable number of pins
+#@@params n
+
+#@@param:n number of pins
+
+# tb($1, step=3.5mm, sideOffset=75mil, frontOffset=155mil, backOffset=155mil)
+
+awk -f `dirname $0`/common.awk -f `dirname $0`/tb.awk -v "args=$1, step=3.5mm, sideOffset=75mil, frontOffset=155mil, backOffset=155mil" -v gen=`basename $0` -v "genfull=$0"

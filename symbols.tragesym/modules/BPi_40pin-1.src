@@ -1,0 +1,61 @@
+
+[options]
+wordswap=yes
+rotate_labels=no
+sort_labels=no
+generate_pinseq=yes
+sym_width=3800
+pinwidthvertical=400
+pinwidthhorizontal=400
+
+[geda_attr]
+version=20060113 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+dist-license=dual X11 or GPL
+use-license=free/unlimited
+name=BananaPi GPIO
+refdes=CONN?
+footprint=CONNECTOR 20 2
+numslots=0
+
+[pins]
+1		pwr	line	l		3.3V
+2		pwr	line	r		5V
+3		io	line	l		PB1 (TWI2_SDA)
+4		pwr	line	r		5V
+5		io	line	l		PB20 (TWI2_SCL)
+6		pwr	line	r		GND
+7		io	line	l		PI3 (PWM1)
+8		io	line	r		PH0 (UART3_TXD)
+9		pwr	line	l		GND
+10		io	line	r		PH1 (UART3_RXD)
+11		io	line	l		PI19 (UART2_RXD)
+12		io	line	r		PH2
+13		io	line	l		PI18 (UART2_TXD)
+14		pwr	line	r		GND
+15		io	line	l		PI17 (UART2_CTS)
+16		io	line	r		PH20 (CAN_TX)
+17		pwr	line	l		3.3V
+18		io	line	r		PH21 (CAN_RX)
+19		io	line	l		PI12 (SPI0_MOSI)
+20		pwr	line	r		GND
+21		io	line	l		PI13 (SPI0_MISO)
+22		io	line	r		PI16 (UART2_RTS)
+23		io	line	l		PI11 (SPI0_SCLK)
+24		io	line	r		PI10 (SPI0_CE0)
+25		pwr	line	l		GND
+26		io	line	r		PI14 (SPI0_CE1)
+27		io	line	l		PI1 (TWI3_SDA)
+28		io	line	r		PI0 (TWI3_SCL)
+29		io	line	l		PB5 (I2S_MCLK)
+30		pwr	line	r		GND
+31		io	line	l		PB6 (I2S_BCLK)
+32		io	line	r		PB12 (I2S_DI)
+33		io	line	l		PB7 (I2S_LRCK)
+34		pwr	line	r		GND
+35		io	line	l		PB8 (I2S_DO0)
+36		io	line	r		PI21 (UART7_RXD)
+37		io	line	l		PB3 (IR0_TX) 
+38		io	line	r		PI20 (UART7_TXD)
+39		pwr	line	l		GND
+40		io	line	r		PB13 (SPDIF_DO)

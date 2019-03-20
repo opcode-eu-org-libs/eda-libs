@@ -1,0 +1,44 @@
+[options]
+wordswap=yes
+rotate_labels=no
+sort_labels=no
+generate_pinseq=yes
+sym_width=2400
+pinwidthvertical=400
+pinwidthhorizontal=800
+
+[geda_attr]
+version=20060113 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+dist-license=dual X11 or GPL
+use-license=free/unlimited
+name=STM32F103xC
+refdes=U?
+numslots=20
+slotdef=10:7,60,5,6,1,13,33,48,64,19,0,12,31,47,63,18,0,0,0
+slotdef=20:14,94,12,13,6,22,50,75,100,28,11,19,49,74,99,27,10,20,21
+comment=USE slot=10 for footprint=LQFP64_10, slot=20 for footprint=LQFP100_14
+footprint=LQFP100_14
+slot=20
+
+[pins]
+1		in	line	r		NRST
+2		in	line	r		BOOT0
+3		clk	line	b		OSC_IN
+4		clk	line	b		OSC_OUT
+5		pwr	line	l		V_BAT
+6		pwr	line	l		V_DDA
+7		pwr	line	l		V_DD1
+8		pwr	line	l		V_DD2
+9		pwr	line	l		V_DD3
+10		pwr	line	l		V_DD4
+11		pwr	line	l		V_DD5
+12		pwr	line	r		V_SSA
+13		pwr	line	r		V_SS1
+14		pwr	line	r		V_SS2
+15		pwr	line	r		V_SS3
+16		pwr	line	r		V_SS4
+17		pwr	line	r		V_SS5
+18		pwr	line	r		V_REF-
+19		pwr	line	l		V_REF+
+

@@ -1,0 +1,42 @@
+
+[options]
+wordswap=yes
+rotate_labels=no
+sort_labels=yes
+generate_pinseq=yes
+sym_width=1400
+pinwidthvertical=400
+pinwidthhorizontal=400
+
+[geda_attr]
+version=20060113 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+dist-license=dual X11 or GPL
+use-license=free/unlimited
+name=TXS0108E
+refdes=U?
+footprint=TSSOP20
+numslots=0
+
+[pins]
+1		io	line	l		A1
+2		pwr	line	t		Vcca
+3		io	line	l		A2
+4		io	line	l		A3
+5		io	line	l		A4
+6		io	line	l		A5
+7		io	line	l		A6
+8		io	line	l		A7
+9		io	line	l		A8
+10		io	line	l		OE
+11		pwr	line	b		GND
+12		io	line	r		B8
+13		io	line	r		B7
+14		io	line	r		B6
+15		io	line	r		B5
+16		io	line	r		B4
+17		io	line	r		B3
+18		io	line	r		B2
+19		pwr	line	t		Vccb
+20		io	line	r		B1
+

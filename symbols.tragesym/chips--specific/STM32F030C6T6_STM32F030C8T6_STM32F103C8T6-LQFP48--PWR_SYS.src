@@ -1,0 +1,53 @@
+[options]
+wordswap=yes
+rotate_labels=no
+sort_labels=no
+generate_pinseq=yes
+sym_width=2800
+pinwidthvertical=400
+pinwidthhorizontal=1200
+
+[geda_attr]
+version=20060113 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+dist-license=dual X11 or GPL
+use-license=free/unlimited
+name=STM32F103C8T6
+refdes=U?
+footprint=qfp(48, 7x7, 0.5)
+
+[pins]
+1		pwr	line	l		VBAT / VDD
+8		pwr	line	l		VDDA
+24		pwr	line	l		VDD1
+36		pwr	line	l		VDD2 / PF7
+48		pwr	line	l		VDD3
+			spacer	l		
+9		pwr	line	l		VSSA
+23		pwr	line	l		VSS1
+35		pwr	line	l		VSS2 / PF6
+47		pwr	line	l		VSS3
+			spacer	l		
+42		io	line	l		PB6 (I2C1_SCL)
+43		io	line	l		PB7 (I2C1_SDA)
+			spacer	l		
+5		clk	line	l		OSC_IN  (PD0)
+6		clk	line	l		OSC_OUT (PD1)
+
+7		in	line	r		NRST
+44		in	line	r		BOOT0
+20		in	line	r		BOOT1 (PB2)
+			spacer	r		
+34		io	line	r		PA13 (DBG_SWDIO)
+37		io	line	r		PA14 (DBG_SWCLK)
+			spacer	r		
+29		io	line	r		PA8  (USART1_CK)
+30		io	line	r		PA9  (USART1_TX)
+31		io	line	r		PA10 (USART1_RX)
+32		io	line	r		PA11 (USART1_CTS)
+33		io	line	r		PA12 (USART1_RTS)
+			spacer	r		
+2		io	line	r		PC13
+3		clk	line	r		PC14 (OSC32_IN)
+4		clk	line	r		PC15 (OSC32_OUT)
+

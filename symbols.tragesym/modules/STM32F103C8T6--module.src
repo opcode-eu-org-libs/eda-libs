@@ -1,0 +1,60 @@
+[options]
+wordswap=yes
+rotate_labels=no
+sort_labels=no
+generate_pinseq=yes
+sym_width=2200
+pinwidthvertical=400
+pinwidthhorizontal=1200
+
+[geda_attr]
+version=20060113 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+dist-license=dual X11 or GPL
+use-license=free/unlimited
+name=STM32F103C8T6
+refdes=U?
+footprint=dip(40, spacing=600.00mil)
+
+[pins]
+1		pwr	line	l		Vbat
+2		io	line	l		PC13
+3		io	line	l		PC14
+4		io	line	l		PC15
+5		io	line	l		PA0
+6		io	line	l		PA1
+7		io	line	l		PA2
+8		io	line	l		PA3
+9		io	line	l		PA4
+10		io	line	l		PA5
+11		io	line	l		PA6
+12		io	line	l		PA7
+13		io	line	l		PB0
+14		io	line	l		PB1
+15		io	line	l		PB10
+16		io	line	l		PB11
+17		in	line	l		NRST
+18		pwr	line	l		3.3V
+19		pwr	line	l		GND
+20		pwr	line	l		GND
+
+40		pwr	line	r		3.3V
+39		pwr	line	r		GND
+38		pwr	line	r		5V
+37		io	line	r		PB9
+36		io	line	r		PB8
+35		io	line	r		PB7
+34		io	line	r		PB6
+33		io	line	r		PB5
+32		io	line	r		PB4
+31		io	line	r		PB3
+30		io	line	r		PA15
+29		io	line	r		PA12
+28		io	line	r		PA11
+27		io	line	r		PA10
+26		io	line	r		PA9
+25		io	line	r		PA8
+24		io	line	r		PB15
+23		io	line	r		PB14
+22		io	line	r		PB13
+21		io	line	r		PB12

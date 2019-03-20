@@ -1,0 +1,27 @@
+[options]
+wordswap=yes
+rotate_labels=no
+sort_labels=no
+generate_pinseq=yes
+sym_width=1400
+pinwidthvertical=400
+pinwidthhorizontal=800
+
+[geda_attr]
+version=20060113 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+dist-license=dual X11 or GPL
+use-license=free/unlimited
+name=EEPROM
+footprint=dip(8)
+refdes=U?
+
+[pins]
+1		in	line	l		A0
+2		in	line	l		A1
+3		in	line	l		A2
+4		pwr	line	l		GND
+8		pwr	line	r		Vcc
+7		in	line	r		WP
+6		in	line	r		SCL
+5		io	line	r		SDA

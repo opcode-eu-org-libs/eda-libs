@@ -1,0 +1,29 @@
+
+[options]
+wordswap=yes
+rotate_labels=no
+sort_labels=no
+generate_pinseq=yes
+sym_width=1400
+pinwidthvertical=400
+pinwidthhorizontal=400
+
+[geda_attr]
+version=20060113 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+dist-license=dual X11 or GPL
+use-license=free/unlimited
+name=P82B96
+refdes=U?
+footprint=DIL 8 300 100 60 28
+numslots=0
+
+[pins]
+1		io	line	l		Sx
+3		io	line	r		Tx
+2		io	line	r		Rx
+7		io	line	l		Sy
+5		io	line	r		Ty
+6		io	line	r		Ry
+4		pwr	line	b		GND
+8		pwr	line	t		Vcc

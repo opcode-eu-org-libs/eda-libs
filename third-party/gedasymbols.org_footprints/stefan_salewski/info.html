@@ -1,0 +1,761 @@
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>gedasymbols: Stefan Salewski</title>
+<link rel="stylesheet" href="/gedasymbols.css" type="text/css">
+</head>
+
+<body>
+<h1>Stefan Salewski</h1>
+
+
+
+Stefan Salewski <br>
+email: <a href="mailto:mail@ssalewski.de">mail@ssalewski.de</a> <br>
+
+<p>
+All my symbols and footprints are licensed <em>GPL</em> for distribution, and unlimited for use.
+They are created with care, but most are still untested on real hardware.
+</p>
+<p>
+Larger rectangular
+symbols are created with the <em>Python</em> script
+<a href="http://www.h-renrew.de/h/tragesym/tragesym.html">Tragesym</a>.
+</p>
+<p>
+For a few standard symbols (capacitor, resistor) I have created horizontal and vertical versions
+with aligned text, and special versions with short pins. In general case short pins look ugly and should
+not be used, but in a few cases they can be useful.
+</p>
+<p>
+Some symbols uses footprints of John Luciani's 
+<a href="http://www.luciani.org/geda/pcb/pcb-footprint-list.html">footprint page</a>
+or my own footprints (see below). Most of my footprints are generated with
+my own command line based Ruby script 
+<a href="http://www.ssalewski.de/SFG.html.en">SFG</a>.
+(For some footprints a special version optimized for hand soldering with name extension "_HS" exists.)
+</p>
+
+<h2>Tools</h2>
+
+<h3>A plain, command line based footprint generator</h3>
+<ul>
+<li> <a href="http://www.ssalewski.de/SFG.html.en">SFG</a> - written in Ruby</li>
+</ul>
+<h3>A simple script for fixing pin (-number) layout of symbols</h3>
+<ul>
+<li> <a href="http://www.ssalewski.de/UglySym.html.en">UglySym</a> - written in Ruby</li>
+</ul>
+
+<h2>Documentation</h2>
+
+<h3>A short summary of recent footprint file format</h3>
+
+<ul>
+<li> <a href="http://www.ssalewski.de/PcbFootprintRef.txt">PcbFootprintRef.txt</a> - plain ASCII text</li>
+</ul>
+
+<h2>Symbols</h2>
+
+<h3>Analog-to-Digital-Converter (ADC)</h3>
+<h4>ADS5521 - 12-bit, upto 105MSPS</h4>
+<ul>
+<li> <a href="symbols/ADS5521-analog.sym">ADS5521-analog.sym</a> - analog part</li>
+<li> <a href="symbols/ADS5521-conf.sym">ADS5521-conf.sym</a> - configuration part</li>
+<li> <a href="symbols/ADS5521-digital.sym">ADS5521-digital.sym</a> - digital part</li>
+<li> <a href="symbols/ADS5521-pwr.sym">ADS5521-pwr.sym</a> - power supply</li>
+</ul>
+
+<h4>ADS6125 (22, 23, 24) - 12-bit, upto 125MSPS</h4>
+<ul>
+<li> <a href="symbols/ADS6125-CMOS.sym">ADS6125-CMOS.sym</a> - all in one, CMOS mode</li>
+<li> <a href="symbols/ADS6125-LVDS.sym">ADS6125-LVDS.sym</a> - all in one, LVDS mode</li>
+<li> <a href="symbols/ADS6125-Analog.sym">ADS6125-Analog.sym</a> - analog part</li>
+<li> <a href="symbols/ADS6125-Config.sym">ADS6125-Config.sym</a> - configuration part</li>
+<li> <a href="symbols/ADS6125-Digital-CMOS.sym">ADS6125-Digital-CMOS.sym</a> - digital part, CMOS mode</li>
+<li> <a href="symbols/ADS6125-Digital-LVDS.sym">ADS6125-Digital-LVDS.sym</a> - digital part, LVDS mode</li>
+<li> <a href="symbols/ADS6125-Power.sym">ADS6125-Power.sym</a> - power supply (not recommended for new designs)</li>
+<li> <a href="symbols/ADS6125-Power-2.sym">ADS6125-Power-2.sym</a> - power supply</li>
+</ul>
+
+<h3>Analog Multiplexer/Switches</h3>
+<h4>High Speed (Video) Multiplexer</h4>
+<ul>
+<li> <a href="symbols/LMH6574-1.sym">LMH6574-1.sym</a> - 4:1</li>
+<li> <a href="symbols/LMH6574-2.sym">LMH6574-2.sym</a> </li>
+</ul>
+
+<h3>Battery</h3>
+<ul>
+<li> <a href="symbols/Battery-1.sym">Battery-1.sym</a> </li>
+<li> <a href="symbols/Battery-2.sym">Battery-2.sym</a> </li>
+<li> <a href="symbols/Battery-3.sym">Battery-3.sym</a> </li>
+</ul>
+
+<h3>Capacitor</h3>
+<h4>Regular Size</h4>
+<ul>
+<li> <a href="symbols/Cap_H-1.sym">Cap_H-1.sym</a> - horizontal, aligned text</li>
+<li> <a href="symbols/Cap_V-1.sym">Cap_V-1.sym</a> - vertical, aligned text</li>
+<li> <a href="symbols/Cap_H-2.sym">Cap_H-2.sym</a> - horizontal, aligned text</li>
+<li> <a href="symbols/Cap_V-2.sym">Cap_V-2.sym</a> - vertical, aligned text</li>
+</ul>
+<h4>Short Pins (ugly)</h4>
+<ul>
+<li> <a href="symbols/_Cap_H-1.sym">_Cap_H-1.sym</a> - horizontal, aligned text</li>
+<li> <a href="symbols/_Cap_V-1.sym">_Cap_V-1.sym</a> - vertical, aligned text</li>
+<li> <a href="symbols/_Cap_H-2.sym">_Cap_H-2.sym</a> - horizontal, aligned text</li>
+<li> <a href="symbols/_Cap_V-2.sym">_Cap_V-2.sym</a> - vertical, aligned text</li>
+</ul>
+
+<h4>Variable (Trimmer)</h4>
+<ul>
+<li> <a href="symbols/Cap_Var_H-1.sym">Cap_Var_H-1.sym</a> - horizontal ---></li>
+<li> <a href="symbols/Cap_Var_H-2.sym">Cap_Var_H-2.sym</a> - horizontal ---\</li>
+<li> <a href="symbols/Cap_Var_V-1.sym">Cap_Var_V-1.sym</a> - vertical ---></li>
+<li> <a href="symbols/Cap_Var_V-2.sym">Cap_Var_V-2.sym</a> - vertical ---\</li>
+<li> <a href="symbols/_Cap_Var_H-1.sym">_Cap_Var_H-1.sym</a> and with short pins</li>
+<li> <a href="symbols/_Cap_Var_H-2.sym">_Cap_Var_H-2.sym</a> </li>
+<li> <a href="symbols/_Cap_Var_V-1.sym">_Cap_Var_V-1.sym</a> </li>
+<li> <a href="symbols/_Cap_Var_V-2.sym">_Cap_Var_V-2.sym</a> </li>
+</ul>
+
+<h3>Comparators</h3>
+<h4>Quad Open Collector Types like LM339 (Most other Comparators use OpAmp layout)</h4>
+<ul>
+<li> <a href="symbols/Comp-Quad-LM339_Type-1.sym">Comp-Quad-LM339_Type-1.sym</a> - io pins</li>
+<li> <a href="symbols/Comp-Quad-LM339_Type-Pwr-1.sym">Comp-Quad-LM339_Type-Pwr-1.sym</a> - power supply</li>
+</ul>
+
+<h3>Connectors</h3>
+
+<ul>
+<li> <a href="symbols/CON_Atmel_AVRISP_10PIN-1.sym">CON_Atmel_AVRISP_10PIN-1.sym</a> </li>
+<li> <a href="symbols/CON_Atmel_AVRISP_6PIN-1.sym">CON_Atmel_AVRISP_6PIN-1.sym</a> </li>
+<li> <a href="symbols/CON_RS-232_DSUB9_DE9.sym">CON_RS-232_DSUB9_DE9.sym</a> - sometimes called SUBD9 </li>
+<li> <a href="symbols/CON_USB_B-1.sym">CON_USB_B-1.sym</a> - type B</li>
+<li> <a href="symbols/CON_XILINX_JTAG_Interface_Header-1.sym">CON_XILINX_JTAG_Interface_Header-1.sym</a> </li>
+</ul>
+
+<h4>One Column, 200 mil</h4>
+<ul>
+<li> <a href="symbols/Connector-1c1r-1.sym">Connector-1c1r-1.sym</a> </li>
+<li> <a href="symbols/Connector-1c2r-1.sym">Connector-1c2r-1.sym</a> </li>
+<li> <a href="symbols/Connector-1c3r-1.sym">Connector-1c3r-1.sym</a> </li>
+<li> <a href="symbols/Connector-1c4r-1.sym">Connector-1c4r-1.sym</a> </li>
+<li> <a href="symbols/Connector-1c8r-1.sym">Connector-1c8r-1.sym</a> </li>
+<li> <a href="symbols/Connector-1c10r-1.sym">Connector-1c10r-1.sym</a> </li>
+<li> <a href="symbols/Connector-1c16r-1.sym">Connector-1c16r-1.sym</a> </li>
+<li> <a href="symbols/Connector-1c32r-1.sym">Connector-1c32r-1.sym</a> </li>
+<li> <a href="symbols/Connector-1c64r-1.sym">Connector-1c64r-1.sym</a> </li>
+</ul>
+<h4>Two Columns, 200 mil</h4>
+<ul>
+<li> <a href="symbols/Connector-2c1r-1.sym">Connector-2c1r-1.sym</a> </li>
+<li> <a href="symbols/Connector-2c2r-1.sym">Connector-2c2r-1.sym</a> </li>
+<li> <a href="symbols/Connector-2c3r-1.sym">Connector-2c3r-1.sym</a> </li>
+<li> <a href="symbols/Connector-2c4r-1.sym">Connector-2c4r-1.sym</a> </li>
+<li> <a href="symbols/Connector-2c5r-1.sym">Connector-2c5r-1.sym</a> </li>
+<li> <a href="symbols/Connector-2c8r-1.sym">Connector-2c8r-1.sym</a> </li>
+<li> <a href="symbols/Connector-2c16r-1.sym">Connector-2c16r-1.sym</a> </li>
+<li> <a href="symbols/Connector-2c32r-1.sym">Connector-2c32r-1.sym</a> </li>
+<li> <a href="symbols/Connector-2c64r-1.sym">Connector-2c64r-1.sym</a> </li>
+</ul>
+<h4>One Column, 300 mil</h4>
+<ul>
+<li> <a href="symbols/Connector-1c1r-2.sym">Connector-1c1r-2.sym</a> </li>
+<li> <a href="symbols/Connector-1c2r-2.sym">Connector-1c2r-2.sym</a> </li>
+<li> <a href="symbols/Connector-1c3r-2.sym">Connector-1c3r-2.sym</a> </li>
+<li> <a href="symbols/Connector-1c4r-2.sym">Connector-1c4r-2.sym</a> </li>
+<li> <a href="symbols/Connector-1c8r-2.sym">Connector-1c8r-2.sym</a> </li>
+<li> <a href="symbols/Connector-1c10r-2.sym">Connector-1c10r-2.sym</a> </li>
+<li> <a href="symbols/Connector-1c16r-2.sym">Connector-1c16r-2.sym</a> </li>
+<li> <a href="symbols/Connector-1c32r-2.sym">Connector-1c32r-2.sym</a> </li>
+<li> <a href="symbols/Connector-1c64r-2.sym">Connector-1c64r-2.sym</a> </li>
+</ul>
+<h4>Two Columns, 300 mil</h4>
+<ul>
+<li> <a href="symbols/Connector-2c1r-2.sym">Connector-2c1r-2.sym</a> </li>
+<li> <a href="symbols/Connector-2c2r-2.sym">Connector-2c2r-2.sym</a> </li>
+<li> <a href="symbols/Connector-2c3r-2.sym">Connector-2c3r-2.sym</a> </li>
+<li> <a href="symbols/Connector-2c4r-2.sym">Connector-2c4r-2.sym</a> </li>
+<li> <a href="symbols/Connector-2c5r-2.sym">Connector-2c5r-2.sym</a> </li>
+<li> <a href="symbols/Connector-2c8r-2.sym">Connector-2c8r-2.sym</a> </li>
+<li> <a href="symbols/Connector-2c16r-2.sym">Connector-2c16r-2.sym</a> </li>
+<li> <a href="symbols/Connector-2c32r-2.sym">Connector-2c32r-2.sym</a> </li>
+<li> <a href="symbols/Connector-2c64r-2.sym">Connector-2c64r-2.sym</a> </li>
+</ul>
+<h4>One Row</h4>
+<ul>
+<li> <a href="symbols/Connector-1c1r-1.sym">Connector-1c1r-1.sym</a> </li>
+<li> <a href="symbols/Connector-2c1r-1.sym">Connector-2c1r-1.sym</a> </li>
+<li> <a href="symbols/Connector-3c1r-1.sym">Connector-3c1r-1.sym</a> </li>
+<li> <a href="symbols/Connector-4c1r-1.sym">Connector-4c1r-1.sym</a> </li>
+<li> <a href="symbols/Connector-8c1r-1.sym">Connector-8c1r-1.sym</a> </li>
+<li> <a href="symbols/Connector-10c1r-1.sym">Connector-10c1r-1.sym</a> </li>
+<li> <a href="symbols/Connector-16c1r-1.sym">Connector-16c1r-1.sym</a> </li>
+<li> <a href="symbols/Connector-32c1r-1.sym">Connector-32c1r-1.sym</a> </li>
+<li> <a href="symbols/Connector-64c1r-1.sym">Connector-64c1r-1.sym</a> </li>
+</ul>
+<h4>Two Rows</h4>
+<ul>
+<li> <a href="symbols/Connector-1c2r-1.sym">Connector-1c2r-1.sym</a> </li>
+<li> <a href="symbols/Connector-2c2r-1.sym">Connector-2c2r-1.sym</a> </li>
+<li> <a href="symbols/Connector-3c2r-1.sym">Connector-3c2r-1.sym</a> </li>
+<li> <a href="symbols/Connector-4c2r-1.sym">Connector-4c2r-1.sym</a> </li>
+<li> <a href="symbols/Connector-5c2r-1.sym">Connector-5c2r-1.sym</a> </li>
+<li> <a href="symbols/Connector-8c2r-1.sym">Connector-8c2r-1.sym</a> </li>
+<li> <a href="symbols/Connector-16c2r-1.sym">Connector-16c2r-1.sym</a> </li>
+<li> <a href="symbols/Connector-32c2r-1.sym">Connector-32c2r-1.sym</a> </li>
+<li> <a href="symbols/Connector-64c2r-1.sym">Connector-64c2r-1.sym</a> </li>
+</ul>
+
+<h3>DC/DC Converter</h3>
+<h4>Buck-Boost</h4>
+<ul>
+<li> <a href="symbols/LTC3533-1.sym">LTC3533-1.sym</a> - 1.8V to 5.5V, 2A</li>
+<li> <a href="symbols/LTC3533-2.sym">LTC3533-2.sym</a> - 1.8V to 5.5V, 2A</li>
+<li> <a href="symbols/LTC3533-3.sym">LTC3533-3.sym</a> - 1.8V to 5.5V, 2A</li>
+</ul>
+<h4>Step-Down (Buck)</h4>
+<ul>
+<li> <a href="symbols/LT3680-1.sym">LT3680-1.sym</a> - 36V, 3.5A</li>
+<li> <a href="symbols/LT3680-2.sym">LT3680-2.sym</a> - 36V, 3.5A</li>
+<li> <a href="symbols/LT3680-3.sym">LT3680-3.sym</a> - 36V, 3.5A</li>
+<li> <a href="symbols/LTC3412A_QFN-1.sym">LTC3412A_QFN-1.sym</a> - 5.5V, 3A</li>
+<li> <a href="symbols/LTC3412A_QFN-2.sym">LTC3412A_QFN-2.sym</a> - 5.5V, 3A</li>
+<li> <a href="symbols/LTC3412A_TSSOP-1.sym">LTC3412A_TSSOP-1.sym</a> - 5.5V, 3A</li>
+<li> <a href="symbols/LTC3412A_TSSOP-2.sym">LTC3412A_TSSOP-2.sym</a> - 5.5V, 3A</li>
+</ul>
+
+<h4>Step-Up (Bost)</h4>
+<ul>
+<li> <a href="symbols/LT3580-1.sym">LT3580-1.sym</a> - Bost/Inverting/SEPIC, 2A</li>
+<li> <a href="symbols/LT3580-2.sym">LT3580-2.sym</a> </li>
+<li> <a href="symbols/LT3580-3.sym">LT3580-3.sym</a> </li>
+</ul>
+
+<h3>Digital-to-Analog-Converter (DAC)</h3>
+<h4>LTC2601/LTC2611/LTC26021 - 16, 14 or 12 bit</h4>
+<ul>
+<li> <a href="symbols/LTC2601-1.sym">LTC2601-1.sym</a> </li>
+<li> <a href="symbols/LTC2601-2.sym">LTC2601-2.sym</a> </li>
+</ul>
+
+<h3>Diode (and similar devices)</h3>
+<ul>
+<li> <a href="symbols/Diode-1.sym">Diode-1.sym</a> </li>
+<li> <a href="symbols/Diode-Dual-CA-1.sym">Diode-Dual-CA-1.sym</a> - common anode (SOT23)</li>
+<li> <a href="symbols/Diode-Dual-CC-1.sym">Diode-Dual-CC-1.sym</a> - common cathode (SOT23)</li>
+<li> <a href="symbols/Diode-Dual-SE-1.sym">Diode-Dual-SE-1.sym</a> - series connection (SOT23)</li>
+<li> <a href="symbols/Diode-SOT23-1.sym">Diode-SOT23-1.sym</a> - single diode, 3 pin case (SOT23)</li>
+<li> <a href="symbols/LED-1.sym">LED-1.sym</a> </li>
+<li> <a href="symbols/Photodiode-1.sym">Photodiode-1.sym</a> </li>
+<li> <a href="symbols/Schottky-1.sym">Schottky-1.sym</a> </li>
+<li> <a href="symbols/SparkSurgeProtector-1.sym">SparkSurgeProtector-1.sym</a> </li>
+<li> <a href="symbols/TVS-1.sym">TVS-1.sym</a> - Transient Voltage Suppressor </li>
+<li> <a href="symbols/Zener-1.sym">Zener-1.sym</a> </li>
+<li> <a href="symbols/Zener-2.sym">Zener-2.sym</a> </li>
+</ul>
+
+<h3>Ferrite Bead</h3>
+<ul>
+<li> <a href="symbols/Ferrite-Bead-1.sym">Ferrite-Bead-1.sym</a> </li>
+<li> <a href="symbols/Ferrite-Bead-2.sym">Ferrite-Bead-2.sym</a> </li>
+<li> <a href="symbols/Ferrite-Bead-3.sym">Ferrite-Bead-3.sym</a> - deprecated</li>
+<li> <a href="symbols/Ferrite-Bead-4.sym">Ferrite-Bead-4.sym</a> </li>
+</ul>
+
+<h3>Filter</h3>
+<ul>
+<li> <a href="symbols/BNX00-1.sym">BNX00-1.sym</a> - Murata EMI Filter</li>
+<li> <a href="symbols/STF202-1.sym">STF202-1.sym</a> - EMI filter and line termination for USB upstream ports</li>
+<li> <a href="symbols/USBUFxxW6-1.sym">USBUFxxW6-1.sym</a> - EMI filter and line termination for USB upstream ports</li>
+</ul>
+
+
+<h3>FPGA</h3>
+<h4>Spartan-3E, XC3S500E-PQ208</h4>
+<ul>
+<li> <a href="symbols/XC3S500E-PQ208-B0.sym">XC3S500E-PQ208-B0.sym</a> - bank 0</li>
+<li> <a href="symbols/XC3S500E-PQ208-B1.sym">XC3S500E-PQ208-B1.sym</a> - bank 1</li>
+<li> <a href="symbols/XC3S500E-PQ208-B2.sym">XC3S500E-PQ208-B2.sym</a> - bank 2</li>
+<li> <a href="symbols/XC3S500E-PQ208-B3.sym">XC3S500E-PQ208-B3.sym</a> - bank 3</li>
+<li> <a href="symbols/XC3S500E-PQ208-P.sym">XC3S500E-PQ208-P.sym</a> - power supply</li>
+<li> <a href="symbols/XC3S500E-PQ208-P-2.sym">XC3S500E-PQ208-P-2.sym</a> - power supply, extended version</li>
+</ul>
+
+<h3>GND (ground)</h3>
+<ul>
+<li> <a href="symbols/gnd-1.sym">gnd-1.sym</a> </li>
+<li> <a href="symbols/gnd-2.sym">gnd-2.sym</a> </li>
+<li> <a href="symbols/gnd-3.sym">gnd-3.sym</a> </li>
+<li> <a href="symbols/gnda-1.sym">gnda-1.sym</a> - analog</li>
+<li> <a href="symbols/gnda-2.sym">gnda-2.sym</a> </li>
+<li> <a href="symbols/gndd-1.sym">gndd-1.sym</a> - digital</li>
+<li> <a href="symbols/gndd-2.sym">gndd-2.sym</a> </li>
+<li> <a href="symbols/gndl-1.sym">gndl-1.sym</a> - logic</li>
+<li> <a href="symbols/gndl-2.sym">gndl-2.sym</a> </li>
+<li> <a href="symbols/gndp-1.sym">gndp-1.sym</a> - power</li>
+<li> <a href="symbols/gndp-2.sym">gndp-2.sym</a> </li>
+<li> <a href="symbols/gnds-1.sym">gnds-1.sym</a> - signal</li>
+<li> <a href="symbols/gnds-2.sym">gnds-2.sym</a> </li>
+</ul>
+
+<h3>Ideal Diode</h3>
+<ul>
+<li> <a href="symbols/LTC4413-1.sym">LTC4413-1.sym</a> </li>
+<li> <a href="symbols/LTC4413-2.sym">LTC4413-2.sym</a> </li>
+</ul>
+
+<h3>In-Out</h3>
+<ul>
+<li> <a href="symbols/in-1.sym">in-1.sym</a> </li>
+<li> <a href="symbols/in-2.sym">in-2.sym</a> </li>
+<li> <a href="symbols/io-1.sym">io-1.sym</a> </li>
+<li> <a href="symbols/io-2.sym">io-2.sym</a> </li>
+<li> <a href="symbols/io-3.sym">io-3.sym</a> </li>
+<li> <a href="symbols/io-4.sym">io-4.sym</a> </li>
+<li> <a href="symbols/io-5.sym">io-5.sym</a> </li>
+<li> <a href="symbols/io-6.sym">io-6.sym</a> </li>
+<li> <a href="symbols/out-1.sym">out-1.sym</a> </li>
+<li> <a href="symbols/out-2.sym">out-2.sym</a> </li>
+</ul>
+
+<h3>JFET</h3>
+<ul>
+<li> <a href="symbols/JFET_N-Channel-1.sym">JFET_N-Channel-1.sym</a> </li>
+<li> <a href="symbols/JFET_P-Channel-1.sym">JFET_P-Channel-1.sym</a> </li>
+<li> <a href="symbols/PMBFJ620-1.sym">PMBFJ620-1.sym</a> - dual N-Channel</li>
+</ul>
+
+<h3>Logic Gates</h3>
+<h4>Slotted, with separate Supply Symbol</h4>
+<ul>
+<li> <a href="symbols/7400-1.sym">7400-1.sym</a> - 4 NAND Gates</li>
+<li> <a href="symbols/7402-1.sym">7402-1.sym</a> - 4 NOR Gates</li>
+<li> <a href="symbols/7404-1.sym">7404-1.sym</a> - Hex Inverter</li>
+<li> <a href="symbols/7404-2.sym">7404-2.sym</a> - larger</li>
+<li> <a href="symbols/7404-3.sym">7404-3.sym</a> - tiny</li>
+<li> <a href="symbols/7474-1.sym">7474-1.sym</a> - Dual D-type flip-flop with set and reset; positive-edge trigger</li>
+<li> <a href="symbols/7474-2.sym">7474-2.sym</a> </li>
+<li> <a href="symbols/74595-2.sym">74595-2.sym</a> - 8-bit serial-in shift register</li>
+<li> <a href="symbols/74595-3.sym">74595-3.sym</a> - 8-bit serial-in shift register</li>
+</ul>
+
+<ul>
+<li> <a href="symbols/74xx-14N-Pwr-1.sym">74xx-14N-Pwr-1.sym</a> - supply for 14 pin slotted devices (you may use net attributes instead)</li>
+<li> <a href="symbols/74xx-16N-Pwr-1.sym">74xx-16N-Pwr-1.sym</a> - supply for 16 pin slotted devices (you may use net attributes instead)</li>
+</ul>
+
+<h4>All in one, with visible Supply Pins</h4>
+<ul>
+<li> <a href="symbols/74HC04-1.sym">74HC04-1.sym</a> - Hex Inverter, CMOS</li>
+<li> <a href="symbols/74HC04-2.sym">74HC04-2.sym</a> </li>
+<li> <a href="symbols/74595-1.sym">74595-1.sym</a> - 8-bit serial-in shift register</li>
+</ul>
+
+<h3>Microcontroller</h3>
+<h4>Atmel AVR (8 bit RISC)</h4>
+<ul>
+<li> <a href="symbols/AT90USB1287-1.sym">AT90USB1287-1.sym</a> - with USB</li>
+<li> <a href="symbols/AT90USB1287-2.sym">AT90USB1287-2.sym</a> </li>
+<li> <a href="symbols/AT90USB1287-3.sym">AT90USB1287-3.sym</a> </li>
+</ul>
+
+<h3>Misc</h3>
+<ul>
+<li> <a href="symbols/Beeper_H-1.sym">Beeper_H-1.sym</a> - horizontal aligned </li>
+<li> <a href="symbols/Beeper_V-1.sym">Beeper_V-1.sym</a> - vertical aligned</li>
+<li> <a href="symbols/Light-Bulb-1.sym">Light-Bulb-1.sym</a> </li>
+<li> <a href="symbols/Light-Bulb-2.sym">Light-Bulb-2.sym</a> </li>
+<li> <a href="symbols/Light-Bulb-3.sym">Light-Bulb-3.sym</a> </li>
+<li> <a href="symbols/SN65LVDS348-1.sym">SN65LVDS348-1.sym</a> - Quad High-Speed Differential Receiver</li>
+<li> <a href="symbols/SN65LVDS352-1.sym">SN65LVDS352-1.sym</a> - Quad High-Speed Differential Receiver</li>
+<li> <a href="symbols/TPIC6595-1.sym">TPIC6595-1.sym</a> - Power Logic 8-Bit Shift Register</li>
+<li> <a href="symbols/TPIC6595-2.sym">TPIC6595-2.sym</a> </li>
+</ul>
+
+<h3>MOSFET</h3>
+<h4>N-Channel</h4>
+<ul>
+<li> <a href="symbols/MOSFET_N-1.sym">MOSFET_N-1.sym</a> - plain symbol</li>
+<li> <a href="symbols/MOSFET_N-2.sym">MOSFET_N-2.sym</a> - plain symbol</li>
+<li> <a href="symbols/MOSFET_N_D-1.sym">MOSFET_N_D-1.sym</a> - drawn diode</li>
+<li> <a href="symbols/MOSFET_N_D-2.sym">MOSFET_N_D-2.sym</a> - drawn diode</li>
+<li> <a href="symbols/MOSFET_N_C-1.sym">MOSFET_N_C-1.sym</a> - drawn circle</li>
+<li> <a href="symbols/MOSFET_N_C-2.sym">MOSFET_N_C-2.sym</a> - drawn circle</li>
+</ul>
+<h4>P-Channel</h4>
+<ul>
+<li> <a href="symbols/MOSFET_P-1.sym">MOSFET_P-1.sym</a> - plain symbol</li>
+<li> <a href="symbols/MOSFET_P-2.sym">MOSFET_P-2.sym</a> - plain symbol</li>
+<li> <a href="symbols/MOSFET_P_D-1.sym">MOSFET_P_D-1.sym</a> - drawn diode</li>
+<li> <a href="symbols/MOSFET_P_D-2.sym">MOSFET_P_D-2.sym</a> - drawn diode</li>
+<li> <a href="symbols/MOSFET_P_C-1.sym">MOSFET_P_C-1.sym</a> - drawn circle</li>
+<li> <a href="symbols/MOSFET_P_C-2.sym">MOSFET_P_C-2.sym</a> - drawn circle</li>
+</ul>
+
+<h3>Operational Amplifier</h3>
+
+<h4>Single, with visible Supply Pins</h4>
+<ul>
+<li> <a href="symbols/OpAmp-DIP8-1.sym">OpAmp-DIP8-1.sym</a> </li>
+<li> <a href="symbols/OpAmp-DIP8-2.sym">OpAmp-DIP8-2.sym</a> </li>
+<li> <a href="symbols/OpAmp-DIP8-3.sym">OpAmp-DIP8-3.sym</a> </li>
+<li> <a href="symbols/OpAmp-DIP8-4.sym">OpAmp-DIP8-4.sym</a> </li>
+<li> <a href="symbols/OpAmp-SO8-1.sym">OpAmp-SO8-1.sym</a> </li>
+<li> <a href="symbols/OpAmp-SO8-2.sym">OpAmp-SO8-2.sym</a> </li>
+<li> <a href="symbols/OpAmp-SOT23-5-1.sym">OpAmp-SOT23-5-1.sym</a> </li>
+<li> <a href="symbols/OpAmp-SOT23-5-2.sym">OpAmp-SOT23-5-2.sym</a> </li>
+</ul>
+
+<h4>With invisible Supply Pins (use separate Supply Symbol or Net attributes, i.e net=+5V:99</h4>
+<ul>
+<li> <a href="symbols/OpAmp-DIP8-Single-1.sym">OpAmp-DIP8-Single-1.sym</a> - single, DIP8</li>
+<li> <a href="symbols/OpAmp-SO8-Single-1.sym">OpAmp-SO8-Single-1.sym</a> - single, SO8</li>
+<li> <a href="symbols/OpAmp-SOT23-5-Single-1.sym">OpAmp-SOT23-5-Single-1.sym</a> - single, SOT23-5</li>
+<li> <a href="symbols/OpAmp-Dual-1.sym">OpAmp-Dual-1.sym</a> - dual, SO8 (or DIP8)</li>
+<li> <a href="symbols/OpAmp-Quad-1.sym">OpAmp-Quad-1.sym</a> - quad, SO14 (or DIP14)</li>
+</ul>
+<ul>
+<li> <a href="symbols/OpAmp-DIP8-Single-Pwr-1.sym">OpAmp-DIP8-Single-Pwr-1.sym</a> - supply single DIP8</li>
+<li> <a href="symbols/OpAmp-SO8-Single-Pwr-1.sym">OpAmp-SO8-Single-Pwr-1.sym</a> - supply single SO8</li>
+<li> <a href="symbols/OpAmp-SOT23-5-Single-Pwr-1.sym">OpAmp-SOT23-5-Single-Pwr-1.sym</a> - supply SOT23-5</li>
+<li> <a href="symbols/OpAmp-Dual-Pwr-1.sym">OpAmp-Dual-Pwr-1.sym</a> - supply dual SO8/DIP8</li>
+<li> <a href="symbols/OpAmp-Quad-Pwr-1.sym">OpAmp-Quad-Pwr-1.sym</a> - supply quad SO14/DIP14</li>
+</ul>
+
+<h3>Oscillators</h3>
+<ul>
+<li> <a href="symbols/OSC__ConnorWinfield_CWX813.sym">OSC__ConnorWinfield_CWX813.sym</a> - LVCMOS, 3.3V</li>
+<li> <a href="symbols/OSC__Crystek_CCHD-950.sym">OSC__Crystek_CCHD-950.sym</a> - LVCMOS, 3.3V </li>
+<li> <a href="symbols/OSC__Crystek_CCLD-033.sym">OSC__Crystek_CCLD-033.sym</a> - LVDS, 3.3V</li>
+</ul>
+
+<h3>Overvoltage Protection Regulator and Inrush Limiter</h3>
+<ul>
+<li> <a href="symbols/LT4356-1_DFN12-1.sym">LT4356-1_DFN12-1.sym</a> </li>
+<li> <a href="symbols/LT4356-1_DFN12-2.sym">LT4356-1_DFN12-2.sym</a> </li>
+<li> <a href="symbols/LT4356-1_MSOP10-1.sym">LT4356-1_MSOP10-1.sym</a> </li>
+</ul>
+
+<h3>Power Pins (i.e. net=+3.3V:1)</h3>
+<ul>
+<li> <a href="symbols/1.2V-minus-1.sym">1.2V-minus-1.sym</a> </li>
+<li> <a href="symbols/1.2V-minus-2.sym">1.2V-minus-2.sym</a> </li>
+<li> <a href="symbols/1.2V-plus-1.sym">1.2V-plus-1.sym</a> </li>
+<li> <a href="symbols/1.2V-plus-2.sym">1.2V-plus-2.sym</a> </li>
+<li> <a href="symbols/1.8V-minus-1.sym">1.8V-minus-1.sym</a> </li>
+<li> <a href="symbols/1.8V-minus-2.sym">1.8V-minus-2.sym</a> </li>
+<li> <a href="symbols/1.8V-plus-1.sym">1.8V-plus-1.sym</a> </li>
+<li> <a href="symbols/1.8V-plus-2.sym">1.8V-plus-2.sym</a> </li>
+<li> <a href="symbols/2.5V-minus-1.sym">2.5V-minus-1.sym</a> </li>
+<li> <a href="symbols/2.5V-minus-2.sym">2.5V-minus-2.sym</a> </li>
+<li> <a href="symbols/2.5V-plus-1.sym">2.5V-plus-1.sym</a> </li>
+<li> <a href="symbols/2.5V-plus-2.sym">2.5V-plus-2.sym</a> </li>
+<li> <a href="symbols/3.3V-minus-1.sym">3.3V-minus-1.sym</a> </li>
+<li> <a href="symbols/3.3V-minus-2.sym">3.3V-minus-2.sym</a> </li>
+<li> <a href="symbols/3.3V-plus-1.sym">3.3V-plus-1.sym</a> </li>
+<li> <a href="symbols/3.3V-plus-2.sym">3.3V-plus-2.sym</a> </li>
+<li> <a href="symbols/5V-minus-1.sym">5V-minus-1.sym</a> </li>
+<li> <a href="symbols/5V-minus-2.sym">5V-minus-2.sym</a> </li>
+<li> <a href="symbols/5V-plus-1.sym">5V-plus-1.sym</a> </li>
+<li> <a href="symbols/5V-plus-2.sym">5V-plus-2.sym</a> </li>
+<li> <a href="symbols/9V-minus-1.sym">9V-minus-1.sym</a> </li>
+<li> <a href="symbols/9V-minus-2.sym">9V-minus-2.sym</a> </li>
+<li> <a href="symbols/9V-plus-1.sym">9V-plus-1.sym</a> </li>
+<li> <a href="symbols/9V-plus-2.sym">9V-plus-2.sym</a> </li>
+<li> <a href="symbols/12V-minus-1.sym">12V-minus-1.sym</a> </li>
+<li> <a href="symbols/12V-minus-2.sym">12V-minus-2.sym</a> </li>
+<li> <a href="symbols/12V-plus-1.sym">12V-plus-1.sym</a> </li>
+<li> <a href="symbols/12V-plus-2.sym">12V-plus-2.sym</a> </li>
+<li> <a href="symbols/power-1.sym">power-1.sym</a> - no predefined net attribute</li>
+</ul>
+
+<h3>Push Buttons</h3>
+<ul>
+<li> <a href="symbols/Schurter_LSH1301xx-1.sym">Schurter_LSH1301xx-1.sym</a> - Schurter, SMD</li>
+<li> <a href="symbols/Schurter_LSH1301xx-2.sym">Schurter_LSH1301xx-2.sym</a> - Schurter, SMD</li>
+</ul>
+
+<h3>RAM</h3>
+<h4>Static, asynchronous</h4>
+<ul>
+<li> <a href="symbols/CY7C1061AV33-1.sym">CY7C1061AV33-1.sym</a> - 1M x 16 Static RAM</li>
+<li> <a href="symbols/CY7C1061AV33-2.sym">CY7C1061AV33-2.sym</a> - 1M x 16 Static RAM</li>
+</ul>
+
+<h4>Static, synchronous</h4>
+<ul>
+<li> <a href="symbols/CY7C1380D-1.sym">CY7C1380D-1.sym</a> - CYPRESS 18-Mbit (512K x 36) Pipelined SRAM (all in one)</li>
+<li> <a href="symbols/CY7C1380D-Data-1.sym">CY7C1380D-Data-1.sym</a> - data pins</li>
+<li> <a href="symbols/CY7C1380D-Ctrl-1.sym">CY7C1380D-Ctrl-1.sym</a> - address and control pins</li>
+<li> <a href="symbols/CY7C1380D-Pwr-1.sym">CY7C1380D-Pwr-1.sym</a> - power supply</li>
+</ul>
+
+<h3>Reed Relays</h3>
+<ul>
+<li> <a href="symbols/Reed-Relay_Meder_DIPxx-1C90-51D-1.sym">Reed-Relay_Meder_DIPxx-1C90-51D-1.sym</a> - DIP with integrated Diode</li>
+<li> <a href="symbols/Reed-Relay_Meder_DIPxx-1C90-51D-2.sym">Reed-Relay_Meder_DIPxx-1C90-51D-2.sym</a> - DIP without Diode</li>
+<li> <a href="symbols/Reed-Relay_Meder_SILxx-1A72-71D-1.sym">Reed-Relay_Meder_SILxx-1A72-71D-1.sym</a> - SIL with integrated Diode</li>
+<li> <a href="symbols/Reed-Relay_Meder_SILxx-1A72-71D-2.sym">Reed-Relay_Meder_SILxx-1A72-71D-2.sym</a> - SIL without Diode</li>
+</ul>
+
+<h3>Resistor</h3>
+<h4>Regular Size</h4>
+<ul>
+<li> <a href="symbols/Res_H-1.sym">Res_H-1.sym</a> - horizontal, aligned text</li>
+<li> <a href="symbols/Res_V-1.sym">Res_V-1.sym</a> - vertical, aligned text</li>
+<li> <a href="symbols/Res_H-2.sym">Res_H-2.sym</a> - horizontal, aligned text</li>
+<li> <a href="symbols/Res_V-2.sym">Res_V-2.sym</a> - vertical, aligned text</li>
+</ul>
+<h4>Short Pins (ugly)</h4>
+<ul>
+<li> <a href="symbols/_Res_H-1.sym">_Res_H-1.sym</a> - horizontal, aligned text</li>
+<li> <a href="symbols/_Res_V-1.sym">_Res_V-1.sym</a> - vertical, aligned text</li>
+<li> <a href="symbols/_Res_H-2.sym">_Res_H-2.sym</a> - horizontal, aligned text</li>
+<li> <a href="symbols/_Res_V-2.sym">_Res_V-2.sym</a> - vertical, aligned text</li>
+</ul>
+
+<h3>RS-232 Drivers/Receivers</h3>
+<ul>
+<li> <a href="symbols/MAX232-1.sym">MAX232-1.sym</a> - MAX220, MAX232, MAX232A (MAX3232 is Pin- and 3.3V-compatible)</li>
+<li> <a href="symbols/MAX232-2.sym">MAX232-2.sym</a> </li>
+</ul>
+
+<h3>Solder Jumpers</h3>
+<ul>
+<li> <a href="symbols/SolderJumperClosed-1.sym">SolderJumperClosed-1.sym</a> - footprint-pads are not connected by default</li>
+<li> <a href="symbols/SolderJumperOpen-1.sym">SolderJumperOpen-1.sym</a> </li>
+<li> <a href="symbols/SolderJumperClosed-2.sym">SolderJumperClosed-2.sym</a> - smaller</li>
+<li> <a href="symbols/SolderJumperOpen-2.sym">SolderJumperOpen-2.sym</a> </li>
+<li> <a href="symbols/SolderJumperClosed-3.sym">SolderJumperClosed-3.sym</a> - not filled</li>
+<li> <a href="symbols/SolderJumperOpen-3.sym">SolderJumperOpen-3.sym</a> </li>
+</ul>
+
+<h3>Time to Digital Converter</h3>
+<ul>
+<li> <a href="symbols/TDC-GP2-1.sym">TDC-GP2-1.sym</a> </li>
+<li> <a href="symbols/TDC-GP2-2.sym">TDC-GP2-2.sym</a> </li>
+</ul>
+
+<h3>Thermistor</h3>
+<ul>
+<li> <a href="symbols/Thermistor-1.sym">Thermistor-1.sym</a> - NTC, PTC, KTY...</li>
+<li> <a href="symbols/Thermistor-2.sym">Thermistor-2.sym</a> </li>
+</ul>
+
+<h3>Titleblocks</h3>
+<ul>
+<li> <a href="symbols/Titleblock_A4-1.sym">Titleblock_A4-1.sym</a> - width same as title-B.sym, compact text fields, for A4 paper</li>
+</ul>
+
+<h3>Transistor</h3>
+<h4>NPN</h4>
+<ul>
+<li> <a href="symbols/Transistor_NPN-1.sym">Transistor_NPN-1.sym</a> </li>
+<li> <a href="symbols/Transistor_NPN-2.sym">Transistor_NPN-2.sym</a> </li>
+<li> <a href="symbols/BC817-1.sym">BC817-1.sym</a> - SOT23</li>
+<li> <a href="symbols/BC817-2.sym">BC817-2.sym</a> - SOT23</li>
+<li> <a href="symbols/BC846-1.sym">BC846-1.sym</a> - SOT23</li>
+<li> <a href="symbols/BC846-2.sym">BC846-2.sym</a> - SOT23</li>
+<li> <a href="symbols/SMBT2222-1.sym">SMBT2222-1.sym</a> - SOT23</li>
+<li> <a href="symbols/SMBT2222-2.sym">SMBT2222-2.sym</a> - SOT23</li>
+</ul>
+<h4>PNP</h4>
+<ul>
+<li> <a href="symbols/Transistor_PNP-1.sym">Transistor_PNP-1.sym</a> </li>
+<li> <a href="symbols/Transistor_PNP-2.sym">Transistor_PNP-2.sym</a> </li>
+<li> <a href="symbols/BC807-1.sym">BC807-1.sym</a> - SOT23</li>
+<li> <a href="symbols/BC807-2.sym">BC807-2.sym</a> - SOT23</li>
+<li> <a href="symbols/BC856-1.sym">BC856-1.sym</a> - SOT23</li>
+<li> <a href="symbols/BC856-2.sym">BC856-2.sym</a> - SOT23</li>
+<li> <a href="symbols/SMBT2907-1.sym">SMBT2907-1.sym</a> - SOT23</li>
+<li> <a href="symbols/SMBT2907-2.sym">SMBT2907-2.sym</a> - SOT23</li>
+</ul>
+
+<h3>USB Connectors</h3>
+<ul>
+<li> <a href="symbols/CON_USB_B-1.sym">CON_USB_B-1.sym</a> - type B</li>
+</ul>
+
+<h3>USB Power Manager/Battery Charger</h3>
+<ul>
+<li> <a href="symbols/LTC4088-1.sym">LTC4088-1.sym</a> </li>
+<li> <a href="symbols/LTC4088-2.sym">LTC4088-2.sym</a> </li>
+</ul>
+
+<h3>Voltage Regulators</h3>
+<h4>Shunt</h4>
+<ul>
+<li> <a href="symbols/LM431_SOT23-1.sym">LM431_SOT23-1.sym</a> - adjustable, 0.1A
+<li> <a href="symbols/LM431_SOT23-2.sym">LM431_SOT23-2.sym</a> - adjustable, 0.1A
+</li>
+</ul>
+<h4>Negative</h4>
+<ul>
+<li> <a href="symbols/LT1964ES5-BYP-1.sym">LT1964ES5-BYP-1.sym</a> - adjustable 0.2A, low noise, low dropout neg. micropower linear regulator
+</li>
+</ul>
+<h4>Positive</h4>
+<ul>
+<li> <a href="symbols/LT1965_MSOP8_EP-1.sym">LT1965_MSOP8_EP-1.sym</a> - adjustable 1.1A, low noise, low dropout linear regulator</li>
+</ul>
+
+<h2>Footprints</h2>
+<h3>SMD</h3>
+<ul>
+<li> <a href="footprints/BNX00__Murata.fp">BNX00__Murata.fp</a> </li>
+<li> <a href="footprints/Coil_Epcos_B82464-G4.fp">Coil_Epcos_B82464-G4.fp</a> </li>
+<li> <a href="footprints/Coil_Epcos_B82464-G4_HS.fp">Coil_Epcos_B82464-G4_HS.fp</a> </li>
+<li> <a href="footprints/Coil_Fastron_PISM.fp">Coil_Fastron_PISM.fp</a> </li>
+<li> <a href="footprints/Coil_Panasonic_ELLATV.fp">Coil_Panasonic_ELLATV.fp</a> </li>
+<li> <a href="footprints/Coil_Panasonic_ELLATV_HS.fp">Coil_Panasonic_ELLATV_HS.fp</a> </li>
+<li> <a href="footprints/DFN8.fp">DFN8.fp</a> - used for LT3580</li>
+<li> <a href="footprints/DFN8_HS.fp">DFN8_HS.fp</a> - better suited for Hand Soldering </li>
+<li> <a href="footprints/DFN10.fp">DFN10.fp</a> - used for LTC4413</li>
+<li> <a href="footprints/DFN10_HS.fp">DFN10_HS.fp</a> - better suited for Hand Soldering </li>
+<li> <a href="footprints/DFN12.fp">DFN12.fp</a> - used for LTC4413</li>
+<li> <a href="footprints/DFN12_HS.fp">DFN12_HS.fp</a> - better suited for Hand Soldering </li>
+<li> <a href="footprints/DFN14.fp">DFN14.fp</a> - used for LTC4088</li>
+<li> <a href="footprints/DFN14_HS.fp">DFN14_HS.fp</a> - better suited for Hand Soldering </li>
+<li> <a href="footprints/LED0603.fp">LED0603.fp</a> </li>
+<li> <a href="footprints/LED0805.fp">LED0805.fp</a> </li>
+<li> <a href="footprints/LED1206.fp">LED1206.fp</a> </li>
+<li> <a href="footprints/MELF.fp">MELF.fp</a> </li>
+<li> <a href="footprints/MiniMELF.fp">MiniMELF.fp</a> </li>
+<li> <a href="footprints/MSOP8_EP.fp">MSOP8_EP.fp</a> - MSOP 8-Lead, Exposed Die Pad </li>
+<li> <a href="footprints/MSOP8_EP_LT1965.fp">MSOP8_EP_LT1965.fp</a> - special version for LT1965 (common pins) </li>
+<li> <a href="footprints/MSOP10_EP.fp">MSOP10_EP.fp</a> - MSOP 10-Lead, Exposed Die Pad </li>
+<li> <a href="footprints/OSC__ConnorWinfield_CWX813.fp">OSC__ConnorWinfield_CWX813.fp</a> </li>
+<li> <a href="footprints/OSC__Crystek_CCHD-950.fp">OSC__Crystek_CCHD-950.fp</a> </li>
+<li> <a href="footprints/OSC__Crystek_CCLD-033.fp">OSC__Crystek_CCLD-033.fp</a> </li>
+<li> <a href="footprints/OSC__Crystek_CCLD-033_HS.fp">OSC__Crystek_CCLD-033_HS.fp</a> - better suited for Hand Soldering </li>
+<li> <a href="footprints/QFN16_3_EP.fp">QFN16_3_EP.fp</a> - suited for Hand Soldering</li>
+<li> <a href="footprints/QFN32_5_EP.fp">QFN32_5_EP.fp</a> - suited for Hand Soldering</li>
+<li> <a href="footprints/Schottky_MBRM120E.fp">Schottky_MBRM120E.fp</a> </li>
+<li> <a href="footprints/Schurter_LSH1301xx-1.fp">Schurter_LSH1301xx-1.fp</a> </li>
+<li> <a href="footprints/Schurter_LSH1301xx-2.fp">Schurter_LSH1301xx-2.fp</a> </li>
+<li> <a href="footprints/SolderJumperLarge.fp">SolderJumperLarge.fp</a> - two unconnected pads</li>
+<li> <a href="footprints/SolderJumperSmall.fp">SolderJumperSmall.fp</a> - two unconnected pads</li>
+<li> <a href="footprints/SOT323-6L.fp">SOT323-6L.fp</a> </li>
+<li> <a href="footprints/SOT363.fp">SOT363.fp</a> - used for PMBFJ620</li>
+<li> <a href="footprints/TQFP-65P-1600L1-2200L2-100N.fp">TQFP-65P-1600L1-2200L2-100N.fp</a> - used for CY7C1380D</li>
+<li> <a href="footprints/TSOP6.fp">TSOP6.fp</a> </li>
+<li> <a href="footprints/TSSOP16_EP.fp">TSSOP16_EP.fp</a> - used for LTC3412A</li>
+<li> <a href="footprints/TSSOP16_EP_HS.fp">TSSOP16_EP_HS.fp</a> - more clearance between pads, less risk for soldering bridges</li>
+<li> <a href="footprints/TVS__SRC_CG-MS-Series.fp">TVS__SRC_CG-MS-Series.fp</a> - Transient Voltage Supressor, SRC-Devices/Littelfuse</li>
+</ul>
+<h3>Through hole</h3>
+<h4>Dipped Radial Ceramic Capacitors</h4>
+<ul>
+<li> <a href="footprints/CAPR-250P-250W-400L-550H-50d__TDK_FK18.fp">CAPR-250P-250W-400L-550H-50d__TDK_FK18.fp</a> </li>
+<li> <a href="footprints/CAPR-250P-250W-450L-550H-50d__TDK_FK14.fp">CAPR-250P-250W-450L-550H-50d__TDK_FK14.fp</a> </li>
+<li> <a href="footprints/CAPR-500P-250W-500L-550H-50d__TDK_FK24.fp">CAPR-500P-250W-500L-550H-50d__TDK_FK24.fp</a> </li>
+<li> <a href="footprints/CAPR-500P-250W-500L-550H-50d__TDK_FK28.fp">CAPR-500P-250W-500L-550H-50d__TDK_FK28.fp</a> </li>
+<li> <a href="footprints/CAPR-500P-350W-550L-600H-50d__TDK_FK26.fp">CAPR-500P-350W-550L-600H-50d__TDK_FK26.fp</a> </li>
+<li> <a href="footprints/CAPR-500P-400W-550L-700H-50d__TDK_FK20.fp">CAPR-500P-400W-550L-700H-50d__TDK_FK20.fp</a> </li>
+<li> <a href="footprints/CAPR-500P-400W-750L-800H-50d__TDK_FK22.fp">CAPR-500P-400W-750L-800H-50d__TDK_FK22.fp</a> </li>
+</ul>
+<h4>Rectangular WIMA capacitors type MKP-10</h4>
+<ul>
+<li> <a href="footprints/CAPR-1000P-400W-1300L-900H-60d__WIMA_MKP-10.fp">CAPR-1000P-400W-1300L-900H-60d__WIMA_MKP-10.fp</a> </li>
+<li> <a href="footprints/CAPR-1000P-500W-1300L-1100H-60d__WIMA_MKP-10.fp">CAPR-1000P-500W-1300L-1100H-60d__WIMA_MKP-10.fp</a> </li>
+<li> <a href="footprints/CAPR-1000P-600W-1300L-1200H-60d__WIMA_MKP-10.fp">CAPR-1000P-600W-1300L-1200H-60d__WIMA_MKP-10.fp</a> </li>
+<li> <a href="footprints/CAPR-1500P-500W-1800L-1100H-80d__WIMA_MKP-10.fp">CAPR-1500P-500W-1800L-1100H-80d__WIMA_MKP-10.fp</a> </li>
+<li> <a href="footprints/CAPR-1500P-600W-1800L-1250H-80d__WIMA_MKP-10.fp">CAPR-1500P-600W-1800L-1250H-80d__WIMA_MKP-10.fp</a> </li>
+<li> <a href="footprints/CAPR-1500P-700W-1800L-1400H-80d__WIMA_MKP-10.fp">CAPR-1500P-700W-1800L-1400H-80d__WIMA_MKP-10.fp</a> </li>
+<li> <a href="footprints/CAPR-1500P-800W-1800L-1500H-80d__WIMA_MKP-10.fp">CAPR-1500P-800W-1800L-1500H-80d__WIMA_MKP-10.fp</a> </li>
+<li> <a href="footprints/CAPR-1500P-900W-1800L-1600H-80d__WIMA_MKP-10.fp">CAPR-1500P-900W-1800L-1600H-80d__WIMA_MKP-10.fp</a> </li>
+<li> <a href="footprints/CAPR-2250P-1050W-2650L-1900H-80d__WIMA_MKP-10.fp">CAPR-2250P-1050W-2650L-1900H-80d__WIMA_MKP-10.fp</a> </li>
+<li> <a href="footprints/CAPR-2250P-1100W-2650L-2100H-80d__WIMA_MKP-10.fp">CAPR-2250P-1100W-2650L-2100H-80d__WIMA_MKP-10.fp</a> </li>
+<li> <a href="footprints/CAPR-2250P-600W-2650L-1500H-80d__WIMA_MKP-10.fp">CAPR-2250P-600W-2650L-1500H-80d__WIMA_MKP-10.fp</a> </li>
+<li> <a href="footprints/CAPR-2250P-700W-2650L-1650H-80d__WIMA_MKP-10.fp">CAPR-2250P-700W-2650L-1650H-80d__WIMA_MKP-10.fp</a> </li>
+<li> <a href="footprints/CAPR-2250P-850W-2650L-1850H-80d__WIMA_MKP-10.fp">CAPR-2250P-850W-2650L-1850H-80d__WIMA_MKP-10.fp</a> </li>
+<li> <a href="footprints/CAPR-2750P-1100W-3150L-2100H-80d__WIMA_MKP-10.fp">CAPR-2750P-1100W-3150L-2100H-80d__WIMA_MKP-10.fp</a> </li>
+<li> <a href="footprints/CAPR-2750P-1300W-3150L-2400H-80d__WIMA_MKP-10.fp">CAPR-2750P-1300W-3150L-2400H-80d__WIMA_MKP-10.fp</a> </li>
+<li> <a href="footprints/CAPR-2750P-1500W-3150L-2600H-80d__WIMA_MKP-10.fp">CAPR-2750P-1500W-3150L-2600H-80d__WIMA_MKP-10.fp</a> </li>
+<li> <a href="footprints/CAPR-2750P-1700W-3150L-3450H-80d__WIMA_MKP-10.fp">CAPR-2750P-1700W-3150L-3450H-80d__WIMA_MKP-10.fp</a> </li>
+<li> <a href="footprints/CAPR-2750P-900W-3150L-1900H-80d__WIMA_MKP-10.fp">CAPR-2750P-900W-3150L-1900H-80d__WIMA_MKP-10.fp</a> </li>
+<li> <a href="footprints/CAPR-3750P-1300W-4150L-2400H-100d__WIMA_MKP-10.fp">CAPR-3750P-1300W-4150L-2400H-100d__WIMA_MKP-10.fp</a> </li>
+<li> <a href="footprints/CAPR-3750P-1700W-4150L-2900H-100d__WIMA_MKP-10.fp">CAPR-3750P-1700W-4150L-2900H-100d__WIMA_MKP-10.fp</a> </li>
+<li> <a href="footprints/CAPR-3750P-1900W-4150L-3200H-100d__WIMA_MKP-10.fp">CAPR-3750P-1900W-4150L-3200H-100d__WIMA_MKP-10.fp</a> </li>
+<li> <a href="footprints/CAPR-3750P-2000W-4150L-3950H-100d__WIMA_MKP-10.fp">CAPR-3750P-2000W-4150L-3950H-100d__WIMA_MKP-10.fp</a> </li>
+<li> <a href="footprints/CAPR-3750P-2400W-4150L-4550H-100d__WIMA_MKP-10.fp">CAPR-3750P-2400W-4150L-4550H-100d__WIMA_MKP-10.fp</a> </li>
+<li> <a href="footprints/CAPR-750P-400W-1000L-900H-60d__WIMA_MKP-10.fp">CAPR-750P-400W-1000L-900H-60d__WIMA_MKP-10.fp</a> </li>
+<li> <a href="footprints/CAPR-750P-450W-1030L-950H-60d__WIMA_MKP-10.fp">CAPR-750P-450W-1030L-950H-60d__WIMA_MKP-10.fp</a> </li>
+<li> <a href="footprints/CAPR-750P-570W-1030L-1250H-60d__WIMA_MKP-10.fp">CAPR-750P-570W-1030L-1250H-60d__WIMA_MKP-10.fp</a> </li>
+</ul>
+<h4>Resettable Wire-leaded PTC-Fuses Schurter PFRA</h4>
+<ul>
+<li> <a href="footprints/Fuse_PTC__Schurter_PFRA.010.fp">Fuse_PTC__Schurter_PFRA.010.fp</a> </li>
+<li> <a href="footprints/Fuse_PTC__Schurter_PFRA.017.fp">Fuse_PTC__Schurter_PFRA.017.fp</a> </li>
+<li> <a href="footprints/Fuse_PTC__Schurter_PFRA.020.fp">Fuse_PTC__Schurter_PFRA.020.fp</a> </li>
+<li> <a href="footprints/Fuse_PTC__Schurter_PFRA.025.fp">Fuse_PTC__Schurter_PFRA.025.fp</a> </li>
+<li> <a href="footprints/Fuse_PTC__Schurter_PFRA.030.fp">Fuse_PTC__Schurter_PFRA.030.fp</a> </li>
+<li> <a href="footprints/Fuse_PTC__Schurter_PFRA.040.fp">Fuse_PTC__Schurter_PFRA.040.fp</a> </li>
+<li> <a href="footprints/Fuse_PTC__Schurter_PFRA.050.fp">Fuse_PTC__Schurter_PFRA.050.fp</a> </li>
+<li> <a href="footprints/Fuse_PTC__Schurter_PFRA.065.fp">Fuse_PTC__Schurter_PFRA.065.fp</a> </li>
+<li> <a href="footprints/Fuse_PTC__Schurter_PFRA.075.fp">Fuse_PTC__Schurter_PFRA.075.fp</a> </li>
+<li> <a href="footprints/Fuse_PTC__Schurter_PFRA.090.fp">Fuse_PTC__Schurter_PFRA.090.fp</a> </li>
+<li> <a href="footprints/Fuse_PTC__Schurter_PFRA.090.X.009.fp">Fuse_PTC__Schurter_PFRA.090.X.009.fp</a> </li>
+<li> <a href="footprints/Fuse_PTC__Schurter_PFRA.110.fp">Fuse_PTC__Schurter_PFRA.110.fp</a> </li>
+<li> <a href="footprints/Fuse_PTC__Schurter_PFRA.135.fp">Fuse_PTC__Schurter_PFRA.135.fp</a> </li>
+<li> <a href="footprints/Fuse_PTC__Schurter_PFRA.160.fp">Fuse_PTC__Schurter_PFRA.160.fp</a> </li>
+<li> <a href="footprints/Fuse_PTC__Schurter_PFRA.185.fp">Fuse_PTC__Schurter_PFRA.185.fp</a> </li>
+<li> <a href="footprints/Fuse_PTC__Schurter_PFRA.250.fp">Fuse_PTC__Schurter_PFRA.250.fp</a> </li>
+<li> <a href="footprints/Fuse_PTC__Schurter_PFRA.250.X.010.fp">Fuse_PTC__Schurter_PFRA.250.X.010.fp.fp</a> </li>
+<li> <a href="footprints/Fuse_PTC__Schurter_PFRA.300.fp">Fuse_PTC__Schurter_PFRA.300.fp</a> </li>
+<li> <a href="footprints/Fuse_PTC__Schurter_PFRA.400.fp">Fuse_PTC__Schurter_PFRA.400.fp</a> </li>
+<li> <a href="footprints/Fuse_PTC__Schurter_PFRA.500.fp">Fuse_PTC__Schurter_PFRA.500.fp</a> </li>
+<li> <a href="footprints/Fuse_PTC__Schurter_PFRA.600.fp">Fuse_PTC__Schurter_PFRA.600.fp</a> </li>
+<li> <a href="footprints/Fuse_PTC__Schurter_PFRA.700.fp">Fuse_PTC__Schurter_PFRA.700.fp</a> </li>
+<li> <a href="footprints/Fuse_PTC__Schurter_PFRA.800.fp">Fuse_PTC__Schurter_PFRA.800.fp</a> </li>
+<li> <a href="footprints/Fuse_PTC__Schurter_PFRA.900.fp">Fuse_PTC__Schurter_PFRA.900.fp</a> </li>
+<li> <a href="footprints/Fuse_PTC__Schurter_PFRA.1100.fp">Fuse_PTC__Schurter_PFRA.1100.fp</a> </li>
+</ul>
+<ul>
+<li> <a href="footprints/FUSEHOLDER-2250P-2200L-900W.fp">FUSEHOLDER-2250P-2200L-900W.fp</a> - Holder for 5x20mm fuses</li>
+<li> <a href="footprints/Reed-Relay_Meder_DIPxx-1C90-51D.fp">Reed-Relay_Meder_DIPxx-1C90-51D.fp</a> </li>
+<li> <a href="footprints/Reed-Relay_Meder_SILxx-1A72-71D.fp">Reed-Relay_Meder_SILxx-1A72-71D.fp</a> </li>
+</ul>
+<h4>Trimmer -- 3 Lead</h4>
+<ul>
+<li> <a href="footprints/TRIM_TB_3N_1000D__Sprague-Goodman_Spec-1.fp">TRIM_TB_3N_1000D__Sprague-Goodman_Spec-1.fp</a> - Top/Bottom adjust</li>
+<li> <a href="footprints/TRIM_TB_3N_1000D__Sprague-Goodman_Spec-2.fp">TRIM_TB_3N_1000D__Sprague-Goodman_Spec-2.fp</a> </li>
+<li> <a href="footprints/TRIM_TB_3N_1000D__Sprague-Goodman_Std-1.fp">TRIM_TB_3N_1000D__Sprague-Goodman_Std-1.fp</a> </li>
+<li> <a href="footprints/TRIM_TB_3N_1000D__Sprague-Goodman_Std-2.fp">TRIM_TB_3N_1000D__Sprague-Goodman_Std-2.fp</a> </li>
+<li> <a href="footprints/TRIM_TB_3N_1000D__Sprague-Goodman_Std-3.fp">TRIM_TB_3N_1000D__Sprague-Goodman_Std-3.fp</a> </li>
+<li> <a href="footprints/TRIM_TB_3N_800D__Sprague-Goodman-1.fp">TRIM_TB_3N_800D__Sprague-Goodman-1.fp</a> </li>
+<li> <a href="footprints/TRIM_TB_3N_800D__Sprague-Goodman-2.fp">TRIM_TB_3N_800D__Sprague-Goodman-2.fp</a> </li>
+<li> <a href="footprints/TRIM_TB_3N_800D__Sprague-Goodman-3.fp">TRIM_TB_3N_800D__Sprague-Goodman-3.fp</a> </li>
+<li> <a href="footprints/TRIM_T_3N_1000D__Sprague-Goodman_Spec-1.fp">TRIM_T_3N_1000D__Sprague-Goodman_Spec-1.fp</a> - Top adjust</li>
+<li> <a href="footprints/TRIM_T_3N_1000D__Sprague-Goodman_Spec-2.fp">TRIM_T_3N_1000D__Sprague-Goodman_Spec-2.fp</a> </li>
+<li> <a href="footprints/TRIM_T_3N_1000D__Sprague-Goodman_Std-1.fp">TRIM_T_3N_1000D__Sprague-Goodman_Std-1.fp</a> </li>
+<li> <a href="footprints/TRIM_T_3N_1000D__Sprague-Goodman_Std-2.fp">TRIM_T_3N_1000D__Sprague-Goodman_Std-2.fp</a> </li>
+<li> <a href="footprints/TRIM_T_3N_1000D__Sprague-Goodman_Std-3.fp">TRIM_T_3N_1000D__Sprague-Goodman_Std-3.fp</a> </li>
+<li> <a href="footprints/TRIM_T_3N_800D__Sprague-Goodman-1.fp">TRIM_T_3N_800D__Sprague-Goodman-1.fp</a> </li>
+<li> <a href="footprints/TRIM_T_3N_800D__Sprague-Goodman-2.fp">TRIM_T_3N_800D__Sprague-Goodman-2.fp</a> </li>
+<li> <a href="footprints/TRIM_T_3N_800D__Sprague-Goodman-3.fp">TRIM_T_3N_800D__Sprague-Goodman-3.fp</a> </li>
+</ul>
+
+<p><br></p>
+<p><hr noshade size=1></p>
+
+<small>
+
+<p align=center>
+
+Copyright 2009, all rights reserved unless specified otherwise.
+<br>
+<a href="/">gedasymbols.org</a> is maintained by
+<a href="/user/dj_delorie/">DJ Delorie</a></p>
+
+</small>
+
+</body>
+</html>
+
+

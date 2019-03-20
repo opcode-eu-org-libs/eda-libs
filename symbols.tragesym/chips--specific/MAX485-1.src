@@ -1,0 +1,29 @@
+
+[options]
+wordswap=yes
+rotate_labels=no
+sort_labels=no
+generate_pinseq=yes
+sym_width=1400
+pinwidthvertical=400
+pinwidthhorizontal=400
+
+[geda_attr]
+version=20060113 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+dist-license=dual X11 or GPL
+use-license=free/unlimited
+name=MAX485
+refdes=U?
+footprint=DIL 8 300 100 60 28
+numslots=0
+
+[pins]
+1		io	line	l		RO
+2		io	dot 	l		\_RE\_
+3		io	line	l		DE
+4		io	line	l		DI
+7		io	line	r		B
+6		io	line	r		A
+5		pwr	line	b		GND
+8		pwr	line	t		Vcc

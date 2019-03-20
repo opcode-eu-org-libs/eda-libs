@@ -1,0 +1,23 @@
+v 20130925 2
+T 200 200 5 5 0 1 180 6 1
+value=GND
+T 200 250 8 5 0 0 0 0 1
+net=GND:1
+T 100 600 5 10 0 0 0 0 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+T 100 800 5 10 0 0 0 0 1
+dist-license=dual X11 or GPL
+T 100 1000 5 10 0 0 0 0 1
+use-license=free/unlimited
+T 100 400 5 10 0 1 0 0 1
+comment=Earth Ground
+P 100 100 100 300 1 0 1
+{
+T 300 -400 5 5 0 0 270 0 1
+pinseq=1
+T 50 195 5 5 0 0 90 0 1
+pinnumber=1
+}
+L 0 100 200 100 3 0 0 0 -1 -1
+L 40 55 160 55 3 0 0 0 -1 -1
+L 80 15 120 15 3 0 0 0 -1 -1

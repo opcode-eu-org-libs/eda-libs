@@ -1,0 +1,19 @@
+v 20130925 2
+T 200 350 5 9 1 1 0 5 1
+value=Vcc
+T 250 100 8 5 0 0 0 0 1
+net=Vcc:1
+T 100 600 5 10 0 0 0 0 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+T 100 800 5 10 0 0 0 0 1
+dist-license=dual X11 or GPL
+T 100 1000 5 10 0 0 0 0 1
+use-license=free/unlimited
+P 200 200 200 0 1 0 1
+{
+T 400 -300 5 5 0 0 270 0 1
+pinseq=1
+T 0 -5 5 5 0 0 90 0 1
+pinnumber=1
+}
+L 50 200 350 200 3 0 0 0 -1 -1

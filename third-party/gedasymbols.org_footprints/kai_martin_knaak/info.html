@@ -1,0 +1,1028 @@
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>gedasymbols: Kai-Martin Knaak</title>
+<link rel="stylesheet" href="/gedasymbols.css" type="text/css">
+</head>
+
+<body>
+<h1>Kai-Martin Knaak</h1>
+
+
+
+Kai-Martin Knaak <br>
+email: <a href="mailto:kmk@familieknaak.de">kmk@familieknaak.de</a> <br>
+
+<h2>General remarks</h2>
+The catalog of symbols and footprints presented here is self consistent.
+That is, the default footprint attribute of a symbol points
+to one of the footprints given in the footprint section.
+
+<p>Note: All my symbols, footprints and scripts are licensed GPL 2 or GPL 3 for 
+distribution, and unlimited for use. See
+<a href="http://www.gnu.org/licenses/gpl.txt">http://www.gnu.org/licenses.gpl.txt</a>
+for the details</p>
+
+<h2>New Geda Project Script</h2>
+<a href="new_geda_project.sh">new_geda_project.sh</a> is a little convinience
+script to start a new geda project. When given a project name, it creates
+a directory structure and populates it with some config files (gafrc,
+attribs). In addition, it copies a <a href ="doku_template.lyx">
+documentation template</a> in lyx format to the directory. It does the same
+with the bash scripts bomdruck.sh and layoutdruck.sh (see below).
+
+The script includes an option to initialize a git repository for the project.
+
+<h2>Script to print a bill of materials (BOM)</h2>
+The almost trivial bash script <a href="bomdruck.sh">bomdruck.sh</a> uses
+gnetlist to derive two versions of a bill of materials. The first lists one
+component per line. The other collates all components with the same value. 
+
+<h2>Scripted print of pcb layouts</h2>
+The bash script <a href="layoutdruck.sh">layoutdruck.sh</a> uses PCB actions on the 
+command line of pcb to produce a set of printouts for use in documentation. The
+print is geared to facilitate population and debugging of prototypes. It produces
+ a multi page PDF with top and bottom layout, each with values and with 
+refdes. The layout can be spread between several sheets for large layouts.
+
+Optionally, there is a  bottom view overlayed with a mirrored view of top silk. 
+This x-ray view comes handy with thru hole designs.
+
+<p>In addition, photo realistic PNG export of top and bottom side is produced. A drop
+shadow is added to the PNG to make the image even more photo realistic.
+
+<p>Note, there is a bug in pcb that prevents the execution of actions when printing
+from the command line. This script needs a bug patch of pcb not yet applied to the 
+distributed version of pcb.
+
+<h2>PDF export of all schematics in a hierarchy</h2>
+The bash script <a href="schaltplandruck.sh">schaltplandruck.sh</a> uses print.scm 
+from the gnetlist distribution and ps2pdf to create output. It recursively descends
+into subsheets of a hierarchy and collects prints every unique schematic it encounters.
+
+<h2>More scripts</h2>
+<ol>  
+<li> <a href="set_pinnumber.awk">set_pinnumber.awk</a>: Emits the footprint file 
+given on the command line with the value of all pin and pad names set to the 
+value of their number. Requires awk.
+<li> <a href="set_name_value_description.sh">set_name_value_description.sh</a>:
+Sets name, value and description to the same string. I use this script for footprint
+collections in the library.
+<li>  <a href="set_clearance.sh">set_clearance.sh</a>: Sets the polygon clearance
+and mask clearance of pins and pads. This is useful for footprint generation or
+to comply with specific fab requirements.
+<li> <a href="set_linewidth.sh"> set_linewidth.sh</a>: Sets the width of
+silk lines in footprints. Default width is 0.2 mm.
+<li> <a href="extract_footprints.sh">extract_footprints.sh</a>: Extracts all 
+footprints of a layout and writes them to individual files in the currrent 
+working directory.
+<li> <a href="find-missing-symbols.sh">find-missing-symbols.sh</a>: Searches all 
+*.sch in $PWD and sub dirs for missing symbols.
+<li> <a href="collect_gedaconfs.sh">collect_gedaconfs.sh</a>: Collects the
+config files in $HOME/.gEDA and $HOME/.pcb into a compressed tar file.
+<li> <a href="set_number_of_pages.sh">set_number_of_pages.sh</a>: Sets the
+attribute "number_of_pages" of all schematics files in the current working
+directory. This is a work-arround for the absence of methods to handle global
+attributes in gschem.
+<li> <a href="set_net_of_port_symbol.sh">set_net_of_port_symbol.sh</a>: Sets the
+net attribute of port symbols to the value given by the refdes. With this setting
+gnetlist connects all ports of a kind. Else, only the first instance of the port
+with a given refdes receives connection to the parent sheet.
+<li> <a href="set_width_of_selected_lines.sh"> set_width_of_selected_lines.sh</a>: 
+Manipulates the width of selected lines. Divides or multiplies line width by 10.
+This can be useful to temporarily suppress DRC warnings. E.g., if some layers
+require tighter DRC rules than others.
+<li> <a href="layer_content.sh"> layer_content.sh</a>: Cut, or paste the content
+of a layer wholesale from a layout. 
+</ol>
+
+<h3> Templates
+<ul>
+   <li> <a href="footprints/footprint_template.pcb"> footprint_template.pcb</a>
+ - a template for footprint design</li>
+</ul>
+</h3>
+
+<h2>Essential Lib</h2>
+The <a href="essential/essential.html"> essential lib</a> is an effort to 
+put together an improved default library for geda/pcb. Unlike the current
+default libary it is supposed to be usable as is.
+
+<h2>Symbols</h2>
+The symbols in this sections are designed according to the following design criteria:
+<ol>
+	<li>they contain a default footprint attribute.
+	<li>the footprint attribute is visible on the schematic and printed
+	with a smaller font size than the refdes and the value of the symbol.
+	<li>they contain a human readable description
+	<li>power pins of integrated circuits are split off to a seperate power symbol
+	<li>pin numbers are hidden, if they follow a generally accepted standard
+</ol>
+
+<h3>Title blocks</h3>
+These title blocks include attributes for date, author, project name and page number.
+<ul>
+<li> <a href="symbols/titleblock/title-A4-2.sym">title-A4-2.sym</a> </li>
+<li> <a href="symbols/titleblock/title-A3-2.sym">title-A3-2.sym</a> </li>
+<li> <a href="symbols/titleblock/title-A2-2.sym">title-A2-2.sym</a> </li>
+<li> <a href="symbols/titleblock/title-A1-2.sym">title-A1-2.sym</a> </li>
+<li> <a href="symbols/titleblock/title-A0-2.sym">title-A0-2.sym</a> </li>
+<li> <a href="symbols/titleblock/title-block.sym">title-block.sym</a> - just the block, without a frame </li>
+</ul>
+
+These port symbols connect subsheet nets with pins of subsheet symbols on the master sheet. 
+<ul>
+<li> <a href="symbols/titleblock/in.sym">in.sym</a> - incoming signal on subsheet</li>
+<li> <a href="symbols/titleblock/out.sym">out.sym</a> - outgoing signal on subsheet</li>
+</ul>
+
+<h3>Templates</h3>
+Some convenience templates for symbol creation.
+<ul>
+<li><a href="symbols/templates/pin_left.sym">pin_left.sym</a> -  Use the option "include as individual components"</li>
+<li><a href="symbols/templates/pin_right.sym">pin_right.sym</a> -  Use the option "include as individual components"</li>
+<li><a href="symbols/templates/pin_top.sym">pin_top.sym</a> -  Use the option "include as individual components"</li>
+<li><a href="symbols/templates/pin_bottom.sym">pin_bottom.sym</a> - template pin for symbol creation</li>
+<li> <a href="symbols/templates/subsheet.sym">subsheet.sym</a> - subsheet template with pins 300 units apart</li>
+<li> <a href="symbols/templates/subsheet-2.sym">subsheet-2.sym</a> - subsheet template with pins 400 units apart</li>
+</ul>
+
+<h3>Discretes</h3>
+	<h4>Various Discretes</h4>
+	<ul>
+	<li><a href="symbols/discretes/inductor.sym">inductor.sym</a> - inductor, drawn horizontally</li>
+	<li><a href="symbols/discretes/inductor_vert.sym">inductor_vert.sym</a> - inductor, drawn vertically</li>
+	<li><a href="symbols/discretes/cap_horiz.sym">cap_horiz.sym</a> - bipolar capacitor, drawn horizontally</li>
+	<li><a href="symbols/discretes/cap_vert.sym">cap_vert.sym</a> - bipolar capacitor, drawn vertically</li>
+	<li><a href="symbols/discretes/elko.sym">elko.sym</a> - electrolytic capacitor</li>
+	<li><a href="symbols/discretes/res_SMD.sym">res_SMD.sym</a> - resistor with 0805 SMD footprint</li>
+	<li><a href="symbols/discretes/res_SMD_vert.sym">res_SMD_vert.sym</a> - SMD resistor, drawn vertically</li>
+	<li><a href="symbols/discretes/res_ref.sym">res_ref.sym</a> - reference resistor</li>
+	<li><a href="symbols/discretes/res_socket.sym">res_socket.sym</a> - resistor in socket</li>
+	<li><a href="symbols/discretes/res_horiz.sym">res_horiz.sym</a> - resistor, drawn horizontally</li>
+	<li><a href="symbols/discretes/res_thru_vert.sym">res_vert.sym</a> - resistor, drawn vertically</li>
+	<li><a href="symbols/discretes/res_zero.sym">res_zero.sym</a> - 0 Ohm resistor</li>
+	<li><a href="symbols/discretes/potentiometer.sym">potentiometer.sym</a> - potentiometer, drawn horizontally </li>
+	<li><a href="symbols/discretes/potentiometer_vert.sym">potentiometer_vert.sym</a> - potentiometer, drawn vertically</li>
+	<li><a href="symbols/discretes/varistor.sym">varistor.sym</a> - varistor</li>
+	</ul>
+
+	<h4>Diodes</h4>
+	<ul>
+	<li><a href="symbols/discretes/diodes/bridge_rectifier_SMD.sym">bridge_rectifier_SMD.sym</a> - bridge rectifier, value preset to DIOTEC B40S</li>
+	<li><a href="symbols/discretes/diodes/diode.sym">diode.sym</a> - generic diode, preset to CD4148</li>
+	<li><a href="symbols/discretes/diodes/diode_vert.sym">diode_vert.sym</a> - generic diode, vertical orientation</li>
+	<li><a href="symbols/discretes/diodes/flyback_SOT23.sym">flyback_SOT23.sym</a> - A pair of schottky diodes for flyback protection in SOT23, e.g. BAT64-04</li>
+	<li><a href="symbols/discretes/diodes/laserdiode.sym">laserdiode.sym</a> - three pin laser diode </li>
+	<li><a href="symbols/discretes/diodes/led_3mm.sym">led_3mm.sym</a> - LED, thru hole, 3mm diameter</li>
+	<li><a href="symbols/discretes/diodes/led_SMD.sym">led_SMD.sym</a> - LED, SMD footprint, 1210.fp</li>
+	<li><a href="symbols/discretes/diodes/photodiode.sym">photodiode.sym</a> - garden variety photo diode, value preset to BPW34</li>
+	<li><a href="symbols/discretes/diodes/photodiode_TO18.sym">photodiode_TO18.sym</a> - three pin photo diode, value preset to S5972 </li>
+	<li><a href="symbols/discretes/diodes/schottky.sym">schottky.sym</a> - schottky diode, SMD minimelf, value preset to LL4148</li>
+	<li><a href="symbols/discretes/diodes/tvs.sym">tvs.sym</a> - transient voltage suppressor diode (TVS), value preset to P6SMB18AC</li>
+	<li><a href="symbols/discretes/diodes/tvs_vert.sym">tvs_vert.sym</a> - TVS diode, vertical orientation</li>
+	<li><a href="symbols/discretes/diodes/zener_minimelf.sym">zener_minimelf.sym</a> - zener diode, SMD minimelf, value preset to BZV55-Cxx</li>
+	<li><a href="symbols/discretes/diodes/zener_SOT23.sym">zener_SOT23.sym</a> - zener diode, SMD SOT23, value preset to BZX84-Cxx</li>
+	<li><a href="symbols/discretes/diodes/zener_thru.sym">zener_thru.sym</a> - zener diode, thru hole, value preset to ZPY-xx</li>
+	</ul>
+
+	<h4>Transistors</h4>
+	<ul>
+	<li><a href="symbols/discretes/transistors/npn_transistor.sym">npn_transistor.sym</a> - npn transistor</li>
+	<li><a href="symbols/discretes/transistors/pnp_transistor.sym">pnp_transistor.sym</a> - pnp transistor</li>
+	<li><a href="symbols/discretes/transistors/njfet.sym">njfet.sym</a> - </li>
+	<li><a href="symbols/discretes/transistors/nmosfet.sym">nmosfet.sym</a> - NMOSFET</li>
+	<li><a href="symbols/discretes/transistors/nmosfet_power.sym">nmosfet_power.sym</a> - </li>
+	<li><a href="symbols/discretes/transistors/pmosfet.sym">pmosfet.sym</a> - PMOSFET</li>
+	<li><a href="symbols/discretes/transistors/pmosfet_power.sym">pmosfet_power.sym</a> - </li>
+	<li><a href="symbols/discretes/transistors/igbt.sym">igbt.sym</a> - IGBT </li>
+	<li><a href="symbols/discretes/transistors/igbt_diode.sym">igbt_diode.sym</a> - IGBT with free wheeling diode </li>
+	</ul>
+
+
+<h3>Generic integrated analogs</h3>
+	<h4>Amplifiers</h4>
+	<ul>
+	<li><a href="symbols/analog/amplifiers/instr_amp_8pin.sym">instr_amp_8pin.sym</a> - generic eight pin instrumentation amplifier, defaults to LT1167</li>
+	<li><a href="symbols/analog/amplifiers/instr_amp_INA163.sym">instr_amp_INA163.sym</a> - instrumentation amplifier INA163, SO14</li>
+	<li><a href="symbols/analog/amplifiers/instr_amp_INA163_pwr.sym">instr_amp_INA163_pwr.sym</a> - power symbol for INA163</li>
+	<li><a href="symbols/analog/amplifiers/driver_TDA2030.sym">driver_TDA2030.sym</a>power opamp in PENTAWATT package. Pin compatible models TDA2030, TDA2050, LM675, L165 </li>
+	<li><a href="symbols/analog/amplifiers/driver_BUF634.sym">driver_BUF634.sym</a> - BUF634, 250 mA analog line driver</li>
+	<li><a href="symbols/analog/amplifiers/mmic-BGA427.sym">mmic-BGA427.sym</a> - MMIC amplifier, footprint SO343, BGA427, BGA420 </li>
+	<li><a href="symbols/analog/amplifiers/mmic-ERA.sym">mmic-ERA.sym</a> - MMIC amplifier, four pin style by Minicircuits </li>
+	<li><a href="symbols/analog/amplifiers/opamp_offset.sym">opamp_offset.sym</a> - </li>
+	<li><a href="symbols/analog/amplifiers/opamp_with_pwr_pins.sym">opamp_with_pwr_pins.sym</a> - generic operational amplifier with explicit power pins</li>
+	<li><a href="symbols/analog/amplifiers/opamp_single.sym">opamp_single.sym</a> - generic operational amplifier</li>
+	<li><a href="symbols/analog/amplifiers/opamp_single_pwr.sym"> opamp_single_pwr.sym</a> - power pins for operational amplifier</li>
+	<li><a href="symbols/analog/amplifiers/opamp_dual.sym">opamp_dual.sym</a> - generic dual operational amplifier</li>
+	<li><a href="symbols/analog/amplifiers/opamp_dual_pwr.sym">opamp_dual_pwr.sym</a> - power pins for dual operational amplifier</li>
+	<li><a href="symbols/analog/amplifiers/opamp_quad.sym">opamp_quad.sym</a> - generic quad operational amplifier</li>
+	<li><a href="symbols/analog/amplifiers/opamp_quad_pwr.sym">opamp_quad_pwr.sym</a> - power pins for quad operational amplifier</li>
+	<li><a href="symbols/analog/amplifiers/ota_LM13700.sym">ota_LM13700.sym</a> - dual operational transconductance amplifier (OTA) LM31700</li>
+	<li><a href="symbols/analog/amplifiers/ota_LM13700_buffer.sym">ota_LM13700_buffer.sym</a> - buffer for OTA LM31700</li>
+	<li><a href="symbols/analog/amplifiers/ota_LM13700_pwr.sym">ota_LM13700_pwr.sym</a> - power pins for OTA LM31700 </li>
+	</ul>
+
+
+	<h4>Comparators</h4>
+	<ul>
+	<li><a href="symbols/analog/comparators/comparator.sym">comparator.sym</a> - </li>
+	<li><a href="symbols/analog/comparators/comparator_pwr.sym">comparator_pwr.sym</a> - </li>
+	<li><a href="symbols/analog/comparators/comparator_dual.sym">comparator_dual.sym</a> - </li>
+	<li><a href="symbols/analog/comparators/comparator_dual_pwr.sym">comparator_dual_pwr.sym</a> - </li>
+	<li><a href="symbols/analog/comparators/comparator_quad.sym">comparator_quad.sym</a> - quad comparator, pin-out like LM339</li>
+	<li><a href="symbols/analog/comparators/comparator_quad_pwr.sym">comparator_quad_pwr.sym</a> - </li>
+	<li><a href="symbols/analog/comparators/comparator_quad_b.sym">comparator_quad_b.sym</a> - quad comparator, pin-out like quad opamp, e.g. TLV3494</li>
+	<li><a href="symbols/analog/comparators/comparator_quad_b_pwr.sym">comparator_quad_b_pwr.sym</a> - </li>
+	<li><a href="symbols/analog/comparators/comparator_LT1719.sym">comparator_LT1719.sym</a> - fast comparator LT1719</li>
+	</ul>
+
+    <h4>Optocouplers</h4>
+	<ul>
+	<li><a href="symbols/analog/optocouplers/optocoupler_darlington.sym">optocoupler_darlington.sym</a> - optocoupler with darlington transistor pair output</li>
+	<li><a href="symbols/analog/optocouplers/optocoupler_HCNR20_LED.sym">optocoupler_HCNR20_LED.sym</a> - optocoupler with two photodiodes, sender</li>
+	<li><a href="symbols/analog/optocouplers/optocoupler_HCNR20_PD.sym">optocoupler_HCNR20_PD.sym</a> - optocoupler with two photodiodes, receivers</li>
+	<li><a href="symbols/analog/optocouplers/optocoupler_photoFET_H11F.sym">optocoupler_photoFET_H11F.sym</a> - optocoupler with photo FET output</li>
+	<li><a href="symbols/analog/optocouplers/optocoupler_schmitt_trigger_PC900.sym">optocoupler_schmitt_trigger_PC900.sym</a> - optocoupler with schmitt trigger output</li>
+	<li><a href="symbols/analog/optocouplers/optocoupler_PVI1050.sym">optocoupler_PVI1050.sym</a> - IRF PVI1050, dual photovoltaic MOSFET driver</li>
+	<li><a href="symbols/analog/optocouplers/optocoupler_quad.sym">optocoupler_quad.sym</a> - quad optocoupler with transistor output</li>
+	<li><a href="symbols/analog/optocouplers/optocoupler_VOM1271.sym">optocoupler_VOM1271.sym</a> - VISHAY VOM1271, photovoltaic MOSFET driver</li>
+	</ul>
+
+	<h4>Regulators</h4>
+	<ul>
+	<li><a href="symbols/analog/lm399.sym">lm399.sym</a> - </li>
+	<li><a href="symbols/analog/regulators/regulator_positive_fixed.sym">regulator_positive_fixed.sym</a> - linear voltage regulator with fixed positive output. E.g LM7805</li>
+	<li><a href="symbols/analog/regulators/regulator_positive_variable.sym">regulator_positive_variable.sym</a> - linear voltage regulator with adjustable positive output. E.g LM317</li>
+	<li><a href="symbols/analog/regulators/regulator_negative_fixed.sym">regulator_negative_fixed.sym</a> - linear voltage regulator with fixed negative output. E.g LM7905</li>
+	<li><a href="symbols/analog/regulators/regulator_negative_variable.sym">regulator_negative_fixed.sym</a> - linear voltage regulator with adjustable negative output. E.g LM337</li>
+	<li><a href="symbols/analog/regulators/refgerence_SO8.sym">reference_SO8.sym</a> - precision voltage reference, e.g. REF02, AD780</li>
+	</ul>
+
+
+	<h4>Specific integrated analogs</h4>
+	<ul>
+	<li><a href="symbols/analog/EL7222.sym">EL7222.sym</a> - dual video driver, inverting/non-inverting</li>
+	<li><a href="symbols/analog/phase_detectors/phase_detector_HMC439QS16G.sym">phase_detector_HMC439QS16G.sym</a> - low drift phase detector by Hittite</li>
+	<li><a href="symbols/analog/phase_detectors/phase_detector_MCH12140.sym">phase_detector_MCH12140.sym</a> - phase detector by ON-Semi</li>
+	<li><a href="symbols/analog/poti_Alps_RK11K112.sym">poti_Alps_RK11K112.sym</a> - potentiometer with footprint for Alps, horizontal mount</li>
+	<li><a href="symbols/analog/poti_Spectrol_534.sym">poti_Spectrol_534.sym</a> - precision wirewound ptentiometer</li>
+	<li><a href="symbols/analog/ntc.sym">ntc.sym</a> - temperature sensor, NTC type </li>
+	<li><a href="symbols/analog/minicircuits/low_pass_filter_minicircuits_PLP-xxx.sym">low_pass_filter_minicircuits_PLP-xxx.sym</a> - Minicicuits RF low pass filter, model PLP-***</li>
+	<li><a href="symbols/analog/minicircuits/oscillator_minicircuits_POS-xxx.sym">oscillator_minicircuits_POS-xxx.sym</a> - Minicicuits oscillator, model POS-***</li>
+	<li><a href="symbols/analog/minicircuits/rf_switch_minicircuits_PSW-1211.sym">rf_switch_minicircuits_PSW-1211.sym</a> - Minicicuits RF switch, model PSW-1211</li>
+	<li><a href="symbols/analog/minicircuits/variable_attenuator_minicircuits_TFAS-1.sym">variable_attenuator_minicircuits_TFAS-1.sym</a> - Minicicuits variable attenuator, model TFAS-1</li>
+	</ul>
+
+
+<h3>Digitals</h3>
+I don't do much digital electronics except for some basic 74xxx components...
+<ul>
+<li><a href="symbols/digital/555.sym">555.sym</a> - general purpose timer, NE555, TS555, TLC555, LMC555, LM555,  SA555, ICM7555, etc.</li>
+<li><a href="symbols/digital/556.sym">556.sym</a> - dual general purpose timer </li>
+<li><a href="symbols/digital/max232.sym">max232.sym</a> - RS232 driver</li>
+<li><a href="symbols/digital/ULN2803.sym">ULN2803.sym</a> - 8-way driver for digital signals</li>
+<li><a href="symbols/digital/ULN2803_pwr.sym">ULN2803_pwr.sym</a> - power symbol for 8-way driver</li>
+</ul>
+
+	<h4> 74xxx </h4>
+	<ul>
+	<li><a href="symbols/digital/74xxx/7400_4xNAND.sym">7400_4xNAND.sym</a> - </li>
+	<li><a href="symbols/digital/74xxx/7402_4xNOR.sym">7402_4xNOR.sym</a> - </li>
+	<li><a href="symbols/digital/74xxx/7404_6xNOT.sym">7404_6xNOT.sym</a> - 6x NOT gate</li>
+	<li><a href="symbols/digital/74xxx/7409_4xNAND.sym">7409_4xNAND.sym</a> - 4x NAND with open collector</li>
+	<li><a href="symbols/digital/74xxx/7414_6xNOT_schmitt_trigger.sym">7414_6xNOT_schmitt_trigger.sym </a> - 6x NOT gate with schmitt trigger</li>
+	<li><a href="symbols/digital/74xxx/7432_4xOR.sym">7432_4xOR.sym</a> - 4x two input OR gate </li>
+	<li><a href="symbols/digital/74xxx/7486_4xXOR.sym">7486_4xXOR.sym</a> - 4x two input XOR gate </li>
+	<li><a href="symbols/digital/74xxx/74112_2xJK.sym">74112_2xJK.sym</a> - 2x JK flip-flop</li>
+	<li><a href="symbols/digital/74xxx/74123_2xMONOFLOP.sym">74123_2xMONOFLOP.sym</a> - 2x mono-flop, retriggerable</li>
+	<li><a href="symbols/digital/74xxx/74132_4xNAND_schmitt_trigger.sym">74132_4xNAND_schmitt_trigger.sym</a> - 4x NAND, schmitt trigger on input</li>
+	<li><a href="symbols/digital/74xxx/74161_COUNTER.sym">74161_COUNTER.sym</a> - 4 bit binary counter</li>
+	<li><a href="symbols/digital/74xxx/74163_COUNTER_DECIMAL.sym">74163_COUNTER_DECIMAL.sym</a> - 4 bit decimal counter</li>
+	<li><a href="symbols/digital/74xxx/7420_2x4NAND.sym">7420_2x4NAND.sym</a> - 2x NAND with 4 inputs</li>
+	<li><a href="symbols/digital/74xxx/74_pwr16.sym">74_pwr16.sym</a> - power symbol for 16 pin package</li>
+	<li><a href="symbols/digital/74xxx/74_pwr.sym">74_pwr.sym</a> - power symbol for 14 pin package, Vcc on pin 14</li>
+	</ul>
+
+	<h4> Processors </h4>
+	<ul>
+	<li><a href="symbols/digital/processors/ATXmegaA1.sym">ATXmegaA1.sym</a>, <a href="symbols/digital/processors/ATXmegaA1.symdef">ATXmegaA1.symdef</a> - ATXmegaA1, 100 pin TQFP</li>
+	<li><a href="symbols/digital/processors/ATXmegaA3.sym">ATXmegaA3.sym</a>, <a href="symbols/digital/processors/ATXmegaA3.symdef">ATXmegaA3.symdef</a> - ATXmegaA3, 64 pin TQFP</li>
+	<li><a href="symbols/digital/processors/ATmega32TQFP.sym">ATmega32TQFP.sym</a> - ATmega32, TQFP-44</li>
+	<li><a href="symbols/digital/processors/ATXmegaA4.sym">ATXmegaA4.sym</a>, <a href="symbols/digital/processors/ATXmegaA4.symdef">ATXmegaA4.symdef</a> - ATXmegaA4, 44 pin TQFP</li>
+	<li><a href="symbols/digital/processors/ATXmegaB1.sym">ATXmegaB1.sym</a>, <a href="symbols/digital/processors/ATXmegaB1.symdef">ATXmegaB3.symdef</a> - ATXmegaB1, specialized for LCD, 100 pin TQFP</li>
+	<li><a href="symbols/digital/processors/ATXmegaB3.sym">ATXmegaB3.sym</a>, <a href="symbols/digital/processors/ATXmegaB3.symdef">ATXmegaB3.symdef</a> - ATXmegaB3, specialized for LCD, 64 pin TQFP</li>
+	<li><a href="symbols/digital/processors/ATXmegaC3.sym">ATXmegaC3.sym</a> - ATXmegaC3, 64 pin TQFP (pin compatible with ATXmegaA3)</li>
+	<li><a href="symbols/digital/processors/ATXmegaC4.sym">ATXmegaC4.sym</a> - ATXmegaC4, 44 pin TQFP (pin compatible with ATXmegaA4)</li>
+	<li><a href="symbols/digital/processors/ATXmegaD3.sym">ATXmegaD3.sym</a> - ATXmegaD3, 64 pin TQFP (pin compatible with ATXmegaA3)</li>
+	<li><a href="symbols/digital/processors/ATXmegaD4.sym">ATXmegaD4.sym</a> - ATXmegaD4, 44 pin TQFP (pin compatible with ATXmegaA4)</li>
+	<li><a href="symbols/digital/processors/ATXmegaE5.sym">ATXmegaE5.sym</a>, <a href="symbols/digital/processors/ATXmegaE5.symdef">ATXmegaE5.symdef</a> - ATXmegaE5, 32 pin TQFP </li>
+	</ul>
+
+	<h4> CPLD Altera MAX II EPM240T100 </h4>
+	<ul>
+	<li><a href="symbols/digital/altera/Altera_MAX_II_EPM240T100_bank1.sym">Altera_MAX_II_EPM240T100_bank1.sym</a> - first bank of IO signals</li>
+	<li><a href="symbols/digital/altera/Altera_MAX_II_EPM240T100_bank1.symdef">Altera_MAX_II_EPM240T100_bank1.symdef</a> - first bank, input file for djboxsym</li>
+	<li><a href="symbols/digital/altera/Altera_MAX_II_EPM240T100_bank2.sym">Altera_MAX_II_EPM240T100_bank2.sym</a> - second bank of IO signals</li>
+	<li><a href="symbols/digital/altera/Altera_MAX_II_EPM240T100_bank2.symdef">Altera_MAX_II_EPM240T100_bank2.symdef</a> - second bank of IO signals, input file for djboxsym</li>
+	<li><a href="symbols/digital/altera/Altera_MAX_II_EPM240T100_functions_PWR.sym">Altera_MAX_II_EPM240T100_functions_PWR.sym</a> - function pins and power connections</li>
+	<li><a href="symbols/digital/altera/Altera_MAX_II_EPM240T100_functions_PWR.symdef">Altera_MAX_II_EPM240T100_functions_PWR.symdef</a> - function pins and power connections, input file for djboxsym</li>
+	</ul>
+
+	<h4> Clock Dividers </h4>
+	<ul>
+	<li><a href="symbols/digital/dividers/divider_MC12093.sym">divider_MC12093.sym</a> divide by 2, by 4, by 8, by ON-Semi </li>
+	<li><a href="symbols/digital/dividers/ICS674-01_A.sym">ICS674-01_A.sym</a> versertile divider by IDT, 7 bit component </li>
+	<li><a href="symbols/digital/dividers/ICS674-01_B.sym">ICS674-01_B.sym</a> versertile divider by IDT, 9 bit component </li>
+	<li><a href="symbols/digital/dividers/ICS674-01_pwr.sym">ICS674-01_pwr.sym</a> versertile divider by IDT, power pins </li>
+	</ul>
+
+
+	<h4> Analog Switches</h4>
+	<ul>
+	<li><a href="symbols/digital/analog_switches/analog_switch_TS5A3157.sym">analog_switch_TS5A3157.sym</a> - single analog switch TS5A3157, or TSA53159 </li>
+	<li><a href="symbols/digital/analog_switches/analog_switch_TS5A3157_pwr.sym">analog_switch_TS5A3157_pwr.sym</a> - single analog switch, power symbol </li>
+	<li><a href="symbols/digital/analog_switches/analog_switch_DG467.sym">analog_switch_DG467.sym</a> - single analog switch in TSOP6 package, like DG467, or DG447</li>
+	<li><a href="symbols/digital/analog_switches/analog_switch_DG468.sym">analog_switch_DG468.sym</a> - single analog switch in TSOP6 package, like DG468, or DG448</li>
+	<li><a href="symbols/digital/analog_switches/analog_switch_TSOP6_pwr.sym">analog_switch_TSOP6_pwr.sym</a> - single analog switch, power symbol, TSOP6 </li>
+	<li><a href="symbols/digital/analog_switches/multiplexer_DG406.sym">multiplexer_DG406.sym</a> - multiplexer 4 bit to 16 bipolar channels, SO28 </li>
+	<li><a href="symbols/digital/analog_switches/quad_analog_switch.sym">quad_analog_switch.sym</a> - quad analog closing switch like DG201, DG211, or ADG1311 </li>
+	<li><a href="symbols/digital/analog_switches/quad_analog_switch_closed.sym">quad_analog_switch_closed.sym</a> - quad analog opening switch like DG202, DG212, or ADG1312 </li>
+	<li><a href="symbols/digital/analog_switches/quad_analog_switch_pwr.sym">quad_analog_switch_pwr.sym</a> - power pins for quad analog switch </li>
+	</ul>
+
+<h3>Connectors</h3>
+<ul>
+<li><a href="symbols/connectors/con_1x1.sym">con_1x1.sym</a> - generic one pin connector</li>
+<li><a href="symbols/connectors/con_1x2.sym">con_1x2.sym</a> - generic two pin connector</li>
+<li><a href="symbols/connectors/con_1x3.sym">con_1x3.sym</a> - generic three pin connector</li>
+<li><a href="symbols/connectors/con_1x4.sym">con_1x4.sym</a> - generic four pin connector</li>
+<li><a href="symbols/connectors/con_1x5.sym">con_1x5.sym</a> - generic five pin connector</li>
+<li><a href="symbols/connectors/con_1x8.sym">con_1x8.sym</a> - generic eight pin connector, e.g. for RJ45-8P8C </li>
+<li><a href="symbols/connectors/con_1x10.sym">con_1x10.sym</a> - generic nine pin connector</li>
+<li><a href="symbols/connectors/con_1x12.sym">con_1x12.sym</a> - generic twelve pin connector</li>
+<li><a href="symbols/connectors/con_1x14.sym">con_1x14.sym</a> - generic fourteen pin connector</li>
+<li><a href="symbols/connectors/con_1x16.sym">con_1x16.sym</a> - generic sixteen pin connector</li>
+<li><a href="symbols/connectors/con_1x18.sym">con_1x18.sym</a> - generic eighteen pin connector</li>
+<li><a href="symbols/connectors/con_2x3.sym">con_2x3.sym </a> - </li>
+<li><a href="symbols/connectors/con_2x3_side.sym">con_2x3_side.sym</a> - </li>
+<li><a href="symbols/connectors/con_2x5.sym">con_2x5.sym</a> - </li>
+<li><a href="symbols/connectors/con_2x8.sym">con_2x8.sym</a> - </li>
+<li><a href="symbols/connectors/con_2x10.sym">con_2x10.sym</a> - </li>
+<li><a href="symbols/connectors/con_2x10a.sym">con_2x10a.sym</a> - 20 pin, alternative pin numbers. </li>
+<li><a href="symbols/connectors/con_2x16.sym">con_2x16.sym</a> - </li>
+<li><a href="symbols/connectors/con_2x20.sym">con_2x20.sym</a> - </li>
+<li><a href="symbols/connectors/con_2x32.sym">con_2x32.sym</a> (no footprint, yet.)</li>
+<li><a href="symbols/connectors/con_4x_shield.sym">con_4x_shield.sym</a> - shielded four way connector, e.g. LEMO EPG.0B.304.HLN</li>
+<li><a href="symbols/connectors/con_BNC.sym">con_BNC.sym</a> - intuitive symbol for a BNC connector</li>
+<li><a href="symbols/connectors/con_DVI_D.sym">con_DVI_D.sym</a> - connector for digital LCD screens</li>
+<li><a href="symbols/connectors/con_pm_Ub.sym">con_pm_Ub.sym</a> - a 3 pole connector dedicated to distribute power among boards</li>
+<li><a href="symbols/connectors/con_RIACON_2pin.sym">con_RIACON_2pin.sym</a> - connector by RIA connect, 2 pin</li>
+<li><a href="symbols/connectors/con_RIACON_3pin.sym">con_RIACON_3pin.sym</a> - connector by RIA connect, 3 pin</li>
+<li><a href="symbols/connectors/con_rj45.sym">con_rj45.sym</a> - 8P8C connector, also known as RJ45 </li>
+<li><a href="symbols/connectors/con_SCSI68.sym">con_SCSI68.sym</a> - SCSI connector, 68 pins</li>
+<li><a href="symbols/connectors/con_XLR3.sym">con_XR3.sym</a> - three pin XLR connector </li>
+<li><a href="symbols/connectors/con_3pin_supply.sym">con_3pin_supply.sym</a> - 3 pin connector for power supply</li>
+<li><a href="symbols/connectors/PS-2.sym"> PS-2.sym</a> - connector by JAE, IL-G series, 2 pins, model IL-G-2S-S3C2-SA </li>
+<li><a href="symbols/connectors/PS-3.sym"> PS-3.sym</a> - connector by JAE, IL-G series, 3 pins, model IL-G-3S-S3C2-SA </li>
+<li><a href="symbols/connectors/PS-5.sym"> PS-5.sym</a> - connector by JAE, IL-G series, 5 pins, model IL-G-5S-S3C2-SA </li>
+<li><a href="symbols/connectors/PS-8.sym"> PS-8.sym</a> - connector by JAE, IL-G series, 8 pins, model IL-G-8S-S3C2-SA </li>
+<li><a href="symbols/connectors/subD9.sym">subD9.sym</a> - SubD9, aka DB9</li>
+<li><a href="symbols/connectors/con_SMA.sym">con_SMA.sym</a> - intuitive symbol for a SMA connector</li>
+<li><a href="symbols/connectors/subD9-2.sym">subD9-2.sym</a> - more compact version of SubD9.sym</li>
+<li><a href="symbols/connectors/subD15.sym">subD15.sym</a> - SubD15, aka DB15</li>
+<li><a href="symbols/connectors/subD25.sym">subD25.sym</a> - SubD25, aka DB25</li>
+</ul>
+
+
+<h3>Power symbols</h3>
+<ul>
+<li><a href="symbols/power/5V-.sym">5V-.sym</a> - </li>
+<li><a href="symbols/power/5V+.sym">5V+.sym</a> - </li>
+<li><a href="symbols/power/12V-.sym">12V-.sym</a> - </li>
+<li><a href="symbols/power/12V+.sym">12V+.sym</a> - </li>
+<li><a href="symbols/power/15V-.sym">15V-.sym</a> - </li>
+<li><a href="symbols/power/15V+.sym">15V+.sym</a> - </li>
+<li><a href="symbols/power/custom_GND.sym">custom_GND.sym</a> - GND symbol with customizable net attribute</li>
+<li><a href="symbols/power/custom_minus.sym">custom_minus.sym</a> - negative power symbol with customizable net attribute</li>
+<li><a href="symbols/power/custom_plus.sym">custom_plus.sym</a> - positive power symbol with customizable net attribute</li>
+<li><a href="symbols/power/gnd.sym">gnd.sym</a> - ground </li>
+<li><a href="symbols/power/rGND.sym">rGND.sym</a> - reference ground</li>
+<li><a href="symbols/power/nc.sym">nc.sym</a> - a symbol to mark deliberately not connected pins</li>
+<li><a href="symbols/power/Ub-.sym">Ub-.sym</a> - </li>
+<li><a href="symbols/power/Ub+.sym">Ub+.sym</a> - </li>
+<li><a href="symbols/power/vcc-minus.sym">vcc-minus.sym</a> - </li>
+<li><a href="symbols/power/vcc.sym">vcc.sym</a> - </li>
+<li><a href="symbols/power/vref_minus.sym">vref_minus.sym</a> - </li>
+<li><a href="symbols/power/vref.sym">vref.sym</a> - </li>
+</ul>
+
+<h3> Switches </h3>
+<ul>
+<li><a href="symbols/switches/dipswitch_2x.sym">dipswitch_2x.sym</a> - two channel dipswitch</li>
+<li><a href="symbols/switches/dipswitch_4x.sym">dipswitch_4x.sym</a> - four channel dipswitch</li>
+<li><a href="symbols/switches/dipswitch_6x.sym">dipswitch_6x.sym</a> - six channel dipswitch</li>
+<li><a href="symbols/switches/dipswitch_8x.sym">dipswitch_8x.sym</a> - eight channel dipswitch</li>
+<li><a href="symbols/switches/dipswitch_10x.sym">dipswitch_10x.sym</a> - ten channel dipswitch</li>
+<li><a href="symbols/switches/relay-SPDT.sym">relay-SPDT.sym</a> - single pole double throw relay, defaults to Tyco T7CV5D</li>
+<li><a href="symbols/switches/relay-DPDT.sym">relay-DPDT.sym</a> - double pole double throw relay, defaults to a Axicom FP2</li>
+<li><a href="symbols/switches/switch_SPST.sym">switch_SPST.sym</a> - switch, 1 pole, on - off</li>
+<li><a href="symbols/switches/switch_SPDT.sym">switch_SPDT.sym</a> -  switch 1 pole, on - on</li>
+<li><a href="symbols/switches/switch_SPDT_on-off-on.sym">switch_SPDT_on-off-on.sym</a> -  switch 1 pole, on - off - on</li>
+<li><a href="symbols/switches/switch_DPDT.sym">switch_DPDT.sym</a> - switch, 2 pole, on - on</li>
+<li><a href="symbols/switches/switch_1x12.sym">switch_1x12.sym</a> - switch, 1 pole, 12 positions</li>
+<li><a href="symbols/switches/switch_1x4.sym">switch_1x4.sym</a> - switch, 1 pole, 4 positions</li>
+<li><a href="symbols/switches/switch_2x6.sym">switch_2x6.sym</a> - switch, 2 pole, 6 positions</li>
+<li><a href="symbols/switches/switch_3x4.sym">switch_3x4.sym</a> - switch, 3 pole, 4 positions</li>
+<li><a href="symbols/switches/switch_4x3.sym">switch_4x3.sym</a> - switch, 4 pole, 3 positions</li>
+<li><a href="symbols/switches/coded_switch_4bit.sym">coded_switch_4bit.sym</a> - 4 bit coded switch, defaults to ELMA C08</li>
+</ul>
+
+<h3>Misc</h3>
+<ul>
+<li><a href="symbols/misc/78XX.sym">78XX.sym</a> - </li>
+<li><a href="symbols/misc/beeper.sym">beeper.sym</a> - </li>
+<li><a href="symbols/misc/button-LED.sym">button-LED.sym</a> - </li>
+<li><a href="symbols/misc/button.sym">button.sym</a> - </li>
+<li><a href="symbols/misc/cuboid.sym">cuboid.sym</a> - a cuboid to be soldered to the pcb </li>
+<li><a href="symbols/misc/crystal.sym ">crystal.sym </a> </li>
+<li><a href="symbols/misc/enclosing.sym">enclosing.sym</a> - enclosing </li>
+<li><a href="symbols/misc/hole_plated.sym">hole_plated.sym</a> - plated hole</li>
+<li><a href="symbols/misc/hole_non-plated.sym">hole_non-plated.sym</a> - hole without plating</li>
+<li><a href="symbols/misc/jumper-default.sym">jumper-default.sym</a> - </li>
+<li><a href="symbols/misc/jumper.sym">jumper.sym</a> - </li>
+<li><a href="symbols/misc/jumper_3pin.sym">jumper-3pin.sym</a> - </li>
+<li><a href="symbols/misc/jumper-2x2.sym">jumper-2x2.sym</a> - </li>
+<li><a href="symbols/misc/osc-crystek.sym">osc-crystek.sym</a> - fixed frequency oscillator by Crystek </li>
+<li><a href="symbols/misc/osc-minicircuits.sym">osc-minicircuits.sym</a> - voltage controlled oscillator by MiniCircuits</li>
+<li><a href="symbols/misc/pad_2.sym">pad_2.sym</a> - </li>
+<li><a href="symbols/misc/pad.sym">pad.sym</a> - </li>
+<li><a href="symbols/misc/perfboard.sym">perfboard.sym</a> - a symbol to provide a perfboard footprint</li>
+<li><a href="symbols/misc/PLL_TLC2932.sym">PLL_TLC2932.sym</a> - </li>
+<li><a href="symbols/misc/transformer_3pickups.sym">transformer_3pickups.sym</a> - transformer with three pick-ups</li>
+</ul>
+
+
+<h3>Block</h3>
+These are blocks of subcircuits I frequently use. They contain some of the above symbols. Add them to a circuit with the option "Include-as-individual-objects" checked. See the <a href=" http://geda.seul.org/wiki/geda:faq-gschem#can_my_local_library_cover_frequently_needed_sub_circuits">wiki</a> for details.
+For some blocks preview does not work correctly because I did not embed the symbols. This is deliberate, because I want the blocks to track my changes to symbols in the library. Consequently, there is no way for gschem running on the geda-symbols server to find the symbols contained in the blocks. However, these blocks will work, if you have installed my symbols locally.
+
+<ul>
+<li><a href="symbols/block/opamp_adder.sym">opamp_adder.sym</a> - basic opamp circuit </li>
+<li><a href="symbols/block/opamp_pwr_caps.sym">opamp_pwr_caps.sym</a> - power pins and buffer caps for opamp </li>
+<li><a href="symbols/block/opamp_with_booster.sym">opamp_with_booster.sym</a> - opamp with current booster </li>
+<li><a href="symbols/block/schmitttrigger.sym">schmitttrigger.sym</a> - text book schmittriger </li>
+<li><a href="symbols/block/resistor_dipswitch_beanstalk.sym">resistor_dipswitch_beanstalk.sym</a> - a stack of resistors that can be activated with a dip switch </li>
+<li><a href="symbols/block/analog_SPST.sym">analog_SPST.sym</a> - a single pole single throw switch done with a regularopamp_inver quad analog switch</li>
+<li><a href="symbols/block/subsheet_in_out.sym">subsheet_in_out.sym</a> - some input output symbols frequently used in subsheets </li>
+<li><a href="symbols/block/supply_with_regulators.sym">supply_with_regulators.sym </a> - +/- Ub linear regulators with caps and diodes</li>
+<li><a href="symbols/block/supply_with_variable_regulators.sym">supply_with_variable_regulators.sym </a> - +/- variable linear regulators with caps and diodes</li>
+
+<li><a href="symbols/blocks/resistor_dipswitch_beanstalk_4x.sym">resistor_dipswitch_beanstalk_4x.sym </a> - four stacked resistors activated by DIP switches</li>
+<li><a href="symbols/blocks/resistor_dipswitch_beanstalk_6x.sym">resistor_dipswitch_beanstalk_6x.sym </a> - six stacked resistors activated by DIP switches</li>
+<li><a href="symbols/blocks/resistor_dipswitch_beanstalk_8x.sym">resistor_dipswitch_beanstalk_8x.sym </a> - eight stacked resistors activated by DIP switches</li>
+<li><a href="symbols/blocks/resistor_dipswitch_beanstalk_10x.sym">resistor_dipswitch_beanstalk_10x.sym </a> - ten stacked resistors activated by DIP switches</li>
+</ul>
+
+
+<h2>Footprints</h2>
+
+<h4>template pcb</h4>
+The <a href="footprints/template.pcb">template.pcb</a> may be used to start drawing footpints with the pcb GUI. Layers and sizes are set to reasonable default values.
+
+<h4>generic </h4>
+These footprints are meant to supersede the ones from the default library. 
+They are designed to meet the requirement of densely populated boards with
+too little space to place the refdes or value between the components. Therefore 
+the text is placed inside the frame. Pad size is generous for easy manual soldering.
+<ul>
+   <li> two pad packages</li>
+     <ul>
+       <li> <a href="footprints/generic/0402.fp"> 0402.fp </a> - 0402 </li>
+       <li> <a href="footprints/generic/0402s.fp"> 0402s.fp </a> - 0402 small pads for reflow soldering </li>
+       <li> <a href="footprints/generic/0603.fp"> 0603.fp </a> - 0603 </li>
+       <li> <a href="footprints/generic/0805.fp"> 0805.fp </a> - 0805 </li>
+       <li> <a href="footprints/generic/0805s.fp"> 0805s.fp </a> - 0805 with smaller pads </li>
+       <li> <a href="footprints/generic/0805xs.fp"> 0805xs.fp </a> - 0805 with extra small pads for reflow soldering</li>
+       <li> <a href="footprints/generic/1206.fp"> 1206.fp </a> - 1206 with refdes/value on the pads </li>
+       <li> <a href="footprints/generic/1206.fp"> 1210.fp </a> - 1210 </li>
+       <li> <a href="footprints/generic/1812.fp"> 1812.fp </a> - 1812 </li>
+     </ul>   
+
+   <li> dual inline packages </li>
+     <ul>
+       <li> <a href="footprints/generic/DIP/DIP4.fp"> DIP4.fp </a> - dual inline package 4 pin</li>
+       <li> <a href="footprints/generic/DIP/DIP6.fp"> DIP6.fp </a> - dual inline package 6 pin</li>
+       <li> <a href="footprints/generic/DIP/DIP8.fp"> DIP8.fp </a> - dual inline package 8 pin</li>
+       <li> <a href="footprints/generic/DIP/DIP12.fp"> DIP12.fp </a> - dual inline package 12 pin</li>
+       <li> <a href="footprints/generic/DIP/DIP14.fp"> DIP14.fp </a> - dual inline package 14 pin</li>
+       <li> <a href="footprints/generic/DIP/DIP16.fp"> DIP16.fp </a> - dual inline package 16 pin</li>
+       <li> <a href="footprints/generic/DIP/DIP18.fp"> DIP18.fp </a> - dual inline package 18 pin</li>
+       <li> <a href="footprints/generic/DIP/DIP20.fp"> DIP20.fp </a> - dual inline package 20 pin</li>
+       <li> <a href="footprints/generic/DIP/DIP22.fp"> DIP22.fp </a> - dual inline package 22 pin</li>
+       <li> <a href="footprints/generic/DIP/DIP24.fp"> DIP24.fp </a> - dual inline package 24 pin</li>
+       <li> <a href="footprints/generic/DIP/DIP24_wide.fp"> DIP24_wide.fp </a> - dual inline package 24 pin, wide</li>
+       <li> <a href="footprints/generic/DIP/DIP28.fp"> DIP28.fp </a> - dual inline package 28 pin</li>
+       <li> <a href="footprints/generic/DIP/DIP28_wide.fp"> DIP28_wide.fp </a> - dual inline package 28 pin, wide</li>
+       <li> <a href="footprints/generic/DIP/DIP32_wide.fp"> DIP32_wide.fp </a> - dual inline package 32 pin, wide</li>
+       <li> <a href="footprints/generic/DIP/DIP36_wide.fp"> DIP36_wide.fp </a> - dual inline package 36 pin, wide</li>
+       <li> <a href="footprints/generic/DIP/DIP40_wide.fp"> DIP40_wide.fp </a> - dual inline package 40 pin, wide</li>
+       <li> <a href="footprints/generic/DIP/DIP48_wide.fp"> DIP48_wide.fp </a> - dual inline package 48 pin, wide</li>
+     </ul>
+
+   <li> power packages </li>
+     <ul>
+       <li> <a href="footprints/generic/DPAK.fp"> DPAK.fp </a> - DPAK aka TO252, used by transistors and regulators</li>
+       <li> <a href="footprints/generic/DPAK_GDS.fp"> DPAK_GDS.fp </a> - DPAK pins as used by power MOSFETs like IRL5602</li>
+       <li> <a href="footprints/generic/PENTAWATTV.fp"> PENTAWATTV.fp </a> - Five-Pin Package similar to TO220. (TDA2030, L165, LP3856, ...)</li>
+       <li> <a href="footprints/generic/PENTAWATTV_LAY_2.fp"> PENTAWATTV_LAY_2.fp </a> - Same as above, horizontally on the board</li>
+       <li> <a href="footprints/generic/PENTAWATTV_LAY.fp"> PENTAWATTV_LAY.fp </a> - Same as above, horizontally off the board</li>
+     </ul>
+
+   <li> QSOP </li>
+     <ul>
+       <li> <a href="footprints/generic/QSOP14.fp"> QSOP14.fp </a> - </li>
+       <li> <a href="footprints/generic/QSOP16.fp"> QSOP16.fp </a> - </li>
+     </ul>
+
+   <li>SO packages </li>
+     <ul>
+       <li> <a href="footprints/generic/SO8.fp"> SO8.fp </a> - </li>
+       <li> <a href="footprints/specific/SO8_78Lxx.fp"> SO8_78Lxx.fp </a> - 8-pin version of fixed positive voltage regulator</li>
+       <li> <a href="footprints/specific/SO8_79Lxx.fp"> SO8_79Lxx.fp </a> - 8-pin version of fixed negative voltage regulator</li>
+       <li> <a href="footprints/specific/SO8_LM317.fp"> SO8_LM317.fp </a> - 8-pin version of variable positive voltage regulator</li>
+       <li> <a href="footprints/specific/SO8_LM337.fp"> SO8_LM337.fp </a> - 8-pin version of variable negative voltage regulator</li>
+       <li> <a href="footprints/generic/SO8_FET.fp"> SO8_FET.fp </a> SO8 for power MOSFETs</li>
+       <li> <a href="footprints/generic/SO14.fp"> SO14.fp </a> - SO14, narrow </li>
+       <li> <a href="footprints/generic/SO16.fp"> SO16.fp </a> - SO16, narrow </li>
+       <li> <a href="footprints/generic/SO16W.fp"> SO16W.fp </a> - SO16W, wide </li>
+       <li> <a href="footprints/generic/SO20.fp"> SO20.fp </a> - SO20, narrow </li>
+       <li> <a href="footprints/generic/SO20W.fp"> SO20W.fp </a> - SO20, wide </li>
+       <li> <a href="footprints/generic/SO24W.fp"> SO24W.fp </a> - SO24W, wide </li>
+       <li> <a href="footprints/generic/SO28W.fp"> SO28W.fp </a> - SO28, wide </li>
+     </ul>
+
+   <li> SOT packages </li>
+     <ul>
+       <li> <a href="footprints/generic/SOT223.fp"> SOT223.fp </a> - SOT223, footprint for power transistors </li>
+       <li> <a href="footprints/generic/SOT23.fp"> SOT23.fp </a> - generic SOT23 footprint</li>
+       <li> <a href="footprints/generic/SOT23_BEC.fp"> - SOT23_BEC.fp </a> - </li>
+       <li> <a href="footprints/generic/SOT23_GSD.fp"> - SOT23_GSD.fp </a> - </li>
+       <li> <a href="footprints/generic/SOT23_SDG.fp"> - SOT23_SDG.fp </a> - </li>
+       <li> <a href="footprints/generic/SOT343.fp"> SOT343.fp </a> - SOT343, footprint used by MMIC BGA427 or BGA420 </li>
+       <li> <a href="footprints/generic/SOT363.fp"> SOT363.fp </a> - SOT363, footprint used by MMIC MGA62563 </li>
+       <li> <a href="footprints/generic/SOT886.fp"> SOT886.fp </a> - </li>
+       <li> <a href="footprints/generic/SOT89.fp"> SOT89.fp </a> - three pad footprint used by regulators </li>
+       <li> <a href="footprints/generic/SOT89_78LxxA.fp"> SOT_78LxxA.fp </a> - for some reason, the most prolific SOT89 version of the fixed positive voltage regulator has input and output swapped.</li>
+       <li> <a href="footprints/generic/SOT89_79Lxx.fp"> SOT_79Lxx.fp </a> - SOT89 version of the fixed negative voltage regulator.</li>
+       <li> <a href="footprints/generic/SOT89_LM317.fp"> SOT_LM317.fp </a> - SOT89 version of the variable positive voltage regulator.</li>
+     </ul>
+
+   <li> TO packages </li>
+     <ul>
+       <li> <a href="footprints/generic/TO126_ECB.fp"> TO126_ECB.fp </a> - </li>
+       <li> <a href="footprints/generic/TO18.fp"> TO18.fp </a> - </li>
+       <li> <a href="footprints/generic/TO220.fp"> TO220.fp </a> - </li>
+       <li> <a href="footprints/generic/TO220_ECB.fp"> TO220_ECB.fp </a> - TO220 for bipolar transistors </li>
+       <li> <a href="footprints/generic/TO220_ECB_LAY.fp"> TO220_ECB_LAY.fp </a> - </li>
+       <li> <a href="footprints/generic/TO220_bighole.fp"> TO220_bighole.fp </a> - large holes to completely sink the component</li>
+       <li> <a href="footprints/generic/TO220_GDS.fp"> TO220_GDS.fp </a> - </li>
+       <li> <a href="footprints/generic/TO220_GDS_LAY.fp"> TO220_GDS_LAY.fp </a> - </li>
+       <li> <a href="footprints/generic/TO220_LAY.fp"> TO220_LAY.fp </a> - </li>
+       <li> <a href="footprints/generic/TO220_block.fp"> TO220_block.fp </a> - TO220 mounted to a 15x32 mm cooling block </li>
+       <li> <a href="footprints/generic/TO247.fp"> TO247.fp </a> - medium size three pin package with heatsink</li>
+       <li> <a href="footprints/generic/TO247_2.fp"> TO247_2.fp </a> - same as above, but large pin holes</li>
+       <li> <a href="footprints/generic/TO247_LAY.fp"> TO247_LAY.fp </a> - medium size three pin package with heatsink, horizontal mount</li>
+       <li> <a href="footprints/generic/TO247_GDS_LAY.fp"> TO247_GDS_LAY.fp </a> - TO247 for MOSFETs </li>
+       <li> <a href="footprints/generic/TO247_GCE_LAY.fp"> TO247_GCE_LAY.fp </a> - TO247 for IGBTs </li>
+       <li> <a href="footprints/generic/TO247_2PIN.fp"> TO247_2PIN.fp </a> - TO247 with only two pins </li>
+       <li> <a href="footprints/generic/TO247_2PIN_2.fp"> TO247_2PIN.fp </a> - two pin TO247, large pin holes</li>
+       <li> <a href="footprints/generic/TO247_2PIN_LAY.fp"> TO247_2PIN_LAY.fp </a> - two pin TO247, horizontal mount</li>
+       <li> <a href="footprints/generic/TO252.fp"> TO252.fp </a> - TO252 aka DPAK, used by transistors and regulators.</li>
+       <li> <a href="footprints/generic/TO92_123.fp"> TO92_123.fp </a>  - generic TO92 footprint, elongated pads on solder layer</li>
+       <li> <a href="footprints/generic/TO92_ECB.fp"> TO92_ECB.fp </a> - TO92 bipolar transistor </li>
+       <li> <a href="footprints/generic/TO92_GDS.fp"> TO92_GDS.fp </a> - TO92 FET transistor </li>
+       <li> <a href="footprints/generic/TO92_DGS.fp"> TO92_DGS.fp </a> - TO92 FET transitor, alternative pin allocation </li>
+     </ul>
+   
+   <li>TQFP</li>
+     <ul>
+       <li> <a href="footprints/generic/TQFP32-08.fp"> TQFP32-08.fp </a> - TQFP, 32 pin, 0.8 mm pitch</li>
+       <li> <a href="footprints/generic/TQFP44-05.fp"> TQFP44-05.fp </a> - TQFP, 44 pin, 0.5 mm pitch</li>
+       <li> <a href="footprints/generic/TQFP44-08.fp"> TQFP44-08.fp </a> - TQFP, 44 pin, 0.8 mm pitch, fits ATXmega-A4</li>
+       <li> <a href="footprints/generic/TQFP64-08.fp"> TQFP64-08.fp </a> - TQFP, 64 pin, 0.8 mm pitch, fits ATXmega-A3</li>
+       <li> <a href="footprints/generic/TQFP100-05.fp"> TQFP100-05.fp </a> - TQFP, 100 pin, 0.5 mm pitch, fits ATXmega-A1</li>
+     </ul>
+   <li> <a href="footprints/generic/TSOP6.fp"> TSOP6.fp </a> - TSOP6, footprint for analog switches </li>
+</ul>
+
+<h4>pin headers</h4>
+<ul>
+   <li> <a href="footprints/connectors/pin_headers/1x1PIN.fp"> 1x1PIN.fp </a> - single pin header </li>
+   <li> <a href="footprints/connectors/pin_headers/1x2PIN.fp"> 1x2PIN.fp </a> - generic two pin header, 2.54 mm pitch </li>
+   <li> <a href="footprints/connectors/pin_headers/1x3PIN.fp"> 1x3PIN.fp </a> - generic three pin header, 2.54 mm pitch </li>
+   <li> <a href="footprints/connectors/pin_headers/1x4PIN.fp"> 1x4PIN.fp </a> - generic four pin header, 2.54 mm pitch </li>
+   <li> <a href="footprints/connectors/pin_headers/1x5PIN.fp"> 1x5PIN.fp </a> - generic five header, 2.54 mm pitch </li>
+   <li> <a href="footprints/connectors/pin_headers/1x8PIN.fp"> 1x8PIN.fp </a> - generic eight pin header, 2.54 mm pitch </li>
+   <li> <a href="footprints/connectors/pin_headers/1x10PIN.fp"> 1x10PIN.fp </a> - generic ten pin header, 2.54 mm pitch </li>
+   <li> <a href="footprints/connectors/pin_headers/1x12PIN.fp"> 1x12PIN.fp </a> - generic twelve pin header, 2.54 mm pitch </li>
+   <li> <a href="footprints/connectors/pin_headers/1x14PIN.fp"> 1x14PIN.fp </a> - generic thirteen pin header, 2.54 mm pitch </li>
+   <li> <a href="footprints/connectors/pin_headers/1x16PIN.fp"> 1x16PIN.fp </a> - generic fourteen pin header, 2.54 mm pitch </li>
+   <li> <a href="footprints/connectors/pin_headers/1x18PIN.fp"> 1x18PIN.fp </a> - generic eighteen pin header, 2.54 mm pitch </li>
+   <li> <a href="footprints/connectors/pin_headers/2x3PIN.fp"> 2x3PIN.fp </a> - generic header 6 pins </li>
+   <li> <a href="footprints/connectors/pin_headers/2x3PIN_b.fp"> 2x3PIN_b.fp </a> - generic header 6 oblong pins</li>
+   <li> <a href="footprints/connectors/pin_headers/2x3PIN_WSL.fp"> 2x3PIN_WSL.fp </a> - header for crimp connector, 6 pins</li>
+   <li> <a href="footprints/connectors/pin_headers/2x3PIN_WSL_b.fp"> 2x3PIN_WSL_b.fp </a> - header for crimp connector, 6 oblong pins</li>
+   <li> <a href="footprints/connectors/pin_headers/2x4PIN.fp"> 2x4PIN.fp </a> - generic header 8 pins</li>
+   <li> <a href="footprints/connectors/pin_headers/2x4PIN_b.fp"> 2x4PIN_b.fp </a> - generic header 8 oblong pins</li>
+   <li> <a href="footprints/connectors/pin_headers/2x5Pin.fp"> 2x5Pin.fp </a> - generic header 10 pins</li>
+   <li> <a href="footprints/connectors/pin_headers/2x5Pin_b.fp"> 2x5Pin_b.fp </a> - generic header 10 oblong pins</li>
+   <li> <a href="footprints/connectors/pin_headers/2x5PIN_WSL.fp"> 2x5PIN_WSL.fp </a> - header for crimp connector, 10 pins</li>
+   <li> <a href="footprints/connectors/pin_headers/2x5PIN_WSL_b.fp"> 2x5PIN_WSL_b.fp </a> - header for crimp connector, 10 oblong pins</li>
+   <li> <a href="footprints/connectors/pin_headers/2x8Pin.fp"> 2x8Pin.fp </a> - generic header 8 pins</li>
+   <li> <a href="footprints/connectors/pin_headers/2x8Pin_b.fp"> 2x8Pin_b.fp </a> - generic header 8 oblong pins</li>
+   <li> <a href="footprints/connectors/pin_headers/2x8PIN_WSL.fp"> 2x8PIN_WSL.fp </a> - header for crimp connector, 16 pins</li>
+   <li> <a href="footprints/connectors/pin_headers/2x8PIN_WSL_b.fp"> 2x8PIN_WSL_b.fp </a> - header for crimp connector, 16 oblong pins</li>
+   <li> <a href="footprints/connectors/pin_headers/2x16Pin.fp"> 2x16Pin.fp </a> - generic header 32 pins</li>
+   <li> <a href="footprints/connectors/pin_headers/2x16Pin_b.fp"> 2x16Pin_b.fp </a> - generic header 32 oblong pins</li>
+   <li> <a href="footprints/connectors/pin_headers/2x13PIN.fp"> 2x13PIN.fp </a> - generic header 26 pins</li>
+   <li> <a href="footprints/connectors/pin_headers/2x13PIN_b.fp"> 2x13PIN_b.fp </a> - generic header 26 oblong pins</li>
+   <li> <a href="footprints/connectors/pin_headers/2x13PIN_WSL.fp"> 2x13PIN_WSL.fp </a> - headerfor crimp connector, 26 pins</li>
+   <li> <a href="footprints/connectors/pin_headers/2x13PIN_WSL_b.fp"> 2x13PIN_WSL_b.fp </a> - headerfor crimp connector, 26 oblong pins</li>
+   <li> <a href="footprints/connectors/pin_headers/2x16PIN_WSL.fp"> 2x16PIN_WSL.fp </a> - header for crimp connector, 32 pins</li>
+   <li> <a href="footprints/connectors/pin_headers/2x16PIN_WSL_b.fp"> 2x16PIN_WSL_b.fp </a> - header for crimp connector, 32 oblong pins</li>
+   <li> <a href="footprints/connectors/pin_headers/2x20PIN_PSL.fp"> 2x20PIN_PSL.fp </a> - header with interlocking, 40 pins</li>
+   <li> <a href="footprints/connectors/pin_headers/2x20PIN_PSL_b.fp"> 2x20PIN_PSL_b.fp </a> - header with interlocking, 40 oblong pins</li>
+   <li> <a href="footprints/connectors/pin_headers/2x20PIN_WSL.fp"> 2x20PIN_WSL.fp </a> - header for crimp connector, 40 pins</li>
+   <li> <a href="footprints/connectors/pin_headers/2x20PIN_WSL_b.fp"> 2x20PIN_WSL_b.fp </a> - header for crimp connector, 40 oblong pins</li>
+   <li> <a href="footprints/connectors/pin_headers/AKL_2PIN.fp"> AKL_2PIN.fp </a> - modular terminal, 5 mm pitch, 2 pins</li>
+   <li> <a href="footprints/connectors/pin_headers/AKL_3PIN.fp"> AKL_3PIN.fp </a> - modular terminal, 5 mm pitch, 3 pins</li>
+   <li> <a href="footprints/connectors/pin_headers/AKL_4PIN.fp"> AKL_4PIN.fp </a> - modular terminal, 5 mm pitch, 4 pins</li>
+   <li> <a href="footprints/connectors/pin_headers/AKL_5PIN.fp"> AKL_5PIN.fp </a> - modular terminal, 5 mm pitch, 5 pins</li>
+   <li> <a href="footprints/connectors/pin_headers/AMP_4.2mm_header_20pin_lay.fp"> AMP_4.2mm_header_20pin_lay.fp </a> - ATX like power connector, horizontal mount</li>
+   <li> <a href="footprints/connectors/pin_headers/AKL_4Pin.fp"> AKL_4Pin.fp </a> - Anreihklemmen, 4 pin</li>
+</ul>
+
+<h4>misc. connectors</h4>
+<ul>
+   <li> <a href="footprints/connectors/banana-jack.fp"> banana-jack.fp </a> - banana jack connected with a solder lug</li>
+   <li> <a href="footprints/connectors/LEMO_4PIN.fp"> LEMO_4PIN.fp </a> - recepticle, LEMO EPG.0B.304.HLN</li>
+   <li> <a href="footprints/connectors/RCA_DUAL_CUI_RCJ22.fp"> RCA_DUAL_CUI_RCJ22.fp </a> - CUI series RCJ22, dual cinch recepticle, stacked vertically </li>
+</ul>
+
+<h4>coaxial</h4>
+   <li> <a href="footprints/connectors/coaxial/BNC_LAY_BOTTOM.fp"> BNC_LAY_BOTTOM.fp </a> - like BNC_LAY.fp, but to be mounted on bottom layer with silk on top layer</li>
+   <li> <a href="footprints/connectors/coaxial/BNC_LAY.fp"> BNC_LAY.fp </a> - BNC socket, model telegärtner J01001A0037 or J01001A0038, horizontal mount </li>
+   <li> <a href="footprints/connectors/coaxial/BNC_LAY2.fp"> BNC_LAY2.fp </a> - model telegärtner J01001A0037, can be mounted vertically too</li>
+   <li> <a href="footprints/connectors/coaxial/BNC_VERT.fp"> BNC_VERT.fp </a> - model telegärtner J01001A0037, to be mounted vertically, on either side of the pcb</li>
+   <li> <a href="footprints/connectors/coaxial/BNC_VERT2.fp"> BNC_VERT2.fp </a> - model telegärtner J01001A0037, to be mounted vertically </li>
+   <li> <a href="footprints/connectors/coaxial/BNC_VERT3.fp"> BNC_VERT3.fp </a> - model telegärtner J01001A1945, or J01001A1944, vertical full metal recepticle </li>
+   <li> <a href="footprints/connectors/coaxial/BNC_DUAL_BOMAR364.fp"> BNC_DUAL_BOMAR364.fp </a> - BOMAR series 364, dual BNC, stacked vertically </li>
+   <li> <a href="footprints/connectors/coaxial/HF_multi.fp"> HF_multi.fp </a> - multiple model HF connector. Fits various generic BNC and SMA recepticles</li>
+   <li> <a href="footprints/connectors/coaxial/SMA_LAY.fp"> SMA_LAY.fp </a> - SMA recepticle, telegärtner J01151A0191</li>
+   <li> <a href="footprints/connectors/coaxial/SMA_VERT.fp"> SMA_VERT.fp </a> - SMA recepticle, telegärtner J01151A0931</li>
+   <li> <a href="footprints/connectors/coaxial/SMA_edge.fp"> SMA_edge.fp </a> - SMA recepticle, soldered to the eddge of the PCB. E.g Amphenol 132255</li>
+   <li> <a href="footprints/connectors/coaxial/SMA_edge2.fp"> SMA_edge2.fp </a> - Same as SMA_edge.fp but no ground pads on the top layer</li>
+</ul>
+
+<h4>DVI</h4>
+<ul>
+   <li> <a href="footprints/connectors/DVI/DVI_D_LAY.fp"> DVI_D_LAY.fp </a> - digital TFT display connector</li>
+   <li> <a href="footprints/connectors/DVI/DVI_D_vert.fp"> DVI_D_vert.fp </a> - digital TFT display connector, vertical mount</li>
+</ul>
+
+<h4>JAE</h4>
+   <li> <a href="footprints/connectors/JAE/PS_1x2PIN.fp"> PS_1x2PIN.fp </a>  - JAE model IL-G, 10 pin </li>
+   <li> <a href="footprints/connectors/JAE/PS_1x2PIN_LAY.fp"> PS_1x2PIN_LAY.fp </a> - same as above, horizontal mount</li>
+   <li> <a href="footprints/connectors/JAE/PS_1x3PIN.fp"> PS_1x3PIN.fp </a>  - JAE model IL-G, 10 pin </li>
+   <li> <a href="footprints/connectors/JAE/PS_1x3PIN_LAY.fp"> PS_1x3PIN_LAY.fp </a> - same as above, horizontal mount</li>
+   <li> <a href="footprints/connectors/JAE/PS_1x4PIN.fp"> PS_1x4PIN.fp </a>  - JAE model IL-G, 10 pin </li>
+   <li> <a href="footprints/connectors/JAE/PS_1x4PIN_LAY.fp"> PS_1x4PIN_LAY.fp </a>  - same as above, horizontal mount </li>
+   <li> <a href="footprints/connectors/JAE/PS_1x5PIN.fp"> PS_1x5PIN.fp </a> - same as above, horizontal mount</li>
+   <li> <a href="footprints/connectors/JAE/PS_1x5PIN_LAY.fp"> PS_1x5PIN_LAY.fp </a>  - JAE model IL-G, 10 pin </li>
+   <li> <a href="footprints/connectors/JAE/PS_1x8PIN.fp"> PS_1x8PIN.fp </a> - same as above, horizontal mount</li>
+   <li> <a href="footprints/connectors/JAE/PS_1x8PIN_LAY.fp"> PS_1x8PIN_LAY.fp </a>  - JAE model IL-G, 10 pin </li>
+   <li> <a href="footprints/connectors/JAE/PS_1x10PIN.fp"> PS_1x10PIN.fp </a>  - JAE model IL-G, 10 pin</li>
+   <li> <a href="footprints/connectors/JAE/PS_1x10PIN_LAY.fp"> PS_1x10PIN_LAY.fp </a> - same as above, horizontal mount</li>
+</ul>
+
+<h4>RIACON</h4>
+<ul>
+   <li> <a href="footprints/connectors/RIACON/RIACON_383_2PIN.fp"> RIACON_383_2PIN.fp </a> - RIAconnect, Model 383, pitch 3.81 mm, 2 pin. Compatible to Phoenix MC 3.81 series.</li>
+   <li> <a href="footprints/connectors/RIACON/RIACON_383_2PIN_LAY.fp"> RIACON_383_2PIN_LAY.fp </a> - RIAconnect, Model 383, pitch 3.81 mm, 2 pin, horizontal version. Compatible to Phoenix MC 3.81 series. </li>
+   <li> <a href="footprints/connectors/RIACON/RIACON_383_3PIN.fp"> RIACON_383_3PIN.fp </a> - RIAconnect, Model 383, pitch 3.81 mm, 3 pin. Compatible to Phoenix MC 3.81 series.</li>
+   <li> <a href="footprints/connectors/RIACON/RIACON_383_3PIN_LAY.fp"> RIACON_383_3PIN_LAY.fp </a> - RIAconnect, Model 383, pitch 3.81 mm, 3 pin, horizontal version. Compatible to Phoenix MC 3.81 series.</li>
+   <li> <a href="footprints/connectors/RIACON/RIACON_383_4PIN.fp"> RIACON_383_4PIN.fp </a> - RIAconnect, Model 383, pitch 3.81 mm, 4 pin. Compatible to Phoenix MC 3.81 series.</li>
+   <li> <a href="footprints/connectors/RIACON/RIACON_383_4PIN_LAY.fp"> RIACON_383_4PIN_LAY.fp </a> - RIAconnect, Model 383, pitch 3.81 mm, 4 pin, horizontal version. Compatible to Phoenix MC 3.81 series.</li>
+   <li> <a href="footprints/connectors/RIACON/RIACON_383_5PIN.fp"> RIACON_383_5PIN.fp </a> - RIAconnect, Model 383, pitch 3.81 mm, 5 pin. Compatible to Phoenix MC 3.81 series.</li>
+   <li> <a href="footprints/connectors/RIACON/RIACON_383_5PIN_LAY.fp"> RIACON_383_5PIN_LAY.fp </a> - RIAconnect, Model 383, pitch 3.81 mm, 5 pin, horizontal version. Compatible to Phoenix MC 3.81 series.</li>
+</ul>
+
+<h4>RJ45</h4>
+<ul>
+   <li> <a href="footprints/connectors/RJ45/RJ45_8P8C_lay.fp"> RJ45_8P8C_lay.fp </a> - RJ45 modular jack, 8 pins, horizontal thru hole mount </li>
+   <li> <a href="footprints/connectors/RJ45/RJ45_8P8C_vert.fp"> RJ45_8P8C_vert.fp </a> - RJ45 modular jack, 8 pins, vertical thru hole mount </li>
+</ul>
+
+<h4>SCSI</h4>
+<ul>
+   <li> <a href="footprints/connectors/SCSI/SCSI_68pin_vert.fp"> SCSI_68pin_vert.fp </a> - SCSI connector, e.g. Tyco 2-174339-5, male and female version of this connector have the same footprint</li>
+   <li> <a href="footprints/connectors/SCSI/SCSI_VHDCI_cable_vert.fp"> SCSI_VHDCI_cable_vert.fp </a> - SCSI connector, pin numbers compatible to VHDCI-SCSI cable as used for RAID controlers. Note, the pin numbers differ from SCSI_68pin_vert.fp.</li>
+   <li> <a href="footprints/connectors/SCSI/SCSI_VHDCI_cable_lay.fp"> SCSI_VHDCI_cable_lay.fp </a> - SCSI connector, pin numbers compatible to VHDCI-SCSI cable as used for RAID controlers. Note, the pin numbers differ from SCSI_68pin_vert.fp.</li>
+   <li> <a href="footprints/connectors/SCSI/SCSI_help.fp"> SCSI_help.fp </a> - some lines in silk  exactly in the middle between the pins of a SCSI footprint. Use convert_buffer_to_element to render as individual lines and morph them into tracks with the m key</li>
+   <li> <a href="footprints/connectors/SCSI/SCSI_help2.fp"> SCSI_help2.fp </a> - tiny vias exactly in the middle in between the pins of a SCSI connector so the mouse cursor will snap there.</li>
+</ul>
+
+<h4>subD</h4>
+<ul>
+   <li> <a href="footprints/connectors/subD/SUBD9_male_lay.fp"> SUBD9_male_lay.fp </a> - male SubD 9 pin connector, horizontal pcb mount, metric version </li>
+   <li> <a href="footprints/connectors/subD/SUBD9_female_lay.fp"> SUBD9_female_lay.fp </a> - female SubD 9 pin connector, horizontal pcb mount, metric version </li>
+   <li> <a href="footprints/connectors/subD/SUBD9_male_vert.fp"> SUBD9_male_vert.fp </a> - male SubD 9 pin connector, vertical pcb mount </li>
+   <li> <a href="footprints/connectors/subD/SUBD9_female_vert.fp"> SUBD9_female_vert.fp </a> - female SubD 9 pin connector, vertical pcb mount </li>
+   <li> <a href="footprints/connectors/subD/SUBD15_male_lay.fp"> SUBD15_male_lay.fp </a> - male SubD 15 pin connector, horizontal pcb mount, metric version </li>
+   <li> <a href="footprints/connectors/subD/SUBD15_female_lay.fp"> SUBD15_female_lay.fp </a> - female SubD 15 pin connector, horizontal pcb mount, metric version </li>
+   <li> <a href="footprints/connectors/subD/SUBD25_male_lay.fp"> SUBD25_male_lay.fp </a> - male SubD 25 pin connector, horizontal pcb mount, metric version </li>
+   <li> <a href="footprints/connectors/subD/SUBD25_female_lay.fp"> SUBD25_female_lay.fp </a> - female SubD 25 pin connector, horizontal pcb mount, metric version </li>
+   <li> <a href="footprints/connectors/subD/SUBD37_male_lay.fp"> SUBD37_male_lay.fp </a> - male SubD 37 pin connector, horizontal pcb mount, metric version </li>
+</ul>
+
+<h4>XLR</h4>
+<ul>
+   <li> <a href="footprints/connectors/XLR/XLR3_3PIN_b.fp"> XLR3_3PIN_b.fp </a> - </li>
+   <li> <a href="footprints/connectors/XLR/XLR3_3PIN_c.fp"> XLR3_3PIN_c.fp </a> - </li>
+   <li> <a href="footprints/connectors/XLR/XLR3_3PIN.fp"> XLR3_3PIN.fp </a> - </li>
+   <li> <a href="footprints/connectors/XLR/XLR3_4PIN.fp"> XLR3_4PIN.fp </a> - </li>
+   <li> <a href="footprints/connectors/XLR/XLR3_silk.fp"> XLR3_silk.fp </a> - silk layer only</li>
+   <li> <a href="footprints/connectors/XLR/XLR3_LAY.fp"> XLR3_LAY.fp </a> - </li>
+   <li> <a href="footprints/connectors/XLR/XLR3_vert.fp"> XLR3_vert.fp </a> - vertically mounted XLR connector</li>
+   <li> <a href="footprints/connectors/XLR/XLR3_PCB.fp"> XLR3_PCB.fp </a> - PCB mounted XLR connector by NEUTRIK</li>
+   <li> <a href="footprints/connectors/XLR/XLR3_NC3FDL.fp"> XLR3_NC3FDL.fp </a> - XLR recepticle model NC3FDL by NEUTRIk soldered directly onto the PCB</li>
+   <li> <a href="footprints/connectors/XLR/XLR3_AC3FDZ.fp"> XLR3_AC3FDZ.fp </a> - same footprint as above, but named to fit model AC3FDZ by Amphenol </li>
+</ul>
+
+<h3>Generic Discrete Components</h3>
+<h4>Capacitors</h4>
+<ul>
+   <li> <a href="footprints/discretes/capacitors/cap_100mil.fp"> cap_100mil.fp </a> - capaciter, thru hole, 2.54 mm pin distance (100 mil)</li>
+   <li> <a href="footprints/discretes/capacitors/cap_200mil.fp"> cap_200mil.fp </a> - capaciter, thru hole, 5.08 mm pin distance (200 mil)</li>
+   <li> <a href="footprints/discretes/capacitors/cap_200mil_a.fp"> cap_200mil_a.fp </a> - same as above, small outline</li>
+   <li> <a href="footprints/discretes/capacitors/cap_200mil_b.fp"> cap_200mil_b.fp </a> - same as above, medium outline</li>
+   <li> <a href="footprints/discretes/capacitors/cap_200mil_c.fp"> cap_200mil_c.fp </a> - same as above, large outline</li>
+   <li> <a href="footprints/discretes/capacitors/cap_1100mil.fp"> cap_1100mil.fp </a> - capaciter, thru hole, 27.5 mm pin distance (1100 mm)</li>
+   <li> <a href="footprints/discretes/capacitors/elko_RM25_D6.fp"> elko_RM25_D6.fp </a> - elcap, pins 2.5 mm apart, diameter 6 mm </li>
+   <li> <a href="footprints/discretes/capacitors/elko_RM35_D8.fp"> elko_RM35_D8.fp </a> - elcap, pins 3.5 mm apart, diameter 8 mm </li>
+   <li> <a href="footprints/discretes/capacitors/elko_RM5_RM35.fp"> elko_RM5_RM35.fp </a> - elcap, pins 3.5 mm or 5 mm apart. Diameter 8 mm to 10 mm</li>
+   <li> <a href="footprints/discretes/capacitors/elko_RM5_D6.fp"> elko_RM5_D6.fp </a> - elcap, pins 5 mm apart, diameter 6 mm </li>
+   <li> <a href="footprints/discretes/capacitors/elko_RM5_D10.fp"> elko_RM5_D10.fp </a> - elcap, pins 5 mm apart, diameter 10 mm </li>
+   <li> <a href="footprints/discretes/capacitors/elko_RM5_D10_lay.fp"> elko_RM5_D10_lay.fp </a> - elcap, pins 5 mm apart, diameter 10 mm, height 20 mm, horizontal mount</li>
+   <li> <a href="footprints/discretes/capacitors/elko_RM5_D10_tyrap.fp"> elko_RM5_D10_tyrap.fp </a> - elcap, pins 5 mm apart, diameter 10 mm, height 20 mm, horizontal mount with tyrap holes</li>
+   <li> <a href="footprints/discretes/capacitors/elko_RM5_D13.fp"> elko_RM5_D13.fp </a> - elcap, pins 5 mm apart, diameter 13 mm </li>
+   <li> <a href="footprints/discretes/capacitors/elko_RM75_D16.fp"> elko_RM75_D16.fp </a> - elcap, pins 7.5 mm apart, diameter 16 mm </li>
+   <li> <a href="footprints/discretes/capacitors/elko_RM75_D16_lay.fp"> elko_RM75_D16_lay.fp </a> - elcap, pins 7.5 mm apart, diameter 16 mm, horizontal mount </li>
+   <li> <a href="footprints/discretes/capacitors/elko_RM75_D16_tyrap.fp"> elko_RM75_D16_tyrap.fp </a> - elcap, pins 7.5 mm apart, diameter 16 mm, horizontal mount with holes for tyraps </li>
+   <li> <a href="footprints/discretes/capacitors/elko_RM75_D18.fp"> elko_RM75_D18.fp </a> - elcap, pins 7.5 mm apart, diameter 18 mm </li>
+   <li> <a href="footprints/discretes/capacitors/elko_RM10_D22.fp"> elko_RM10_D22.fp </a> - elcap, pins 10 mm apart, diameter 22 mm </li>
+   <li> <a href="footprints/discretes/capacitors/tantal_7x4mm.fp"> tantal_7x4mm.fp </a> - SMD tantal elcap, size 7.3 x 4.3 mm </li>
+</ul>
+
+<h4>Diodes</h4>
+<ul>
+   <li> <a href="footprints/discretes/diodes/dio_RM300.fp"> - dio_RM300.fp </a> - </li>
+   <li> <a href="footprints/discretes/diodes/dio_RM400.fp"> - dio_RM400.fp </a> - </li>
+   <li> <a href="footprints/discretes/diodes/dio_minimelf.fp"> - dio_minimelf.fp </a> - </li>
+   <li> <a href="footprints/discretes/diodes/dio_0805.fp"> - dio_0805.fp </a> - </li>
+   <li> <a href="footprints/discretes/diodes/dio_1210.fp"> - dio_1210.fp </a> - </li>
+   <li> <a href="footprints/discretes/diodes/dio_1812.fp"> - dio_1812.fp </a> - </li>
+   <li> <a href="footprints/discretes/diodes/tvs_RM400.fp"> - tvs_RM400.fp </a> - </li>
+   <li> <a href="footprints/discretes/diodes/tvs_1812.fp"> - tvs_1812.fp </a> - </li>
+   <li> <a href="footprints/discretes/diodes/LED_1206.fp"> - LED_1206.fp </a> - LED, SMD, size 1206</li>
+   <li> <a href="footprints/discretes/diodes/LED_3MM.fp"> - LED_3MM.fp </a> - LED, thru hole, diameter 3 mm</li>
+   <li> <a href="footprints/discretes/diodes/LED_5MM.fp"> - LED_5MM.fp </a> - LED, thru hole, diameter 5 mm</li>
+</ul>
+
+<h4>Inductors</h4>
+<ul>
+   <li> <a href="footprints/discretes/inductors/ind_1812.fp"> ind_1812.fp </a> - SMD inductor, size 1812, e.g. Ferrocore DL1812-10</li>
+   <li> <a href="footprints/discretes/inductors/ind_RM5.fp"> ind_RM5.fp </a> - </li>
+   <li> <a href="footprints/discretes/inductors/ind_RM75.fp"> ind_RM75.fp </a> - </li>
+</ul>
+
+<h4>Resistors</h4>
+<ul>
+   <li> <a href="footprints/discretes/resistors/res_vert.fp"> res_vert.fp </a> - resistor, vertical mount</li>
+   <li> <a href="footprints/discretes/resistors/res_300mil.fp"> res_300mil.fp </a> - resistor, 7.5 mm (300 mil)</li>
+   <li> <a href="footprints/discretes/resistors/res_400mil.fp"> res_400mil.fp </a> - resistor, 10 mm (400 mil)</li>
+   <li> <a href="footprints/discretes/resistors/res_600mil.fp"> res_600mil.fp </a> - resistor, 15 mm (600 mil)</li>
+   <li> <a href="footprints/discretes/resistors/res_800mil.fp"> res_800mil.fp </a> - power resistor, 20 mm (800 mil)</li>
+   <li> <a href="footprints/discretes/resistors/res_socket.fp"> res_socket.fp </a> - resistor in 400 mil spaced socket</li>
+</ul>
+
+<h4>Varistors</h4>
+<ul>
+   <li> <a href="footprints/discretes/varistors/var_8mm.fp"> var_8mm.fp </a> - varistor with 8mm spaced pins, vertical mount</li>
+   <li> <a href="footprints/discretes/varistors/var_8mm_lay.fp"> var_8mm_lay.fp </a> - varistor with 8mm spaced pins, flat mount</li>
+   <li> <a href="footprints/discretes/varistors/var_10mm.fp"> var_10mm.fp </a> - varistor with 10mm spaced pins, vertical mount</li>
+   <li> <a href="footprints/discretes/varistors/var_10mm_lay.fp"> var_10mm_lay.fp </a> - varistor with 10mm spaced pins, flat mount</li>
+</ul>
+
+<h3>Holes</h3>
+<ul>
+<li> <a href="footprints/mechanical/holes/hole_1mm.fp"> hole_1mm.fp </a> - hole, 1mm diameter</li>
+<li> <a href="footprints/mechanical/holes/hole_1.9mm.fp"> hole_1.9mm.fp </a> - hole, 1.9 mm diameter</li>
+<li> <a href="footprints/mechanical/holes/hole_2mm.fp"> hole_2mm.fp </a> - hole, 2 mm diameter</li>
+<li> <a href="footprints/mechanical/holes/hole_2.5mm.fp"> hole_2.5mm.fp </a> - hole, 2.5 mm diameter</li>
+<li> <a href="footprints/mechanical/holes/hole_3mm.fp"> hole_3mm.fp </a> - hole, 3 mm diameter</li>
+<li> <a href="footprints/mechanical/holes/hole_3.5mm.fp"> hole_3.5mm.fp </a> - hole, 3.5 mm diameter</li>
+<li> <a href="footprints/mechanical/holes/hole_4mm.fp"> hole_4mm.fp </a> - hole, 4 mm diameter</li>
+<li> <a href="footprints/mechanical/holes/hole_4.5mm.fp"> hole_4.5mm.fp </a> - hole, 4.5 mm diameter</li>
+<li> <a href="footprints/mechanical/holes/hole_5mm.fp"> hole_5mm.fp </a> - hole, 5 mm diameter</li>
+<li> <a href="footprints/mechanical/holes/hole_6mm.fp"> hole_6mm.fp </a> - hole, 6 mm diameter</li>
+<li> <a href="footprints/mechanical/holes/hole_M1.8.fp"> hole_M1.8.fp </a> - hole for M1.8 screw</li>
+<li> <a href="footprints/mechanical/holes/hole_M2.fp"> hole_M2.fp </a> -  hole for M2 screw</li>
+<li> <a href="footprints/mechanical/holes/hole_M2.5.fp"> hole_M2.5.fp </a> - hole for M2.5 screw</li>
+<li> <a href="footprints/mechanical/holes/hole_M3.fp"> hole_M3.fp </a> - hole for M3 screw </li>
+<li> <a href="footprints/mechanical/holes/hole_M4.fp"> hole_M4.fp </a> - hole for M4 screw</li>
+<li> <a href="footprints/mechanical/holes/hole_M5.fp"> hole_M5.fp </a> - hole for M5 screw</li>
+<li> <a href="footprints/mechanical/holes/hole_M6.fp"> hole_M6.fp </a> - hole for M6 screw</li>
+<li> <a href="footprints/mechanical/holes/hole_M8.fp"> hole_M8.fp </a> - hole for M8 screw (exceeds maximum allowed drill diameter at basista.de)</li>
+<li> <a href="footprints/mechanical/holes/hole_M10.fp"> hole_M10.fp </a> - hole for M10 screw (exceeds maximum allowed drill diameter at basista.de)</li>
+<li> <a href="footprints/mechanical/holes/hole_M1.8_plated.fp"> hole_M1.8_plated.fp </a> - plated hole for M1.8 screw</li>
+<li> <a href="footprints/mechanical/holes/hole_M2_plated.fp"> hole_M2_plated.fp </a> - plated hole for M2 screw</li>
+<li> <a href="footprints/mechanical/holes/hole_M2.5_plated.fp"> hole_M2.5_plated.fp </a> - plated hole for M2.5 screw</li>
+<li> <a href="footprints/mechanical/holes/hole_M3_plated.fp"> hole_M3_plated.fp </a> - plated hole for M3 screw</li>
+<li> <a href="footprints/mechanical/holes/hole_M4_plated.fp"> hole_M4_plated.fp </a> - plated hole for M4 screw</li>
+<li> <a href="footprints/mechanical/holes/hole_M5_plated.fp"> hole_M5_plated.fp </a> - plated hole for M5 screw</li>
+<li> <a href="footprints/mechanical/holes/hole_M6_plated.fp"> hole_M6_plated.fp </a> - plated hole for M6 screw</li>
+<li> <a href="footprints/mechanical/holes/hole_M8_plated.fp"> hole_M8_plated.fp </a> - plated hole for M8 screw (exceeds maximum allowed drill diameter at basista.de)</li>
+<li> <a href="footprints/mechanical/holes/hole_M10_plated.fp"> hole_M10_plated.fp </a> - plated hole for M10 screw (exceeds maximum allowed drill diameter at basista.de)</li>
+</ul>
+
+<h3>Mechanical</h3>
+<h4>Boxes</h4>
+<ul>
+   <li> <a href="footprints/mechanical/boxes/BOX_BOPLA_E410.fp"> BOX_BOPLA_E410.fp </a> - polystyrol enclosing, 100 x 50 x 25 mm</li>
+   <li> <a href="footprints/mechanical/boxes/BOX_DELTRON_455_0020.fp"> BOX_DELTRON_455_0020.fp </a> - aluminum die cast enclosing, 114 x 63 x 30 mm</li>
+   <li> <a href="footprints/mechanical/boxes/BOX_HAMMOND_11451PSLA.fp"> BOX_HAMMOND_11451PSLA.fp </a> - aluminum die cast enclosing, 53 x 38 x 31 mm</li>
+   <li> <a href="footprints/mechanical/boxes/BOX_HAMMOND_27134PSLA.fp"> BOX_HAMMOND_27134PSLA.fp </a> - aluminum die cast enclosing, 111 x 60 x 31 mm</li>
+   <li> <a href="footprints/mechanical/boxes/BOX_HAMMOND_27969PSLA.fp"> BOX_HAMMOND_27969PSLA.fp </a> - aluminum die cast enclosing, 92 x 38 x 31 mm</li>
+   <li> <a href="footprints/mechanical/boxes/BOX_HAMMOND_1590DD.fp"> BOX_HAMMOND_1590DD.fp </a> - aluminum die cast enclosing, 120 x 188 x 28 mm. Fits "euro card"</li>
+   <li> <a href="footprints/mechanical/boxes/BOX_HAMMOND_1590LLB.fp"> BOX_HAMMOND_1590LLB.fp </a> - aluminum die cast enclosing, 50 x 50 x 25 mm</li>
+   <li> <a href="footprints/mechanical/boxes/BOX_HAMMOND_1590LB.fp"> BOX_HAMMOND_1590LB.fp </a> - aluminum die cast enclosing, 51 x 51 x 27 mm</li>
+   <li> <a href="footprints/mechanical/boxes/BOX_HAMMOND_1590G.fp"> BOX_HAMMOND_1590G.fp </a> - aluminum die cast enclosing, 100 x 50 x 21 mm</li>
+   <li> <a href="footprints/mechanical/boxes/BOX_HAMMOND_1590B.fp"> BOX_HAMMOND_1590B.fp </a> - aluminum die cast enclosing, 112 x 60 x 27 mm</li>
+   <li> <a href="footprints/mechanical/boxes/BOX_HAMMOND_1590Y.fp"> BOX_HAMMOND_1590Y.fp </a> - aluminum die cast enclosing, 92 x 92 x 38 mm</li>
+   <li> <a href="footprints/mechanical/boxes/BOX_HAMMOND_1590Q.fp"> BOX_HAMMOND_1590Q.fp </a> - lid of aluminum die cast enclosing, 120 x 120 x 28 mm</li>
+   <li> <a href="footprints/mechanical/boxes/BOX_HAMMOND_1590Q_BOTTOM.fp"> BOX_HAMMOND_1590Q_BOTTOM.fp </a> - bottom of HAMMOND 1590Q</li>
+   <li> <a href="footprints/mechanical/boxes/BOX_HAMMOND_1593J_BASE.fp"> BOX_HAMMOND_1593_BASE.fp </a> - base of HAMMOND 1593J, 66 x 66 x 27.5 mm</li>
+   <li> <a href="footprints/mechanical/boxes/BOX_HAMMOND_1593J_COVER.fp"> BOX_HAMMOND_1593_COVER.fp </a> - cover of HAMMOND 1593J</li>
+</ul>
+
+<h4>Blocks</h4>
+<ul>
+   <li> <a href="footprints/mechanical/blocks/cube_10mm.fp"> cube_10mm.fp </a> - 10 mm brass cube with centered M3 hole</li>
+   <li> <a href="footprints/mechanical/blocks/cube_12mm.fp"> cube_12mm.fp </a> - 12 mm brass cube with centered M3 hole</li>
+   <li> <a href="footprints/mechanical/blocks/cuboid_10x15mm.fp"> cuboid_10x15mm.fp </a> - brass cuboid, big face</li>
+   <li> <a href="footprints/mechanical/blocks/cuboid_5x10mm.fp"> cuboid_5x10mm.fp </a> - brass cuboid, small face</li>
+   <li> <a href="footprints/mechanical/blocks/cuboid_5x15mm.fp"> cuboid_5x15mm.fp </a> - brass cuboid, medium face</li>
+   <li> <a href="footprints/mechanical/blocks/cuboid_5x9mm_SMD.fp"> cuboid_5x9mm_SMD.fp </a> - brass cuboid, 5x5x9mm, to be soldered to the pcb</li>
+</ul>
+
+<h3>Logos</h3>
+<ul>
+   <li> <a href="footprints/misc/logos/lila.fp"> lila.fp </a> - </li>
+   <li> <a href="footprints/misc/logos/lilalogo.fp"> lilalogo.fp </a> - </li>
+   <li> <a href="footprints/misc/logos/lilalogo_tracks.fp"> lilalogo_tracks.fp </a> - </li>
+</ul>
+
+<h3>Misc</h3>
+<ul>
+   <li> <a href="footprints/misc/JMP_1PIN.fp"> JMP_1PIN.fp </a> - </li>
+   <li> <a href="footprints/misc/JMP_2PIN.fp"> JMP_2PIN.fp </a> - </li>
+   <li> <a href="footprints/misc/JMP_2x2PIN.fp"> JMP_2x2PIN.fp </a> - </li>
+   <li> <a href="footprints/misc/JMP_3PIN.fp"> JMP_3PIN.fp </a> - </li>
+   <li> <a href="footprints/misc/JMP_3PIN_SMD.fp"> JMP_3PIN.fp </a> - </li>
+   <li> <a href="footprints/misc/JMP_default.fp"> JMP_default.fp </a> - A footprint to mark the default setting of a jumper </li>
+   <li> <a href="footprints/misc/JMP_SMD.fp"> JMP_SMD.fp </a> - </li>
+   <li> <a href="footprints/misc/perfboard1.fp"> perfboard1.fp </a> - prototype perfboard, 100 mil grid typ</li>
+   <li> <a href="footprints/misc/perfboard2.fp"> perfboard2.fp </a> - prototype perfboard, smallish annular rings</li>
+   <li> <a href="footprints/misc/perfboard3.fp"> perfboard3.fp </a> - prototype perfboard, rings in silk only</li>
+   <li> <a href="footprints/misc/round_mark.fp"> round_mark.fp </a> - a round production mark on top and bottom</li>
+   <li> <a href="footprints/misc/square_mark.fp"> square_mark.fp </a> - a square production mark</li>
+   <li> <a href="footprints/misc/pad_square.fp"> pad_square.fp </a> - single square SMD pad </li>
+   <li> <a href="footprints/misc/pad_round.fp"> pad_round.fp </a> - single round SMD pad </li>
+   <li> <a href="footprints/misc/pin_0.5mm.fp"> pin_0.5mm.fp </a> - single pin, 0.5 mm diameter hole </li>
+   <li> <a href="footprints/misc/pin_1mm.fp"> pin_1mm.fp </a> - single pin, 1 mm diameter hole </li>
+   <li> <a href="footprints/misc/pin_meas.fp"> pin_meas.fp </a> - single pin with tiny hole for measurement </li>
+   <li> <a href="footprints/misc/pin_meas_small.fp"> pin_meas_small.fp </a> - single pin with tiny hole for measurement, small anular ring </li>
+</ul>
+
+<h3>Specific</h3>
+<ul>
+   <li> <a href="footprints/specific/BEEPER_F-UCW.fp"> BEEPER_F-UCW.fp </a> - </li>
+   <li> <a href="footprints/specific/BPW34.fp"> BPW34.fp </a> - thru hole standard photo diode</li>
+   <li> <a href="footprints/specific/BPW34S.fp"> BPW34S.fp </a> - SMD standard photo diode</li>
+   <li> <a href="footprints/specific/BPW34S_upsidedown.fp"> BPW34S_upsidedown.fp </a> - SMD photo diode looking through a hole in the board </li>
+   <li> <a href="footprints/specific/BPW34_upsidedown.fp"> BPW34_upsidedown.fp </a> - thru hole photo diode looking through a hole in the board. </li>
+   <li> <a href="footprints/specific/Copernicus2.fp"> Copernicius2.fp </a> - Copernicus2, a GPS module by Trimble Navigation Ltd. </li>
+   <li> <a href="footprints/specific/CRYSTEK_C32XX.fp"> CRYSTEK_C32XX.fp </a> - low jitter fixed frequency  oscillator</li>
+   <li> <a href="footprints/specific/DIOTEC_BXXD.fp"> DIOTEC_BXXD.fp </a> - SMD bridge rectifier, series DIOTEC BxxD</li>
+   <li> <a href="footprints/specific/DIOTEC_BXXS.fp"> DIOTEC_BXXS.fp </a> - SMD bridge rectifier, series DIOTEC BxxS</li>
+   <li> <a href="footprints/specific/DIOTEC_SXX.fp"> DIOTEC_SXX.fp </a> - SMD bridge rectifier, series DIOTEC Sxx</li>
+   <li> <a href="footprints/specific/elko_BC_D35.fp"> elko_BC_D35.fp </a> - BC Components elcap, diameter 35 mm</li>
+   <li> <a href="footprints/specific/FASTRON_PISG.fp"> FASTRON_PISG.fp </a> - SMD inductor, model FASTRON PISG</li>
+   <li> <a href="footprints/specific/FASTRON_PISR.fp"> FASTRON_PISR.fp </a> - SMD inductor, model FASTRON PISR</li>
+   <li> <a href="footprints/specific/LASERDIODE_5MM6_ROT45.fp"> LASERDIODE_5MM6_ROT45.fp </a> - laser diode, 5.6 mm package </li>
+   <li> <a href="footprints/specific/LASERDIODE_5MM6_ROT45-2.fp"> LASERDIODE_5MM6_ROT45-2.fp </a> - laser diode, 5.6 mm package, no silk </li>
+   <li> <a href="footprints/specific/LTST-C155.fp"> LTST-C155.fp </a> - a four pin, bicolor SMD LED by LITEON. </li>
+   <li> <a href="footprints/specific/LM399.fp"> LM399.fp </a> - precision voltage reference</li>
+   <li> <a href="footprints/specific/MENTOR_tri_light_pipe_1276.1003.fp"> MENTOR_tri_light_pipe_1276.1003.fp </a> - light pipes for three 0805 size LEDs </li>
+   <li> <a href="footprints/specific/MENTOR_quad_light_pipe_1276.1004.fp"> MENTOR_quad_light_pipe_1276.1004.fp </a> - light pipes for four 0805 size LEDs </li>
+   <li> <a href="footprints/specific/MINICIRCUITS_4PIN.fp"> MINICIRCUITS_4PIN.fp </a> - four pin box like components by MINICIRCUITS. E.g. variable attenuator TFAS-1+</li>
+   <li> <a href="footprints/specific/MINICIRCUITS_4PIN_SMD.fp"> MINICIRCUITS_4PIN_SMD.fp </a> - four pin box like SMD style components by MINICIRCUITS. E.g. variable attenuator TFAS-1SM+</li>
+   <li> <a href="footprints/specific/MINICIRCUITS_8PIN.fp"> MINICIRCUITS_8PIN.fp </a> - eight pin box like components by MINICIRCUITS. E.g. ocillators POS-100</li>
+   <li> <a href="footprints/specific/MINICIRCUITS_MMIC.fp"> MINICIRCUITS_MMIC.fp </a> - four pin MMIC amplifier, e.g ERA-5SM+, MAR-1SM+</li>
+   <li> <a href="footprints/specific/RELAY_FP2.fp"> RELAY_FP2.fp </a> - nice, small relay</li>
+   <li> <a href="footprints/specific/SPECTROL_534.fp"> SPECTROL_534.fp </a> - cost effective precision potentiometer</li>
+   <li> <a href="footprints/specific/LM317_SO8.fp"> LM317_SO8.fp </a> - Variable voltage regulator LM317 in SO8 package</li>
+   <li> <a href="footprints/specific/VISHAY_RH10.fp"> VISHAY_RH10.fp </a> - power resistor with aluminum heat sink</li>
+   <li> <a href="footprints/specific/VISHAY_S102.fp"> VISHAY_S102.fp </a> - very low drift reference resistor</li>
+   <li> <a href="footprints/specific/VOM1271.fp"> VOM1271.fp </a> - VISHAY VOM1271, photovoltaic MOSFET driver</li>
+</ul>
+
+<h3>Potentiometers</h3>
+<ol>
+   <li> <a href="footprints/discretes/potentiometers/VISHAY_T18.fp"> VISHAY_T18.fp </a> - multi turn cermet potentiometer, length 19 mm, series VISHAY T18, or BI technologies model 89 </li>
+   <li> <a href="footprints/discretes/potentiometers/panel_mount_BI898.fp"> panel_mount_BI898.fp </a> - panel mount for multi turn cermet potentiometer, lengthhole BI technologies model 898 </li>
+   <li> <a href="footprints/discretes/potentiometers/VISHAY_T93YB.fp"> trimmer_VISHAY_T93YB.fp </a> - multi turn cermet potentiometer, height 10 mm, series VISHAY T93YB, or BI technologies model 67Y</li>
+   <li> <a href="footprints/discretes/potentiometers/VISHAY_T93YA.fp"> trimmer_VISHAY_T93YA.fp </a> - multi turn cermet potentiometer, height 10 mm, series VISHAY T93YA, or BI technologies model 67W</li>
+   <li> <a href="footprints/discretes/potentiometers/ALPS_RK09K111.fp"> ALPS_RK09K111.fp </a> - potentiometer by ALPS, horizontal mount</li>
+   <li> <a href="footprints/discretes/potentiometers/ALPS_RK11K112.fp"> ALPS_RK11K112.fp </a> - smooth potentiometer by ALPS, horizontal mount</li>
+   <li> <a href="footprints/discretes/potentiometers/ALPS_RK11K113.fp"> ALPS_RK11K113.fp </a> - smooth potentiometer by ALPS, vertical mount</li>
+   <li> <a href="footprints/discretes/potentiometers/BI_MODEL35.fp"> BI_MODEL35.fp </a> - miniature SMD single turn trimmer, e.g, BI technologies model 35</li>
+   <li> <a href="footprints/discretes/potentiometers/SPECTROL_534.fp"> SPECTROL_534.fp </a> - cost effective precision potentiometer, series SPECTROL 534</li>
+</ol>
+
+<h3>Switches</h3>
+<ul>
+   <li> <a href="footprints/switches/APEM_TL36WW.fp"> APEM_TL36WW.fp </a> - 1 way switch, horizontal, MULTICOMP 2AS*, APEM TL36WW, APEM TL39WW </li>
+   <li> <a href="footprints/switches/APEM_TL46.fp"> APEM_TL46.fp </a> - 2 way switch, vertical, APEM TL46, or Multicomp 2MD1T2B2M2RE, or Multicomp 2MD1T1B5M2RE </li>
+   <li> <a href="footprints/switches/APEM_TL46WW.fp"> APEM_TL46WW.fp </a> - 2 way switch, horizontal, APEM TL46WW</li>
+   <li> <a href="footprints/switches/APEM_TL36WW.fp"> APEM_TL36WW.fp </a> - 1 way switch, horizontal, MULTICOMP 2AS*, APEM TL36WW, APEM TL39WW </li>
+   <li> <a href="footprints/switches/ELMA_07R14.fp"> ELMA_07R14.fp </a> - 4 way switch, Elma model 07R1424</li>
+   <li> <a href="footprints/switches/ELEDIS_2B11.fp"> ELEDIS_2B11.fp </a> - small switch, upright, C+K model 2B11N2F4PCAE</li>
+   <li> <a href="footprints/switches/ELEDIS_2B11_LAY.fp"> ELEDIS_2B11_LAY.fp </a> - small switch, horizontal, C+K model 2B11N2F4H9SAE</li>
+   <li> <a href="footprints/switches/LORLIN_1x12.fp"> LORLIN_1x12.fp </a> - rotary switch, series LORLIN CK, 12 positions</li>
+   <li> <a href="footprints/switches/LORLIN_2x6.fp"> LORLIN_2x6.fp </a> - rotary switch, series LORLIN CK, 2x6 positions</li>
+   <li> <a href="footprints/switches/LORLIN_3x4.fp"> LORLIN_3x4.fp </a> - rotary switch, series LORLIN CK, 3x4 positions</li>
+   <li> <a href="footprints/switches/LORLIN_4x3.fp"> LORLIN_4x3.fp </a> - rotary switch, series LORLIN CK, 4x3 positions</li>
+   <li> <a href="footprints/switches/NIKKAI_SK12BG30.fp"> NIKKAI_SK12BG30.fp </a> - pcb mount key switch </li>
+   <li> <a href="footprints/switches/MENTOR_1845.fp"> MENTOR_1845.fp </a> - pushbutton with LED</li>
+   <li> <a href="footprints/switches/MIYAMA_MS500A.fp"> MIYAMA_MS500A.fp </a> - 1 way switch, vertical pcb mount, MIYAMA_MS500A, MTS-1 </li>
+   <li> <a href="footprints/switches/MIYAMA_MS500AVT.fp"> MIYAMA_MS500AVT.fp </a> - 1 way switch, horizontal pcb mount, MIYAMA MS-500A-B-VT, or APEM 5236</li>
+   <li> <a href="footprints/switches/MIYAMA_MS500FVT.fp"> MIYAMA_MS500FVT.fp </a> - 2 way switch, horizontal pcb mount, MIYAMA MS-500F-B-VT, or APEM 5246</li>
+   <li> <a href="footprints/switches/MIYAMA_MS500FPC.fp"> MIYAMA_MS500FPC.fp </a> - 2 way switch, vertical pcb mount, MIYAMA MS-500FP-C, or APEM 5646, or MULTICOMP 1MD1T1B51QE, or MTS-2</li>
+   <li> <a href="footprints/switches/TYCO_FSMJ.fp"> TYCO_FSMJ.fp </a> - small push button</li>
+</ul>
+
+<h3>DIP-Switches</h3>
+<ul>
+   <li> <a href="footprints/switches/dipswitches/COPAL_CHS02B.fp"> COPAL_CHS02B.fp </a> - miniature DIP switch, dual, model COPAL CHS-02 </li>
+   <li> <a href="footprints/switches/dipswitches/COPAL_CHS04B.fp"> COPAL_CHS04B.fp </a> - miniature DIP switch, quad, model COPAL CHS-04 </li>
+   <li> <a href="footprints/switches/dipswitches/COPAL_CHS06B.fp"> COPAL_CHS06B.fp </a> - miniature DIP switch, hex, model COPAL CHS-06 </li>
+   <li> <a href="footprints/switches/dipswitches/COPAL_CHS08B.fp"> COPAL_CHS08B.fp </a> - miniature DIP switch, octo, COPAL CHS-08 </li>
+   <li> <a href="footprints/switches/dipswitches/COPAL_CHS10B.fp"> COPAL_CHS10B.fp </a> - miniature DIP switch, deci, model COPAL CHS-10 </li>
+   <li> <a href="footprints/switches/dipswitches/DIPSWITCH_3.fp"> DIPSWITCH_3.fp </a> - 3 way DIP-switch, regular style</li>
+   <li> <a href="footprints/switches/dipswitches/DIPSWITCH_3P.fp"> DIPSWITCH_3P.fp </a> - 3 way DIP-switch, piano style</li>
+   <li> <a href="footprints/switches/dipswitches/DIPSWITCH_4.fp"> DIPSWITCH_4.fp </a> - 4 way DIP-switch, regular style</li>
+   <li> <a href="footprints/switches/dipswitches/DIPSWITCH_4P.fp"> DIPSWITCH_4P.fp </a> - 4 way DIP-switch, piano style</li>
+   <li> <a href="footprints/switches/dipswitches/DIPSWITCH_6.fp"> DIPSWITCH_6.fp </a> - 6 way DIP-switch, regular style</li>
+   <li> <a href="footprints/switches/dipswitches/DIPSWITCH_6P.fp"> DIPSWITCH_6P.fp </a> - 6 way DIP-switch, piano style</li>
+   <li> <a href="footprints/switches/dipswitches/DIPSWITCH_8.fp"> DIPSWITCH_8.fp </a> - 8 way DIP-switch, regular style</li>
+   <li> <a href="footprints/switches/dipswitches/DIPSWITCH_8P.fp"> DIPSWITCH_8P.fp </a> - 8 way DIP-switch, piano style</li>
+   <li> <a href="footprints/switches/dipswitches/DIPSWITCH_10.fp"> DIPSWITCH_10.fp </a> - 10 way DIP-switch, regular style</li>
+   <li> <a href="footprints/switches/dipswitches/DIPSWITCH_10P.fp"> DIPSWITCH_10P.fp </a> - 10 way DIP-switch, piano style</li>
+</ul>
+
+
+<h2>Changelog</h2>
+A changelog of this section of geda symbols is 
+<a href="changelog.html"> here</a>
+
+<p><br></p>
+<p><hr noshade size=1></p>
+
+<small>
+
+<p align=center>
+
+Copyright 2012, all rights reserved unless specified otherwise.
+<br>
+<a href="/">gedasymbols.org</a> is maintained by
+<a href="/user/dj_delorie/">DJ Delorie</a></p>
+
+</small>
+
+</body>
+</html>
+

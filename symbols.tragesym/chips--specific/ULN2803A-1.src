@@ -1,0 +1,39 @@
+
+[options]
+wordswap=yes
+rotate_labels=no
+sort_labels=no
+generate_pinseq=yes
+sym_width=1400
+pinwidthvertical=400
+pinwidthhorizontal=400
+
+[geda_attr]
+version=20060113 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+dist-license=dual X11 or GPL
+use-license=free/unlimited
+name=ULN2803A
+refdes=U?
+footprint=DIL 18 300 100 60 28
+numslots=0
+
+[pins]
+1		in	line	l		IN1
+2		in	line	l		IN2
+3		in	line	l		IN3
+4		in	line	l		IN4
+5		in	line	l		IN5
+6		in	line	l		IN6
+7		in	line	l		IN7
+8		in	line	l		IN8
+9		pwr	line	l		GND
+18		out	line	r		OUT1
+17		out	line	r		OUT2
+16		out	line	r		OUT3
+15		out	line	r		OUT4
+14		out	line	r		OUT5
+13		out	line	r		OUT6
+12		out	line	r		OUT7
+11		out	line	r		OUT8
+10		pwr	line	r		COM

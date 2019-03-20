@@ -1,0 +1,39 @@
+[options]
+wordswap=yes
+rotate_labels=no
+sort_labels=no
+generate_pinseq=yes
+sym_width=2000
+pinwidthvertical=400
+pinwidthhorizontal=400
+
+[geda_attr]
+version=20060113 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+dist-license=dual X11 or GPL
+use-license=free/unlimited
+name=STM32F103xC
+refdes=U?
+numslots=20
+slotdef=24:81,82,83,57,58,59,60,61,62,84,85,86,87,88,55,56
+comment=USE slot=24 for footprint=LQFP100_14
+footprint=LQFP100_14
+slot=24
+
+[pins]
+1		io	line	l		PD0
+2		io	line	l		PD1
+3		io	line	l		PD2
+4		io	line	l		PD3  (USART2_CTS)
+5		io	line	l		PD4  (USART2_RTS)
+6		io	line	l		PD5  (USART2_TX)
+7		io	line	l		PD6  (USART2_RX)
+8		io	line	l		PD7  (USART2_CK)
+9		io	line	l		PD8  (USART3_CTS)
+10		io	line	l		PD9  (USART3_RTS)
+11		io	line	l		PD10 (USART3_TX)
+12		io	line	l		PD11 (USART3_RX)
+13		io	line	l		PD12 (USART3_CK)
+14		io	line	l		PD13
+15		io	line	l		PD14
+16		io	line	l		PD15
