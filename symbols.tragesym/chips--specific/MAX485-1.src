@@ -15,7 +15,7 @@ dist-license=dual X11 or GPL
 use-license=free/unlimited
 name=MAX485
 refdes=U?
-footprint=DIL 8 300 100 60 28
+footprint=dip(8)
 numslots=0
 
 [pins]

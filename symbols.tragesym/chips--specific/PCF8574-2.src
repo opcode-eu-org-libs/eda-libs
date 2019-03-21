@@ -15,7 +15,7 @@ dist-license=dual X11 or GPL
 use-license=free/unlimited
 name=PCF8574
 refdes=U?
-footprint=DIL 16 300 100 60 28
+footprint=dip(16)
 numslots=0
 
 [pins]

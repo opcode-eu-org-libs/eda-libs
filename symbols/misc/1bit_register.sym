@@ -37,8 +37,6 @@ pinseq=3
 B 400 300 800 700 3 0 0 0 -1 -1 0 -1 -1 -1 -1 -1
 T 400 1100 8 10 1 1 0 0 1
 refdes=U?
-T 400 1600 5 10 0 0 0 0 1
-footprint=DIL 8 300 100 60 28
 T 400 1800 5 10 0 0 0 0 1
 author=Robert Paciorek <rrp@opcode.eu.org>
 T 400 2000 5 10 0 0 0 0 1

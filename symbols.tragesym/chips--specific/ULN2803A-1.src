@@ -15,7 +15,7 @@ dist-license=dual X11 or GPL
 use-license=free/unlimited
 name=ULN2803A
 refdes=U?
-footprint=DIL 18 300 100 60 28
+footprint=dip(18)
 numslots=0
 
 [pins]

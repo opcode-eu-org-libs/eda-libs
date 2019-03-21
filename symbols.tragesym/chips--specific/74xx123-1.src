@@ -13,6 +13,7 @@ author=Robert Paciorek <rrp@opcode.eu.org>
 dist-license=dual X11 or GPL
 use-license=free/unlimited
 name=74HC123
+footprint=dip(16)
 refdes=U?
 
 slot=1

@@ -110,16 +110,12 @@ pinseq=12
 B 400 200 800 2600 3 0 0 0 -1 -1 0 -1 -1 -1 -1 -1
 T 1200 2900 8 10 1 1 0 0 1
 refdes=SW?
-T 400 3200 5 10 0 0 0 0 1
-footprint=SWECTOR 6 2
 T 400 3400 5 10 0 0 0 0 1
 author=Robert Paciorek <rrp@opcode.eu.org>
 T 400 3600 5 10 0 0 0 0 1
 dist-license=dual X11 or GPL
 T 400 3800 5 10 0 0 0 0 1
 use-license=free/unlimited
-T 400 4000 5 10 0 0 0 0 1
-numslots=0
 B 650 450 300 125 3 0 0 0 -1 -1 0 -1 -1 -1 -1 -1
 H 3 0 0 0 -1 -1 1 -1 -1 -1 -1 -1 5
 M 775,575
@@ -162,3 +158,9 @@ L 775,2450
 L 650,2450
 L 650,2575
 z
+T 400 4100 5 10 0 0 0 0 1
+slotdef=1:1,12,2,11,3,10,4,9,5,8,6,7
+T 400 4300 5 10 0 0 0 0 1
+slot=1
+T 400 4500 5 10 0 0 0 0 1
+footprint=dip(12)

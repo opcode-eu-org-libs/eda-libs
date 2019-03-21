@@ -14,7 +14,7 @@ dist-license=dual X11 or GPL
 use-license=free/unlimited
 name=STM32F030F4P6
 refdes=U?
-footprint=TSSOP20
+footprint=tssop(20)
 
 [pins]
 6		io	line	l		PA0  (ADC0 / USART1_CTS)

@@ -8,7 +8,7 @@ use-license=free/unlimited
 T 1200 800 8 10 1 1 0 0 1
 refdes=SW?
 T 400 1500 5 10 0 0 0 0 1
-footprint=DIL2 2 300
+footprint=dip(2)
 P 100 400 400 400 1 0 0
 {
 T 450 400 5 8 1 1 0 0 1

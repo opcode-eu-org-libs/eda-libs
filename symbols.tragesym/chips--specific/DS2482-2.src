@@ -15,7 +15,7 @@ dist-license=dual X11 or GPL
 use-license=free/unlimited
 name=DS2482
 refdes=U?
-footprint=SO8
+footprint=qfp(8)
 numslots=0
 
 [pins]

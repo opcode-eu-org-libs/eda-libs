@@ -17,8 +17,8 @@ refdes=U?
 numslots=20
 slotdef=12:26,27,28,55,56,57,58,59,61,62,29,30,33,34,35,36
 slotdef=22:35,36,37,89,90,91,92,93,95,96,47,48,51,52,53,54
-comment=USE slot=12 for footprint=LQFP64_10, slot=22 for footprint=LQFP100_14
-footprint=LQFP100_14
+comment=USE slot=12 for footprint=qfp(64, 10x10, 0.5), slot=22 for footprint=qfp(100, 14x14, 0.5)
+footprint=qfp(100, 14x14, 0.5)
 slot=22
 
 [pins]

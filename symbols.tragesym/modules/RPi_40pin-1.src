@@ -15,7 +15,7 @@ dist-license=dual X11 or GPL
 use-license=free/unlimited
 name=RaspberryPi B+ GPIO
 refdes=CONN?
-footprint=CONNECTOR 20 2
+footprint=connector(20, 2, silkmark=external)
 numslots=0
 
 [pins]

@@ -4,7 +4,7 @@ refdes=U?
 T 1400 300 5 10 1 1 180 6 1
 value=P82B96
 T 1100 3200 5 10 0 0 0 0 1
-footprint=DIL 8 300 100 60 28
+footprint=dip(8)
 T 1100 3400 5 10 0 0 0 0 1
 author=Robert Paciorek <rrp@opcode.eu.org>
 T 1100 3600 5 10 0 0 0 0 1

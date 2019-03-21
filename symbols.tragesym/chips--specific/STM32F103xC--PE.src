@@ -16,8 +16,8 @@ name=STM32F103xC
 refdes=U?
 numslots=20
 slotdef=25:97,98,41,42,43,44,45,46,1,2,3,4,5,38,39,40
-comment=USE slot=25 for footprint=LQFP100_14
-footprint=LQFP100_14
+comment=USE slot=25 for footprint=qfp(100, 14x14, 0.5)
+footprint=qfp(100, 14x14, 0.5)
 slot=25
 
 [pins]

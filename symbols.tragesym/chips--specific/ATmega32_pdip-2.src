@@ -15,7 +15,7 @@ dist-license=dual X11 or GPL
 use-license=free/unlimited
 name=ATmega32A
 refdes=U?
-footprint=DIL 40 600 100 60 28
+footprint=dip(40, spacing=600.00mil)
 numslots=0
 
 [pins]

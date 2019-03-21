@@ -15,7 +15,7 @@ dist-license=dual X11 or GPL
 use-license=free/unlimited
 name=TXS0108E
 refdes=U?
-footprint=VSSOP 8
+footprint=ssop(8)
 numslots=0
 
 [pins]

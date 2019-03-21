@@ -82,7 +82,7 @@ mkdir -p $out_dir
 
 for i in `seq $min_rows $max_rows`; do
 	echo "$CONFIG" > $TMPFILE
-	echo "footprint=CONNECTOR $i $mode" >> $TMPFILE
+	echo "footprint=connector($i, $mode, silkmark=externaly)" >> $TMPFILE
 	echo "[pins]" >> $TMPFILE
 	if [ $mode -eq 1 ]; then
 		for j in `seq 1 $i`; do

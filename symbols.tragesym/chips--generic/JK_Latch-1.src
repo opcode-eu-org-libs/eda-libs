@@ -14,7 +14,6 @@ author=Robert Paciorek <rrp@opcode.eu.org>
 dist-license=dual X11 or GPL
 use-license=free/unlimited
 refdes=U?
-footprint=DIL 8 300 100 60 28
 numslots=0
 
 [pins]

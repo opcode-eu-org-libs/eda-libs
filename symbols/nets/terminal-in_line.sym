@@ -20,7 +20,7 @@ pinlabel=io
 }
 V 400 100 66 3 0 0 0 -1 -1 0 -1 -1 -1 -1 -1
 T 110 800 8 10 0 0 0 0 1
-footprint=CONNECTOR 1 1
+footprint=connector(1, 1, silkmark=external)
 P 333 100 100 100 1 0 1
 {
 T 240 400 5 5 0 0 0 6 1

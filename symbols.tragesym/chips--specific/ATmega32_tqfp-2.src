@@ -15,7 +15,7 @@ dist-license=dual X11 or GPL
 use-license=free/unlimited
 name=ATmega32A
 refdes=U?
-footprint=TQFP44_10
+footprint=qfp(44, 10x10, 0.8)
 numslots=0
 
 [pins]

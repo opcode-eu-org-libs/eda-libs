@@ -12,6 +12,7 @@ version=20060113 1
 author=Robert Paciorek <rrp@opcode.eu.org>
 dist-license=dual X11 or GPL
 use-license=free/unlimited
+footprint=so(8)
 name=ADuM1250
 refdes=U?
 
