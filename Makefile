@@ -128,7 +128,7 @@ installGEDASyblols:
 
 installFootprints:
 	$(eval PCB_RND_SHARE := $(shell pcb-rnd --show-paths | awk -F '[ \t]*=[ \t]' '$$1 == "rc/path/share" {print $$2}'))
-	install -m 644 -Dt $(PCBLIBDIR)/EDA-libs.Parametric third-party/pcb-rnd_parametric/*
+	install -m 755 -Dt $(PCBLIBDIR)/EDA-libs.Parametric third-party/pcb-rnd_parametric/*
 	ln -fs $(PCB_RND_SHARE)/pcblib/parametric/common.awk $(PCBLIBDIR)/EDA-libs.Parametric
 	install -m 644 -Dt $(PCBLIBDIR)/EDA-libs third-party/gEDA_footprints/*.fp
 	install -m 644 -Dt $(PCBLIBDIR)/EDA-libs third-party/gedasymbols.org_footprints/*/*.fp
