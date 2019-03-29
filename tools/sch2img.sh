@@ -42,7 +42,7 @@
 printHelp() {
 	echo "Convert schematic file (gEDA/gschem) to image (svg, pdf or png)"
 	echo ""
-	echo "USAGE $execPath [--svg] [--pdf] [--png] [--const-size] [--svg-no-text] filename [filename [...]]"
+	echo "USAGE $execPath [--svg] [--pdf] [--png] [--const-size] [--svg-no-text] [--show-endpoints] filename [filename [...]]"
 	echo ""
 	echo "For calls as sch2xxx --xxx is added by default (when xxx is svg, pdf or png)."
 	echo "For other calls at least one of those option is required."
@@ -53,10 +53,13 @@ if [ $# -eq 0 ]; then
 	exit 1
 fi
 
+set -e
+
 # defaults settings ...
 outModes=""
 constScale="true"
 textSVG="true"
+showEndPoints="false"
 tmpDir="/tmp"
 runDir=$PWD
 
@@ -70,22 +73,23 @@ case $execName in
 esac
 
 # set settings based on options ...
-if ! args=`getopt -n $execPath -o h -l svg,pdf,png,const-size,svg-no-text -- "$@"`; then
+if ! args=`getopt -n $execPath -o h -l svg,pdf,png,const-size,svg-no-text,show-endpoints -- "$@"`; then
 	printHelp
 	exit 2
 fi
 eval set -- "$args"
 
 while true; do
-  case $1 in
-    "--svg") outModes="$outModes svg"; shift;;
-    "--pdf") outModes="$outModes pdf"; shift;;
-    "--png") outModes="$outModes png"; shift;;
-    "--const-size") constScale="false"; shift;;
-    "--svg-no-text") textSVG="false"; shift;;
-    "--help"|"-h") printHelp; exit 0;;
-    --) shift; break;;
-  esac
+	case $1 in
+		"--svg") outModes="$outModes svg"; shift;;
+		"--pdf") outModes="$outModes pdf"; shift;;
+		"--png") outModes="$outModes png"; shift;;
+		"--const-size") constScale="false"; shift;;
+		"--svg-no-text") textSVG="false"; shift;;
+		"--show-endpoints") showEndPoints="true"; shift;;
+		"--help"|"-h") printHelp; exit 0;;
+		--) shift; break;;
+	esac
 done
 
 # final check for settings ...
@@ -105,7 +109,35 @@ printSCM() {
 		echo '(paper-size 3.5 9.0)'
 	fi
 	echo '(output-orientation "portrait")'
-	echo '(output-color "disabled")'
+	if $showEndPoints; then
+		echo '(output-color "disabled")'
+	else
+		echo '(output-color "enabled")'
+		echo "(print-color-map '("
+		echo '(background         "#ffffff")
+			(pin                "#000000")
+			(net-endpoint       "#ffffff")
+			(graphic            "#000000")
+			(net                "#000000")
+			(attribute          "#000000")
+			(logic-bubble       "#000000")
+			(grid               #f)
+			(detached-attribute "#000000")
+			(text               "#000000")
+			(bus                "#000000")
+			(select             #f)
+			(bounding-box       #f)
+			(zoom-box           #f)
+			(stroke             #f)
+			(lock               "#000000")
+			(output-background  "#ffffff")
+			(junction           "#000000")
+			(freestyle1         #f)
+			(freestyle2         #f)
+			(freestyle3         #f)
+			(freestyle4         #f)
+		))'
+	fi
 	echo '(gschem-use-rc-values)'
 	echo '(gschem-postscript "dummyfilename")'
 	echo '(gschem-exit)'
@@ -119,15 +151,18 @@ proccessSchematic() {
 	shift 3
 	
 	baseDir=`dirname ${filePath}`
+	if [ "${baseDir::1}" != "/" ]; then
+		baseDir=$runDir/$baseDir
+	fi
 	baseName=`basename ${filePath}`
 	baseName="${baseName%.sch}"
 	tmpFile=`mktemp "$tmpDir/sch2img.XXXXXX"`
 	
 	printSCM $constScale > ${tmpFile}.scm
 	
-	cd $runDir/$baseDir
+	cd $baseDir
 	# this must be call in schematic file directory due to configs and symbols files which can be there
-	gschem -q -o ${tmpFile}.ps -s ${tmpFile}.scm -r ${tmpFile}.rc "$baseName.sch" &> /dev/null
+	gschem -qp -o ${tmpFile}.ps -s ${tmpFile}.scm "$baseName.sch" &> /dev/null
 	
 	cd $tmpDir
 	#grep -v 'scale$' ${tmpFile}.ps | grep -v 'translate$' |
