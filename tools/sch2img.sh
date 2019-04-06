@@ -12,10 +12,6 @@
 #  - inkscape (inkscape package)
 #  - pdftoppm (poppler-utils package)
 #  - pnmtopng (netpbm package)
-#
-# On Debian you can install its via:
-#   apt install geda-gschem ps2eps ghostscript texlive-font-utils pdf2svg inkscape poppler-utils netpbm
-
 
 # Copyright (c) 2003-2019 Robert Ryszard Paciorek <rrp@opcode.eu.org>
 # 

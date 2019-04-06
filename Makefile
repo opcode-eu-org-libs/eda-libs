@@ -37,11 +37,12 @@ SYMLIBSDIR=$(GEDADIR)/Components.EDA-libs
 SYMGEDADIR=$(GEDADIR)/Components.gEDA
 SRCLIBSDIR=$(GEDADIR)/Sources.EDA-libs
 
-.PHONY: help installTools installLibs cleanAndInstallSymbols cleanSymbols installSymbols installConnectors installTragesym installFootprints installConfig
+.PHONY: help installDependencies installTools installLibs cleanAndInstallSymbols cleanSymbols installSymbols installConnectors installTragesym installFootprints installConfig
 
 help:
 	@ echo "USAGE: make installLibs"
 	@ echo "USAGE: sudo make installTools"
+	@ echo "USAGE: sudo make installDependencies"
 	@ echo ""
 	@ echo "Install dir for schematic libs is: $(GEDADIR)."
 	@ echo "  You can change it via GEDADIR make variable."
@@ -50,6 +51,9 @@ help:
 	@ echo "Install dir for pcb libs is: $(PCBLIBDIR)."
 	@ echo "  You can change it via PCBLIBDIR make variable."
 	@ echo "  See results of: make help PCBLIBDIR=/tmp"
+	@ echo ""
+	@ echo "installDependencies target is dedicated for:"
+	@ echo "  Debian 9 (Stretch) and Debian 10 (Buster)"
 
 installLibs: cleanAndInstallSymbols installGEDASyblols installFootprints installConfig
 
@@ -156,3 +160,13 @@ installTools:
 	ln -fs $(BINDIR)/sch2img.sh $(BINDIR)/sch2pdf
 	ln -fs $(BINDIR)/sch2img.sh $(BINDIR)/sch2svg
 	ln -fs $(BINDIR)/sch2img.sh $(BINDIR)/sch2png
+
+
+#
+# install dependencies (mostly for sch2img.sh)
+#
+
+EDA_PKGS=geda-gschem pcb-rnd geda-gnetlist
+TO_PDF_DEP_PKGS=bash ps2eps ghostscript texlive-font-utils pdf2svg inkscape poppler-utils netpbm
+installDependencies:
+	apt install $(EDA_PKGS) $(TO_PDF_DEP_PKGS)
