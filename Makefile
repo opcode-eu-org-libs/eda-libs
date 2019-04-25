@@ -37,25 +37,49 @@ SYMLIBSDIR=$(GEDADIR)/Components.EDA-libs
 SYMGEDADIR=$(GEDADIR)/Components.gEDA
 SRCLIBSDIR=$(GEDADIR)/Sources.EDA-libs
 
-.PHONY: help installDependencies installTools installLibs cleanAndInstallSymbols cleanSymbols installSymbols installConnectors installTragesym installFootprints installConfig
+PRIMARYTARGETS=help installDependencies installTools installLibs
+LIBSTARGETS=cleanAndInstallSymbols installGEDASyblols installFootprints installConfig
+SYMSTARGETS=cleanSymbols installSymbols installConnectors installTragesym
+.PHONY: $(PRIMARYTARGETS) $(LIBSTARGETS) $(SYMSTARGETS)
 
 help:
-	@ echo "USAGE: make installLibs"
+	@ echo "USAGE:      make installLibs"
 	@ echo "USAGE: sudo make installTools"
+	@ echo "   or:      make installTools BINDIR=~/mybin"
 	@ echo "USAGE: sudo make installDependencies"
 	@ echo ""
-	@ echo "Install dir for schematic libs is: $(GEDADIR)."
-	@ echo "  You can change it via GEDADIR make variable."
-	@ echo "  See results of: make help GEDADIR=/tmp"
-	@ echo ""
-	@ echo "Install dir for pcb libs is: $(PCBLIBDIR)."
-	@ echo "  You can change it via PCBLIBDIR make variable."
-	@ echo "  See results of: make help PCBLIBDIR=/tmp"
+	@ echo "Install dir for:"
+	@ echo " - schematic libs: GEDADIR=$(GEDADIR)"
+	@ echo " - pcb libs: PCBLIBDIR=$(PCBLIBDIR)"
+	@ echo " - executables: BINDIR=$(BINDIR)"
+	@ echo "You can change them via make variables, as BINDIR above."
 	@ echo ""
 	@ echo "installDependencies target is dedicated for:"
 	@ echo "  Debian 9 (Stretch) and Debian 10 (Buster)"
+	@ echo ""
+	@ echo "make subtargets:\n  $(LIBSTARGETS)\n  $(SYMSTARGETS)"
 
-installLibs: cleanAndInstallSymbols installGEDASyblols installFootprints installConfig
+
+#
+# main targets
+#
+
+# insall symbols, footprints and configs
+installLibs: $(LIBSTARGETS)
+
+# install executable tools/utils files
+installTools:
+	install -Dt $(BINDIR) tools/sch2img.sh
+	ln -fs $(BINDIR)/sch2img.sh $(BINDIR)/sch2pdf
+	ln -fs $(BINDIR)/sch2img.sh $(BINDIR)/sch2svg
+	ln -fs $(BINDIR)/sch2img.sh $(BINDIR)/sch2png
+
+# install dependencies (mostly for sch2img.sh)
+EDA_PKGS=geda-gschem pcb-rnd geda-gnetlist
+TO_PDF_DEP_PKGS=bash ps2eps ghostscript texlive-font-utils pdf2svg inkscape poppler-utils netpbm
+installDependencies:
+	apt install $(EDA_PKGS) $(TO_PDF_DEP_PKGS)
+
 
 #
 # install component symbols library
@@ -149,24 +173,3 @@ installConfig:
 	install -m 644 -Dt $(GEDADIR)/gafrc.d configs/libs.01.scm
 	install -d $(GEDADIR)/Components
 	install -d $(GEDADIR)/Sources
-
-
-#
-# install executable tools/utils files
-#
-
-installTools:
-	install -Dt $(BINDIR) tools/sch2img.sh
-	ln -fs $(BINDIR)/sch2img.sh $(BINDIR)/sch2pdf
-	ln -fs $(BINDIR)/sch2img.sh $(BINDIR)/sch2svg
-	ln -fs $(BINDIR)/sch2img.sh $(BINDIR)/sch2png
-
-
-#
-# install dependencies (mostly for sch2img.sh)
-#
-
-EDA_PKGS=geda-gschem pcb-rnd geda-gnetlist
-TO_PDF_DEP_PKGS=bash ps2eps ghostscript texlive-font-utils pdf2svg inkscape poppler-utils netpbm
-installDependencies:
-	apt install $(EDA_PKGS) $(TO_PDF_DEP_PKGS)
