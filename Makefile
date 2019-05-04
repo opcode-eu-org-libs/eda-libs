@@ -38,7 +38,7 @@ SYMGEDADIR=$(GEDADIR)/Components.gEDA
 SRCLIBSDIR=$(GEDADIR)/Sources.EDA-libs
 
 PRIMARYTARGETS=help installDependencies installTools installLibs
-LIBSTARGETS=cleanAndInstallSymbols installGEDASyblols installFootprints installConfig
+LIBSTARGETS=cleanAndInstallSymbols installGEDASymblols installFootprints installConfig
 SYMSTARGETS=cleanSymbols installSymbols installConnectors installTragesym
 .PHONY: $(PRIMARYTARGETS) $(LIBSTARGETS) $(SYMSTARGETS)
 
@@ -131,8 +131,8 @@ SYMFILE_BASIC = capacitor-1.sym capacitor-2.sym capacitor-4.sym capacitor-variab
  battery-1.sym battery-2.sym battery-3.sym voltage-1.sym current-1.sym nmos-1.sym pmos-1.sym \
  transformer-1.sym transformer-2.sym transformer-3.sym transformer-4.sym transformer-5.sym
 
-installGEDASyblols:
-	$(eval GEDASYSDIR := $(shell gschemx -c '(display geda-data-path)(gschem-exit)'))
+installGEDASymblols:
+	$(eval GEDASYSDIR := $(shell gschem -c '(display geda-data-path)(gschem-exit)'))
 	$(eval GEDASYMDIR := $(if $(GEDASYSDIR), "$(GEDASYSDIR)/sym", "third-party/gEDA_symbols"))
 	@ echo "Install some symbols from gEDA symbols library ..."
 	@ install -d $(SYMGEDADIR)
