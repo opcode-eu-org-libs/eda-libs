@@ -1,0 +1,30 @@
+
+[options]
+wordswap=yes
+rotate_labels=no
+sort_labels=no
+generate_pinseq=yes
+sym_width=1400
+pinwidthvertical=400
+pinwidthhorizontal=400
+
+[geda_attr]
+version=20060113 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+dist-license=dual X11 or GPL
+use-license=free/unlimited
+refdes=U?
+numslots=0
+
+[pins]
+1		in	line	l		TxD
+4		in	line	l		RxD
+8		in	line 	l		RS
+5		out	line	l		Vref
+
+			spacer	r		
+7		io	line	r		CAN_H
+6		io	line	r		CAN_L
+
+3		pwr	line	t		VCC
+2		pwr	line	b		GND
