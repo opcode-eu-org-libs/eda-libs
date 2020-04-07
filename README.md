@@ -16,6 +16,7 @@ For install run:
 ```
 make installLibs
 sudo make installTools
+sudo make installDependencies # for non Debian based system you must manually install dependencies
 ```
 
 For more details see `make help` and [Makefile](Makefile) file.
