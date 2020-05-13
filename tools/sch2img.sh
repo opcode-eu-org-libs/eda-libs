@@ -180,6 +180,7 @@ proccessSchematic() {
 			"svg")
 				if $textSVG; then
 					inkscape --without-gui --file=${tmpFile}.pdf --export-plain-svg="$runDir/$baseName.svg"
+					sed -e "s#font-family:Helvetica;#font-family:'DejaVu Sans', sans-serif;#g" -i "$runDir/$baseName.svg"
 				else
 					pdf2svg ${tmpFile}.pdf "$runDir/$baseName.svg"
 				fi
