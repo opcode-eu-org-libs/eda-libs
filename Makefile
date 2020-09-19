@@ -132,7 +132,7 @@ SYMFILE_BASIC = capacitor-1.sym capacitor-2.sym capacitor-4.sym capacitor-variab
  transformer-1.sym transformer-2.sym transformer-3.sym transformer-4.sym transformer-5.sym
 
 installGEDASymblols:
-	$(eval GEDASYSDIR := $(shell gschem -c '(display geda-data-path)(gschem-exit)'))
+	$(eval GEDASYSDIR := $(shell gschem -c '(display geda-data-path)(gschem-exit)' | tail -n1))
 	$(eval GEDASYMDIR := $(if $(GEDASYSDIR), "$(GEDASYSDIR)/sym", "third-party/gEDA_symbols"))
 	@ echo "Install some symbols from gEDA symbols library ..."
 	@ install -d $(SYMGEDADIR)
