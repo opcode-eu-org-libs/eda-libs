@@ -1,0 +1,46 @@
+[options]
+wordswap=yes
+rotate_labels=no
+sort_labels=no
+generate_pinseq=yes
+sym_width=2200
+pinwidthvertical=400
+pinwidthhorizontal=400
+
+[geda_attr]
+version=20060113 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+dist-license=dual X11 or GPL
+use-license=free/unlimited
+name=STM32G030KxT
+refdes=U?
+footprint=qfp(32, 7x7, 0.8)
+
+[pins]
+14		io	line	l		CH1N (PA7)
+			spacer	l
+15		io	line	l		CH2N (PB0)
+			spacer	l
+			spacer	l
+16		io	line	l		CH3N (PB1)
+			spacer	l
+			spacer	lc		TIM1
+			spacer	l
+			spacer	l
+
+18		io	line	r		CH1 (PA8)
+			spacer	r
+19		io	line	r		CH2 (PA9)
+27		io	line	r		CH2 (PB3)
+			spacer	r
+21		io	line	r		CH3 (PA10)
+30		io	line	r		CH3 (PB6)
+			spacer	r
+22		io	line	r		CH4 (PA11)
+			spacer	r
+
+13		io	line	r		BK (PA6)
+23		io	line	r		ETR (PA12)
+
+2		io	line	l		BK2 (PC14)
+22		io	line	l		BK2 (PA11)

@@ -1,0 +1,54 @@
+[options]
+wordswap=yes
+rotate_labels=no
+sort_labels=no
+generate_pinseq=yes
+sym_width=4400
+pinwidthvertical=400
+pinwidthhorizontal=400
+
+[geda_attr]
+version=20060113 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+dist-license=dual X11 or GPL
+use-license=free/unlimited
+name=STM32G030KxT
+refdes=U?
+footprint=qfp(32, 7x7, 0.8)
+
+[pins]
+1		io	line	l		PB9  (I2C1_SDA)
+2		io	line	l		PC14 
+3		io	line	l		PC15 
+4		pwr	line	l		VDD
+5		pwr	line	l		GND
+6		io	line	l		NRST
+7		io	line	l		PA0  (ADC0, USART2_CTS)
+8		io	line	l		PA1  (ADC1, USART2_RTS)
+
+9		io	line	l		PA2  (ADC2)
+10		io	line	l		PA3  (ADC3)
+11		io	line	l		PA4  (ADC4)
+12		io	line	l		PA5  (ADC5)
+13		io	line	l		PA6  (ADC6)
+14		io	line	l		PA7  (ADC7, TIM1.1N)
+15		io	line	l		PB0  (ADC8, TIM1.2N)
+16		io	line	l		PB1  (ADC9, TIM1.3N)
+
+32		io	line	r		PB8  (I2C1_SCL)
+31		io	line	r		PB7  (ADC11)
+30		io	line	r		PB6  (TIM1.3)
+29		io	line	r		PB5  (TIM3.2)
+28		io	line	r		PB4  (TIM3.1)
+27		io	line	r		PB3  (TIM1.2)
+26		io	line	r		PA15 (USART2_TX)
+25		io	line	r		PA14 (USART2_RX)
+
+24		io	line	r		PA13 (ADC17)
+23		io	line	r		PA12 (ADC16, I2C2_SDA)
+22		io	line	r		PA11 (ADC15, I2C2_SCL)
+21		io	line	r		PA10 (USART1_RX)
+20		io	line	r		PC6  
+19		io	line	r		PA9  (USART1_TX)
+18		io	line	r		PA8  (TIM1.1)
+17		io	line	r		PB2  (ADC10)

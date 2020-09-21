@@ -1,0 +1,34 @@
+[options]
+wordswap=yes
+rotate_labels=no
+sort_labels=no
+generate_pinseq=yes
+sym_width=2200
+pinwidthvertical=400
+pinwidthhorizontal=400
+
+[geda_attr]
+version=20060113 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+dist-license=dual X11 or GPL
+use-license=free/unlimited
+name=STM32G030KxT
+refdes=U?
+footprint=qfp(32, 7x7, 0.8)
+
+[pins]
+31		io	line	r		MOSI (PB7)
+11		io	line	r		MOSI (PA4)
+21		io	line	r		MOSI (PA10)
+			spacer	rc		SPI2
+30		io	line	r		MISO (PB6)
+10		io	line	r		MISO (PA3)
+17		io	line	r		MISO (PB2)
+19		io	line	r		MISO (PA9)
+
+32		io	line	l		SCK (PB8)
+7		io	line	l		SCK (PA0)
+			spacer	l
+			spacer	l
+1		io	line	l		NSS (PB9)
+18		io	line	l		NSS (PA8)

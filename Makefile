@@ -109,15 +109,14 @@ installConnectors:
 	@ TRAGESYM=third-party/tragesym/tragesym ./tools/createConnectorsSymbols.sh $(SYMLIBSDIR)/connectors/ 2
 
 installTragesym:
-	@ for inDir in symbols.tragesym/*; do \
-		echo "Generate and install symbols from $$inDir" ; \
-		outDir="$(SYMLIBSDIR)/`basename $$inDir`" ; \
-		mkdir -p $$outDir ;\
-		for inFile in $$inDir/*; do \
-			outFile=`basename "$$inFile"` ; outFile="$${outFile%.src}.sym" ; \
-			echo "  - $$inFile -> $$outFile" ; \
-			./third-party/tragesym/tragesym "$$inFile" "$$outDir/$$outFile" ; \
-		done ;\
+	@ echo "Generate and install symbols:"
+	@ find symbols.tragesym -type d | while read inDir; do \
+		mkdir -p "$(SYMLIBSDIR)/$${inDir#symbols.tragesym/}" ; \
+	done
+	@ find symbols.tragesym -type f | while read inFile; do \
+		outFile="$${inFile#symbols.tragesym/}"; outFile="$${outFile%.src}.sym" ; \
+		echo "  - $$inFile -> $$outFile" ; \
+		./third-party/tragesym/tragesym "$$inFile" "$(SYMLIBSDIR)/$$outFile" ; \
 	done
 
 

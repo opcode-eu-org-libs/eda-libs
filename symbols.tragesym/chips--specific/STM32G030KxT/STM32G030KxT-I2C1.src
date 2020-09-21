@@ -1,0 +1,30 @@
+[options]
+wordswap=yes
+rotate_labels=no
+sort_labels=no
+generate_pinseq=yes
+sym_width=2200
+pinwidthvertical=400
+pinwidthhorizontal=400
+
+[geda_attr]
+version=20060113 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+dist-license=dual X11 or GPL
+use-license=free/unlimited
+name=STM32G030KxT
+refdes=U?
+footprint=qfp(32, 7x7, 0.8)
+
+[pins]
+31		io	line	r		SDA (PB7)
+1		io	line	r		SDA (PB9)
+21		io	line	r		SDA (PA10)
+			spacer	rc		I2C1
+30		io	line	r		SCL (PB6)
+32		io	line	r		SCL (PB8)
+19		io	line	r		SCL (PA9)
+
+29		io	line	l		SMBA (PB5)
+8		io	line	l		SMBA (PA1)
+

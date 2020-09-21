@@ -1,0 +1,36 @@
+[options]
+wordswap=yes
+rotate_labels=no
+sort_labels=no
+generate_pinseq=yes
+sym_width=2200
+pinwidthvertical=400
+pinwidthhorizontal=400
+
+[geda_attr]
+version=20060113 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+dist-license=dual X11 or GPL
+use-license=free/unlimited
+name=STM32G030KxT
+refdes=U?
+footprint=qfp(32, 7x7, 0.8)
+
+[pins]
+7		io	line	l		ADC0 (PA0)
+8		io	line	l		ADC1 (PA1)
+9		io	line	l		ADC2 (PA2)
+10		io	line	l		ADC3 (PA3)
+11		io	line	l		ADC4 (PA4)
+12		io	line	l		ADC5 (PA5)
+13		io	line	l		ADC6 (PA6)
+14		io	line	l		ADC7 (PA7)
+
+15		io	line	r		ADC8 (PB0)
+16		io	line	r		ADC9 (PB1)
+17		io	line	r		ADC10 (PB2)
+31		io	line	r		ADC11 (PB7)
+22		io	line	r		ADC15 (PA11)
+23		io	line	r		ADC16 (PA12)
+24		io	line	r		ADC17 (PA13)
+25		io	line	r		ADC18 (PA14)

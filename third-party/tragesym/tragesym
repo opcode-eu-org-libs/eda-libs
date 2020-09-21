@@ -96,13 +96,13 @@ class Pin:
 
 
     def check(self):
-    	if self.style=="spacer":
-	    if self.pos == "":
-		print "Error: there must be a position with a spacer.\n"
-		sys.exit()
-	    if self.pos not in poslist:
-		print "Error: position is not allowed: \n", self
-		sys.exit()
+        if self.style=="spacer":
+            if self.pos == "":
+                print "Error: there must be a position with a spacer.\n"
+                sys.exit()
+            if self.pos not in poslist + ['lc', 'rc']:
+                print "Error: position is not allowed: \n", self
+                sys.exit()
             return
         if self.style != "none":
             if self.seq.isdigit():
@@ -277,9 +277,9 @@ def writesym(filename,options,attr,pins):
     numpbottom=0
     numptop = 0
     for pin in pins:
-    	if pin.pos == "l": # left pin
+    	if pin.pos[0] == "l": # left pin
     		numpleft=numpleft+1
-    	elif pin.pos == "r": #right pin
+    	elif pin.pos[0] == "r": #right pin
     		numpright=numpright+1
     	elif pin.pos == "b": #right pin
     		numpbottom=numpbottom+1
@@ -359,9 +359,33 @@ def writesym(filename,options,attr,pins):
             if o_sort == "yes":
                 print "Warning: spacers are not supported when sorting labels"
                 continue
-            elif pin.pos == "l": #left pin
+            elif pin.pos == "l" or pin.pos == "lc": #left pin
+                if pin.label != "":
+                    pinly = plefty
+                    if pin.pos == "l":
+                        pinlx = 350 + pleftx
+                        pinla = 0
+                        fsize = 8
+                    else:
+                        pinlx = (pleftx+prightx)/2
+                        pinla = 3
+                        fsize = 10
+                    f.write("T %i"%pinlx+" %i"%pinly+" 5 %i"%fsize+" 1 1 0 %i 1\n"%pinla)
+                    f.write(pin.label+"\n")
                 plefty=plefty - o_vdist  #where to draw the _next_ pin
-            elif pin.pos == "r": #right pin
+            elif pin.pos == "r" or pin.pos == "rc": #right pin
+                if pin.label != "":
+                    pinly = prighty
+                    if pin.pos == "r":
+                        pinlx = -350 + prightx
+                        pinla = 6
+                        fsize = 8
+                    else:
+                        pinlx = (pleftx+prightx)/2
+                        pinla = 3
+                        fsize = 10
+                    f.write("T %i"%pinlx+" %i"%pinly+" 5 %i"%fsize+" 1 1 0 %i 1\n"%pinla)
+                    f.write(pin.label+"\n")
                 prighty=prighty - o_vdist
             elif pin.pos == "b": # bottom pin
                 pbottomx=pbottomx + o_hdist
