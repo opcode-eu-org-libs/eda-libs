@@ -1,0 +1,27 @@
+v 20130925 2
+P 100 500 400 500 1 0 0
+{
+T 450 500 5 8 1 1 0 1 1
+pinnumber=1
+T 450 400 5 8 0 1 0 2 1
+pintype=io
+T 300 450 5 8 0 1 0 8 1
+pinseq=1
+}
+B 400 300 1000 400 3 0 0 0 -1 -1 0 -1 -1 -1 -1 -1
+T 400 800 8 10 1 1 0 0 1
+refdes=U?
+T 700 500 5 8 1 1 0 1 1
+comment=pin info
+T 400 1400 5 10 0 0 0 0 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+T 400 1600 5 10 0 0 0 0 1
+dist-license=dual X11 or GPL
+T 400 1800 5 10 0 0 0 0 1
+use-license=free/unlimited
+T 400 2000 5 10 0 0 0 0 1
+slot=1
+T 400 2200 5 10 0 0 0 0 1
+numslots=1
+T 400 2400 5 10 0 0 0 0 1
+slotdef=1:1
