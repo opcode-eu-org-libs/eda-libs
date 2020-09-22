@@ -170,5 +170,6 @@ installConfig:
 	@ echo "Installing config files"
 	install -m 644 -C --backup=numbered configs/gafrc $(GEDADIR)/gafrc
 	install -m 644 -Dt $(GEDADIR)/gafrc.d configs/libs.01.scm
-	install -d $(GEDADIR)/Components
+	install -d $(GEDADIR)/Components/UserLib
+	@ echo "DON'T put symbols symbols directly into this directory - USE subdirs (e.g UserLib)" > $(GEDADIR)/Components/INFO.txt
 	install -d $(GEDADIR)/Sources

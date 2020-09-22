@@ -4,7 +4,7 @@
 (reset-component-library)
 (component-library-search (build-path (getenv "HOME") ".gEDA/Components.EDA-libs/"))
 (component-library-search (build-path (getenv "HOME") ".gEDA/Components.gEDA/"))
-(component-library        (build-path (getenv "HOME") ".gEDA/Components/") "user libs")
+;(component-library        (build-path (getenv "HOME") ".gEDA/Components/") "user libs")
 (component-library-search (build-path (getenv "HOME") ".gEDA/Components/"))
 
 ;; use ALSO own schematic source library
