@@ -1,0 +1,28 @@
+[options]
+wordswap=yes
+rotate_labels=no
+sort_labels=no
+generate_pinseq=yes
+sym_width=1600
+pinwidthvertical=400
+pinwidthhorizontal=400
+
+[geda_attr]
+version=20060113 1
+author=Robert Paciorek <rrp@opcode.eu.org>
+dist-license=dual X11 or GPL
+use-license=free/unlimited
+name=LP2951
+footprint=so(8)
+refdes=U?
+
+[pins]
+1		in	line 	l		Output
+2		in	line	l		Sense
+3		in	line 	l		Shutdown
+4		out	line	l		GND
+
+8		pas	line	r		Input
+7		pas	line	r		Feedback
+6		pas	line	r		Vo Tap
+5		out	line 	r		\_Error\_ Out
