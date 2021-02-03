@@ -38,14 +38,14 @@
 printHelp() {
 	echo "Convert schematic file (gEDA/gschem) to image (svg, pdf or png)"
 	echo ""
-	echo "USAGE $execPath [--svg] [--pdf] [--png] [--const-size] [--svg-no-text] [--show-endpoints] filename [filename [...]]"
+	echo "USAGE $1 [--svg] [--pdf] [--png] [--output=filepath] [--const-size] [--svg-no-text] [--show-endpoints] filename [filename [...]]"
 	echo ""
 	echo "For calls as sch2xxx --xxx is added by default (when xxx is svg, pdf or png)."
-	echo "For other calls at least one of those option is required."
+	echo "For other calls at least one of those option (or --output with file extension) is required."
 }
 
 if [ $# -eq 0 ]; then
-	printHelp
+	printHelp "$0"
 	exit 1
 fi
 
@@ -53,11 +53,10 @@ set -e
 
 # defaults settings ...
 outModes=""
+outFile=""
 constScale="true"
 textSVG="true"
 showEndPoints="false"
-tmpDir="/tmp"
-runDir=$PWD
 
 # set settings based on program name (execName) ...
 execPath=$0
@@ -69,7 +68,7 @@ case $execName in
 esac
 
 # set settings based on options ...
-if ! args=`getopt -n $execPath -o h -l svg,pdf,png,const-size,svg-no-text,show-endpoints -- "$@"`; then
+if ! args=`getopt -n $execPath -o h -l svg,pdf,png,output:,const-size,svg-no-text,show-endpoints -- "$@"`; then
 	printHelp
 	exit 2
 fi
@@ -80,6 +79,7 @@ while true; do
 		"--svg") outModes="$outModes svg"; shift;;
 		"--pdf") outModes="$outModes pdf"; shift;;
 		"--png") outModes="$outModes png"; shift;;
+		"--output") outFile="$2"; shift 2;;
 		"--const-size") constScale="false"; shift;;
 		"--svg-no-text") textSVG="false"; shift;;
 		"--show-endpoints") showEndPoints="true"; shift;;
@@ -87,6 +87,10 @@ while true; do
 		--) shift; break;;
 	esac
 done
+
+if [ "$outModes" = "" ]; then
+	outModes=${outFile##*.}
+fi
 
 # final check for settings ...
 if [ "$outModes" = "" ]; then
@@ -140,27 +144,29 @@ printSCM() {
 }
 
 # process single schematic file
-proccessSchematic() {
-	runDir=$1
-	filePath=$2
+proccessSchematic() {(
+	inputFile=$1
+	outputFile=$2
 	constScale=$3
-	shift 3
+	outModes=$4
 	
-	baseDir=`dirname ${filePath}`
-	if [ "${baseDir::1}" != "/" ]; then
-		baseDir=$runDir/$baseDir
+	if [ $# -lt 3 ]; then
+		echo "USAGE $0 inputFile outFile true|false [pdf svg png]"
 	fi
-	baseName=`basename ${filePath}`
-	baseName="${baseName%.sch}"
-	tmpFile=`mktemp "$tmpDir/sch2img.XXXXXX"`
+	
+	if [ "$outModes" = "" ]; then
+		outModes=${outputFile##*.}
+	fi
+	
+	tmpFile=`mktemp /tmp/sch2img.XXXXXX`
 	
 	printSCM $constScale > ${tmpFile}.scm
 	
-	cd $baseDir
+	cd "$(dirname "$inputFile")"
 	# this must be call in schematic file directory due to configs and symbols files which can be there
-	gschem -qp -o ${tmpFile}.ps -s ${tmpFile}.scm "$baseName.sch" &> /dev/null
+	gschem -qp -o ${tmpFile}.ps -s ${tmpFile}.scm "$(basename "$inputFile")" &> /dev/null
 	
-	cd $tmpDir
+	cd $(dirname $tmpFile)
 	#grep -v 'scale$' ${tmpFile}.ps | grep -v 'translate$' |
 	#	sed 's#2 setlinecap#2 setlinecap\n0.04 0.04 scale\n-27500 -33000 translate#g' > ${tmpFile}
 	# mv ${tmpFile} ${tmpFile}.ps
@@ -172,30 +178,39 @@ proccessSchematic() {
 	fi
 	epstopdf ${tmpFile}.eps* -o ${tmpFile}.pdf
 	
-	for mode in $@; do
+	for mode in $outModes; do
 		case $mode in
 			"pdf")
-				cp ${tmpFile}.pdf "$runDir/$baseName.pdf"
+				cp ${tmpFile}.pdf "${outputFile%.pdf}.pdf"
 				;;
 			"svg")
 				if $textSVG; then
-					inkscape --without-gui --file=${tmpFile}.pdf --export-plain-svg="$runDir/$baseName.svg"
-					sed -e "s#font-family:Helvetica;#font-family:'DejaVu Sans', sans-serif;#g" -i "$runDir/$baseName.svg"
+					inkscape --without-gui --file=${tmpFile}.pdf --export-plain-svg=${tmpFile}
+					sed -e "s#font-family:Helvetica;#font-family:'DejaVu Sans', sans-serif;#g" ${tmpFile} > "${outputFile%.svg}.svg"
 				else
-					pdf2svg ${tmpFile}.pdf "$runDir/$baseName.svg"
+					pdf2svg ${tmpFile}.pdf "${outputFile%.svg}.svg"
 				fi
 				;;
 			"png")
-				# convert ${tmpFile}.pdf "$runDir/$baseName.png"
 				pdftoppm ${tmpFile}.pdf ${tmpFile}
-				pnmtopng ${tmpFile}-*1.ppm > "$runDir/$baseName.png" 2> /dev/null
+				pnmtopng ${tmpFile}-*1.ppm > "${outputFile%.png}.png" 2> /dev/null
+				;;
+			*)
+				echo "Unsupported output file type ($mode)" >&2
 				;;
 		esac
 	done
 	
 	rm ${tmpFile}*
-}
+)}
 
-for f in "$@"; do
-	proccessSchematic "$runDir" "$f" $constScale "$outModes"
-done
+if [ "$outFile" = "" ]; then
+	for f in "$@"; do
+		outFile="$PWD/$(basename "$f")"
+		outFile="${outFile%.sch}"
+		proccessSchematic "$f" "$outFile" $constScale "$outModes"
+	done
+else
+	outFile=$(realpath "$outFile")
+	proccessSchematic "$1" "$outFile" $constScale "$outModes"
+fi
