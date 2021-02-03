@@ -38,7 +38,7 @@
 printHelp() {
 	echo "Convert schematic file (gEDA/gschem) to image (svg, pdf or png)"
 	echo ""
-	echo "USAGE $1 [--svg] [--pdf] [--png] [--output=filepath] [--const-size] [--svg-no-text] [--show-endpoints] filename [filename [...]]"
+	echo "USAGE $1 [--svg] [--pdf] [--png] [--dpi=val] [--output=filepath] [--const-size] [--svg-no-text] [--show-endpoints] filename [filename [...]]"
 	echo ""
 	echo "For calls as sch2xxx --xxx is added by default (when xxx is svg, pdf or png)."
 	echo "For other calls at least one of those option (or --output with file extension) is required."
@@ -54,6 +54,7 @@ set -e
 # defaults settings ...
 outModes=""
 outFile=""
+dpi=150
 constScale="true"
 textSVG="true"
 showEndPoints="false"
@@ -68,7 +69,7 @@ case $execName in
 esac
 
 # set settings based on options ...
-if ! args=`getopt -n $execPath -o h -l svg,pdf,png,output:,const-size,svg-no-text,show-endpoints -- "$@"`; then
+if ! args=`getopt -n $execPath -o h -l svg,pdf,png,dpi:,output:,const-size,svg-no-text,show-endpoints -- "$@"`; then
 	printHelp
 	exit 2
 fi
@@ -79,6 +80,7 @@ while true; do
 		"--svg") outModes="$outModes svg"; shift;;
 		"--pdf") outModes="$outModes pdf"; shift;;
 		"--png") outModes="$outModes png"; shift;;
+		"--dpi") dpi=$2; shift 2;;
 		"--output") outFile="$2"; shift 2;;
 		"--const-size") constScale="false"; shift;;
 		"--svg-no-text") textSVG="false"; shift;;
@@ -95,6 +97,11 @@ fi
 # final check for settings ...
 if [ "$outModes" = "" ]; then
 	echo "You must specify output file type. See --help for details"
+	exit 3;
+fi
+
+if [ "$dpi" = "" ]; then
+	echo "DPI must be numeric value"
 	exit 3;
 fi
 
@@ -145,13 +152,14 @@ printSCM() {
 
 # process single schematic file
 proccessSchematic() {(
-	inputFile=$1
-	outputFile=$2
+	inputFile="$1"
+	outputFile="$2"
 	constScale=$3
-	outModes=$4
+	dpi=$4
+	outModes="$5"
 	
 	if [ $# -lt 3 ]; then
-		echo "USAGE $0 inputFile outFile true|false [pdf svg png]"
+		echo "USAGE $0 inputFile outFile true|false dpi [pdf svg png]"
 	fi
 	
 	if [ "$outModes" = "" ]; then
@@ -192,8 +200,8 @@ proccessSchematic() {(
 				fi
 				;;
 			"png")
-				pdftoppm ${tmpFile}.pdf ${tmpFile}
-				pnmtopng ${tmpFile}-*1.ppm > "${outputFile%.png}.png" 2> /dev/null
+				pdftoppm -r $dpi -png ${tmpFile}.pdf ${tmpFile}
+				mv ${tmpFile}-1.png "${outputFile%.png}.png"
 				;;
 			*)
 				echo "Unsupported output file type ($mode)" >&2
@@ -208,9 +216,9 @@ if [ "$outFile" = "" ]; then
 	for f in "$@"; do
 		outFile="$PWD/$(basename "$f")"
 		outFile="${outFile%.sch}"
-		proccessSchematic "$f" "$outFile" $constScale "$outModes"
+		proccessSchematic "$f" "$outFile" $constScale $dpi "$outModes"
 	done
 else
 	outFile=$(realpath "$outFile")
-	proccessSchematic "$1" "$outFile" $constScale "$outModes"
+	proccessSchematic "$1" "$outFile" $constScale $dpi "$outModes"
 fi
