@@ -20,8 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-GEDADIR=$(HOME)/.gEDA
-PCBDIR=$(HOME)/.pcb-rnd/lib
+GEDADIR=$(HOME)/.config/lepton-eda
 ifeq ($(wildcard $(PCBLIBDIR)),) 
     PCBLIBDIR=$(HOME)/.pcb/lib
 endif
@@ -55,7 +54,7 @@ help:
 	@ echo "You can change them via make variables, as BINDIR above."
 	@ echo ""
 	@ echo "installDependencies target is dedicated for:"
-	@ echo "  Debian 9 (Stretch) and Debian 10 (Buster)"
+	@ echo "  Debian 11 (Bullseye)"
 	@ echo ""
 	@ echo "make subtargets:\n  $(LIBSTARGETS)\n  $(SYMSTARGETS)"
 
@@ -75,7 +74,8 @@ installTools:
 	ln -fs $(BINDIR)/sch2img.sh $(BINDIR)/sch2png
 
 # install dependencies (mostly for sch2img.sh)
-EDA_PKGS=geda-gschem pcb-rnd geda-gnetlist
+#EDA_PKGS=geda-gschem pcb-rnd geda-gnetlist
+EDA_PKGS=lepton-eda pcb-rnd
 TO_PDF_DEP_PKGS=bash ps2eps ghostscript texlive-font-utils pdf2svg inkscape poppler-utils netpbm
 installDependencies:
 	apt install $(EDA_PKGS) $(TO_PDF_DEP_PKGS)
@@ -84,6 +84,11 @@ installDependencies:
 #
 # install component symbols library
 #
+
+$(GEDADIR):
+	[ -d $(HOME)/.gEDA ] && [ ! -d $(GEDADIR) ] && mv $(HOME)/.gEDA/ $(GEDADIR)
+	mkdir -p $(GEDADIR)
+	[ ! -d $(HOME)/.gEDA ] && ln -fs $(HOME)/.config/lepton-eda $(HOME)/.gEDA
 
 cleanAndInstallSymbols:
 	$(MAKE) cleanSymbols
@@ -102,13 +107,13 @@ installSymbols: installConnectors installTragesym
 	@ echo "Installing *.src file from repository to $(SRCLIBSDIR)"
 	install -m 644 -Dt $(SRCLIBSDIR) sources/*
 
-installConnectors:
+installConnectors: $(GEDADIR)
 	@ echo "Generate and install 1x?? connectors symbols"
 	@ TRAGESYM=third-party/tragesym/tragesym ./tools/createConnectorsSymbols.sh $(SYMLIBSDIR)/connectors/ 1
 	@ echo "Generate and install 2x?? connectors symbols"
 	@ TRAGESYM=third-party/tragesym/tragesym ./tools/createConnectorsSymbols.sh $(SYMLIBSDIR)/connectors/ 2
 
-installTragesym:
+installTragesym: $(GEDADIR)
 	@ echo "Generate and install symbols:"
 	@ find symbols.tragesym -type d | while read inDir; do \
 		mkdir -p "$(SYMLIBSDIR)/$${inDir#symbols.tragesym/}" ; \
@@ -130,7 +135,7 @@ SYMFILE_BASIC = capacitor-1.sym capacitor-2.sym capacitor-4.sym capacitor-variab
  battery-1.sym battery-2.sym battery-3.sym voltage-1.sym current-1.sym nmos-1.sym pmos-1.sym \
  transformer-1.sym transformer-2.sym transformer-3.sym transformer-4.sym transformer-5.sym
 
-installGEDASymblols:
+installGEDASymblols: $(GEDADIR)
 	$(eval GEDASYSDIR := $(shell gschem -c '(display geda-data-path)(gschem-exit)' | tail -n1))
 	$(eval GEDASYMDIR := $(if $(GEDASYSDIR), "$(GEDASYSDIR)/sym", "third-party/gEDA_symbols"))
 	@ echo "Install some symbols from gEDA symbols library ..."
@@ -166,7 +171,7 @@ installFootprints:
 # install gschem and friend (gaf) config files
 #
 
-installConfig:
+installConfig: $(GEDADIR)
 	@ echo "Installing config files"
 	install -m 644 -C --backup=numbered configs/gafrc $(GEDADIR)/gafrc
 	install -m 644 -Dt $(GEDADIR)/gafrc.d configs/libs.01.scm

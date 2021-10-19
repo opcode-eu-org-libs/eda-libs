@@ -21,6 +21,9 @@ sudo make installDependencies # for non Debian based system you must manually in
 
 For more details see `make help` and [Makefile](Makefile) file.
 
+**By default make install and/or assumes using lepton-eda and pcb-rnd forks of gEDA and pcb!!!**
+
+
 ## Licensing
 
 Primary license for this repo is MIT License (see [LICENSE](LICENSE)), but some third-party elements are under GNU GPL (see [third-party/LICENSE](third-party/LICENSE)).
@@ -38,12 +41,15 @@ Primary license for this repo is MIT License (see [LICENSE](LICENSE)), but some 
 About open/free/libre EDA suites
 ================================
 
-## gEDA
+## gEDA (+ friends and forks)
 
 [gEDA](http://www.geda-project.org/) is GNU GPL based [Electronic Design Automation](https://en.wikipedia.org/wiki/Electronic_design_automation) software suite.
 
 ### gschem
 One of most important components of gEDA is [gschem](http://wiki.geda-project.org/geda:gaf) - schematic capture program. It is used to draw schematics of electronic circuits, it's operate on text files for component symbols and for whole schematic.
+
+### lepton-eda
+[lepton-eda](https://github.com/lepton-eda/lepton-eda) is fork of gEDA gschem and friends (gaf). Use the same format for symbols and schematic as original gschem.
 
 ### pcb
 Another important component is [PCB](http://pcb.geda-project.org/) - printed circuit board editor. It is used to design printed circuit board, it's operate on text files for footprints and for whole borad. For creating pcb based on gEDA schematic is used `gsch2pcb` tool.
@@ -58,9 +64,6 @@ pcb-rnd supports mainline pcb file formats for footprints and board, but native 
 
 
 ## other libre EDA software
-
-### lepton-eda
-[lepton-eda](https://github.com/lepton-eda/lepton-eda) is fork of gEDA gschem and friends (gaf). Use the same format for symbols and schematic as original gschem.
 
 ### coralEDA
 [pcb-rnd](http://repo.hu/projects/coraleda/) is EDA suite build around pcb-rnd and [xschem](http://repo.hu/projects/xschem/). Uses own file formats for symbols, footprints, schematics and boards, but support gEDA/pcb file formats for footprints and board.
