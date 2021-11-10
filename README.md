@@ -69,4 +69,4 @@ pcb-rnd supports mainline pcb file formats for footprints and board, but native 
 [pcb-rnd](http://repo.hu/projects/coraleda/) is EDA suite build around pcb-rnd and [xschem](http://repo.hu/projects/xschem/). Uses own file formats for symbols, footprints, schematics and boards, but support gEDA/pcb file formats for footprints and board.
 
 ### kicad
-[kicad](http://kicad-pcb.org/) is other, independent EDA suite. Uses own file formats for symbols, footprints, schematics and boards.
+[kicad](http://kicad.org/) is other, independent EDA suite. Uses own file formats for symbols, footprints, schematics and boards.
