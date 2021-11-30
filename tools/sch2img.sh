@@ -168,23 +168,27 @@ proccessSchematic() {(
 	
 	tmpFile=`mktemp /tmp/sch2img.XXXXXX`
 	
-	printSCM $constScale > ${tmpFile}.scm
-	
-	cd "$(dirname "$inputFile")"
-	# this must be call in schematic file directory due to configs and symbols files which can be there
-	gschem -qp -o ${tmpFile}.ps -s ${tmpFile}.scm "$(basename "$inputFile")" &> /dev/null
-	
-	cd $(dirname $tmpFile)
-	#grep -v 'scale$' ${tmpFile}.ps | grep -v 'translate$' |
-	#	sed 's#2 setlinecap#2 setlinecap\n0.04 0.04 scale\n-27500 -33000 translate#g' > ${tmpFile}
-	# mv ${tmpFile} ${tmpFile}.ps
-	
-	if $constScale; then
-		ps2eps -O -n -P -l -q ${tmpFile}.ps
+	if ! which lepton-cli > /dev/null; then
+		printSCM $constScale > ${tmpFile}.scm
+		
+		cd "$(dirname "$inputFile")"
+		# this must be call in schematic file directory due to configs and symbols files which can be there
+		gschem -qp -o ${tmpFile}.ps -s ${tmpFile}.scm "$(basename "$inputFile")" &> /dev/null
+		
+		cd $(dirname $tmpFile)
+		#grep -v 'scale$' ${tmpFile}.ps | grep -v 'translate$' |
+		#	sed 's#2 setlinecap#2 setlinecap\n0.04 0.04 scale\n-27500 -33000 translate#g' > ${tmpFile}
+		# mv ${tmpFile} ${tmpFile}.ps
+		
+		if $constScale; then
+			ps2eps -O -n -P -l -q ${tmpFile}.ps
+		else
+			ps2epsi ${tmpFile}.ps ${tmpFile}.eps
+		fi
+		epstopdf ${tmpFile}.eps* -o ${tmpFile}.pdf
 	else
-		ps2epsi ${tmpFile}.ps ${tmpFile}.eps
+		lepton-cli export --no-color -o ${tmpFile}.pdf "$(basename "$inputFile")" &> /dev/null
 	fi
-	epstopdf ${tmpFile}.eps* -o ${tmpFile}.pdf
 	
 	for mode in $outModes; do
 		case $mode in
@@ -193,8 +197,8 @@ proccessSchematic() {(
 				;;
 			"svg")
 				if $textSVG; then
-					inkscape --without-gui --file=${tmpFile}.pdf --export-plain-svg=${tmpFile}
-					sed -e "s#font-family:Helvetica;#font-family:'DejaVu Sans', sans-serif;#g" ${tmpFile} > "${outputFile%.svg}.svg"
+					inkscape --without-gui --file=${tmpFile}.pdf --export-plain-svg=${tmpFile}.svg
+					sed -e "s#font-family:Helvetica;#font-family:'DejaVu Sans', sans-serif;#g" ${tmpFile}.svg > "${outputFile%.svg}.svg"
 				else
 					pdf2svg ${tmpFile}.pdf "${outputFile%.svg}.svg"
 				fi
