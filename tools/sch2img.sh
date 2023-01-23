@@ -187,7 +187,8 @@ proccessSchematic() {(
 		fi
 		epstopdf ${tmpFile}.eps* -o ${tmpFile}.pdf
 	else
-		lepton-cli export --no-color -o ${tmpFile}.pdf "$(basename "$inputFile")" &> /dev/null
+		cd "$(dirname "$inputFile")"
+		lepton-cli export --no-color -o ${tmpFile}.pdf "$(basename "$inputFile")"
 	fi
 	
 	for mode in $outModes; do

@@ -161,7 +161,8 @@ installGEDASymblols: $(GEDADIR)
 installFootprints:
 	$(eval PCB_RND_SHARE := $(shell pcb-rnd --show-paths | awk -F '[ \t]*=[ \t]' '$$1 == "rc/path/share" {print $$2}'))
 	install -m 755 -Dt $(PCBLIBDIR)/EDA-libs.Parametric third-party/pcb-rnd_parametric/*
-	ln -fs $(PCB_RND_SHARE)/pcblib/parametric/common.awk $(PCBLIBDIR)/EDA-libs.Parametric
+	ln -fs $(PCB_RND_SHARE)/footprint/parametric/common.awk $(PCBLIBDIR)/EDA-libs.Parametric
+	ln -fs $(PCB_RND_SHARE)/footprint/parametric/common_subc.awk $(PCBLIBDIR)/EDA-libs.Parametric
 	install -m 644 -Dt $(PCBLIBDIR)/EDA-libs third-party/gEDA_footprints/*.fp
 	install -m 644 -Dt $(PCBLIBDIR)/EDA-libs third-party/gedasymbols.org_footprints/*/*.fp
 	install -m 644 -Dt $(PCBLIBDIR)/EDA-libs footprints/*.fp
@@ -176,5 +177,6 @@ installConfig: $(GEDADIR)
 	install -m 644 -C --backup=numbered configs/gafrc $(GEDADIR)/gafrc
 	install -m 644 -Dt $(GEDADIR)/gafrc.d configs/libs.01.scm
 	install -d $(GEDADIR)/Components/UserLib
-	@ echo "DON'T put symbols symbols directly into this directory - USE subdirs (e.g UserLib)" > $(GEDADIR)/Components/INFO.txt
+	@ echo "DON'T put symbols directly into this directory - USE subdirs (e.g UserLib)" > $(GEDADIR)/Components/INFO.txt
 	install -d $(GEDADIR)/Sources
+	install -m 644 sources/net_connector.sch $(GEDADIR)/Sources/.placeholder.sch # lepton crash on empty Sources dir, so put some placeholder
