@@ -78,7 +78,7 @@ installTools:
 EDA_PKGS=lepton-eda pcb-rnd
 TO_PDF_DEP_PKGS=bash ps2eps ghostscript texlive-font-utils pdf2svg inkscape poppler-utils netpbm
 installDependencies:
-	apt install $(EDA_PKGS) $(TO_PDF_DEP_PKGS)
+	apt install -y $(EDA_PKGS) $(TO_PDF_DEP_PKGS)
 
 
 #
@@ -86,9 +86,9 @@ installDependencies:
 #
 
 $(GEDADIR):
-	[ -d $(HOME)/.gEDA ] && [ ! -d $(GEDADIR) ] && mv $(HOME)/.gEDA/ $(GEDADIR)
+	if [ -d $(HOME)/.gEDA ] && [ ! -d $(GEDADIR) ]; then mv $(HOME)/.gEDA/ $(GEDADIR); fi
 	mkdir -p $(GEDADIR)
-	[ ! -d $(HOME)/.gEDA ] && ln -fs $(HOME)/.config/lepton-eda $(HOME)/.gEDA
+	if [ ! -d $(HOME)/.gEDA ]; then ln -fs $(HOME)/.config/lepton-eda $(HOME)/.gEDA; fi
 
 cleanAndInstallSymbols:
 	$(MAKE) cleanSymbols
